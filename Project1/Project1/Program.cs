@@ -12,7 +12,8 @@ namespace Project1
             Random r = new Random();
             int yil1=1995, yil2=1997;
 
-            Console.WriteLine(randomBDayGeneratorBetweenTwoYears(r, yil1, yil2)); 
+        
+
             Console.Read();
         }
 
