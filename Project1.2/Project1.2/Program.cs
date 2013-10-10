@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Project1._2
 {
@@ -11,18 +12,71 @@ namespace Project1._2
         {
             Random r = new Random();
             
-            ArrayList ulkeListesi = new ArrayList();
-            
-            int[] kontenjan = kontenjanSayilariniAl(r,ulkeListesi);
+            List<Ulke> ulkeListesi = new List<Ulke>();
+            kontenjanSayilariniAl(r,ulkeListesi);
 
-
-            ArrayList ogrenciListesi = new ArrayList();
+            List<Ogrenci> ogrenciListesi = new List<Ogrenci>();
             ogrenciOlusturma(r, ogrenciListesi);
-      
+
+            ogrencileriYerlestir(ulkeListesi, ogrenciListesi);
+           
             Console.Read();
         }
 
-        private static void ogrenciOlusturma(Random r, ArrayList ogrenciListesi)
+        private static void ogrencileriYerlestir(List<Ulke> ulkeListesi, List<Ogrenci> ogrenciListesi)
+        {
+
+
+            int totalKontenjan = 0;
+            foreach (Ulke item in ulkeListesi)
+            {
+                item.Ogrenciler = new List<Ogrenci>();
+                totalKontenjan += item.Kontenjan;
+            }
+
+            if (totalKontenjan < ogrenciListesi.Count) //Kontenjan öğrenci sayısından az ise 
+            {
+                ogrenciListesi.Sort();
+                ogrenciListesi.Reverse();
+            }
+
+            int bosKontenjan = totalKontenjan;
+            int totalOgrenciSayisi = ogrenciListesi.Count;
+            for (int i = 0; i < totalOgrenciSayisi; i++)
+            {
+                Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
+                atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                ogrenciListesi.RemoveAt(0);
+                ogrenciListesi.RemoveAll(item => item == null);
+                if (--bosKontenjan == 0)
+                    break;
+            }
+            if (ogrenciListesi.Count > 0)
+            {
+                Console.WriteLine("Yerleştirilemeyen öğrencilerin sayısı:" + ogrenciListesi.Count);
+                Console.WriteLine("İsim\tSoyisim\tDeğerlendirme Puanı");
+                foreach (Ogrenci item in ogrenciListesi)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Ülkeler:");
+            foreach (Ulke item in ulkeListesi)
+            {
+                Console.WriteLine(item.Isim+ " Kontenjan:" +item.Kontenjan+ " Doluluk Yüzdesi:%"+item.DolulukYuzdesi());
+                foreach (Ogrenci o in item.Ogrenciler)
+                {
+                    Console.WriteLine("İsim\tSoyisim\tDeğerlendirme Puanı");
+                    Console.WriteLine(o);
+                }
+                Console.WriteLine();
+            }
+
+
+        }
+
+        private static void ogrenciOlusturma(Random r, List<Ogrenci> ogrenciListesi)
         {
             string[] isimler = { "Ali", "Hasan", "Fatma", "Oğuz", "Ayşe", "Zeynep", "Elif", "Merve", "Ece", "Esra", "Kaan", "Özlem", "Yasemin", "Anıl", "Mehmet", "Mustafa", "Ahmet", "Gamze", "Hüseyin", "İbrahim" };
             string[] soyisimler = { "Yıldız", "Yıldırım", "Avcı", "Öztürk", "Kaya", "Erdem", "Aydın", "Özdemir", "Arslan", "Doğan", "Kılıç", "Çetin", "Kara", "Koç", "Uğur", "Kurt", "Özkan", "Eren", "Şimşek", "Yılmaz" };
@@ -58,23 +112,23 @@ namespace Project1._2
             }
         }
 
-        private static int[] kontenjanSayilariniAl(Random r,ArrayList ulkeListesi)
+        private static void kontenjanSayilariniAl(Random r,List<Ulke> ulkeListesi)
         {
-            string[] ulkeler = { "ENG", "GER", "FRE", "ITA", "ESP", "USA", "JAP", "CHN", "RUS" };        
-            int[] kontenjan = new int[9];
-           
+            string[] ulkeler = { "ENG", "GER", "FRE", "ITA", "ESP", "USA", "JAP", "CHN", "RUS" };
             bool hatali = true;
-            bool kontenjanGirisi=true;
-            do{
+            bool kontenjanGirisi = true;
+            do
+            {
                 Console.WriteLine("Kontenjanları girmek için 0'ı:\nRastgele kontenjan değerleri(0-10) atamak için herhangi bir değeri tuşlayınız: ");
-                try{
-                   kontenjanGirisi= Int32.Parse(Console.ReadLine())==0?true:false;
-                   hatali = false;
-            }
-            catch (FormatException)
+                try
+                {
+                    kontenjanGirisi = Int32.Parse(Console.ReadLine()) == 0 ? true : false;
+                    hatali = false;
+                }
+                catch (FormatException)
                 { Console.WriteLine("Hatalı değer girdiniz lütfen tekrar deneyiniz!\n"); }
-                
-            }while(hatali==true);
+
+            } while (hatali == true);
             if (kontenjanGirisi)
             {
                 for (int i = 0; i < ulkeler.Length; i++)
@@ -86,11 +140,11 @@ namespace Project1._2
                         {
                             Console.Write(ulkeler[i] + " ülkesi için kontenjan sayısını giriniz: ");
                             int kont = Int32.Parse(Console.ReadLine());
-                            if(kont!=0)
-                            ulkeListesi.Add(new Ulke(kont,ulkeler[i]));
+                            if (kont != 0)
+                                ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
                         }
                         catch (FormatException)
-                        { 
+                        {
                             Console.WriteLine("Hatalı değer girdiniz lütfen tekrar deneyiniz!\n");
                             continue;
                         }
@@ -100,16 +154,16 @@ namespace Project1._2
             }
             else
             {
-                for (int i = 0; i < kontenjan.Length; i++)
+                for (int i = 0; i < 9; i++)
                 {
-                    kontenjan[i] = r.Next(11);
+                    int kont = r.Next(11);
+                    if (kont != 0)
+                    ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
                 }
             }
 
-
-
-            return kontenjan;
+            return;
         }
-
+        
     }
 }

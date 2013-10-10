@@ -5,10 +5,18 @@ using System.Text;
 
 namespace Project1._2
 {
-    class Ogrenci
+    class Ogrenci : IComparable <Ogrenci>
     {
         public Ogrenci()
         { }
+        public Ogrenci(Ogrenci o)
+        {
+            ad = o.ad;
+            soyad = o.soyad;
+            degerlendirmeNotu = o.degerlendirmeNotu;
+
+
+        }
         public Ogrenci(string a, string s, int not)
         {
             ad = a;
@@ -41,7 +49,10 @@ namespace Project1._2
             return ad + " " + soyad + " " + degerlendirmeNotu;
         }
 
-
+        public int CompareTo(Ogrenci b)
+        {
+            return this.degerlendirmeNotu.CompareTo(b.DegerlendirmeNotu);
+        }
 
     }
 }

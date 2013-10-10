@@ -9,21 +9,23 @@ namespace Project1._2
     {
         public Ulke()
         {
-
+           
         }
         public Ulke(int k,string i)
         {
             kontenjan = k;
             isim = i;
+         
         }
-        int kontenjan;
+      
+        private int kontenjan;
 
         public int Kontenjan
         {
             get { return kontenjan; }
             set { kontenjan = value; }
         }
-        string isim;
+        private string isim;
 
         public string Isim
         {
@@ -32,8 +34,13 @@ namespace Project1._2
         }
         public override string ToString()
         {
-            return isim + " " + kontenjan;
+            return isim + " " + kontenjan + " %"+ DolulukYuzdesi();
         }
+        public double DolulukYuzdesi()
+        {
+            return Convert.ToDouble( (Ogrenciler.Count * 100) /kontenjan);
+        }
+        public List<Ogrenci> Ogrenciler;
 
 
     }
