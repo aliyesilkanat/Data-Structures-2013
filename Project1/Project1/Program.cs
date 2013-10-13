@@ -12,9 +12,18 @@ namespace Project1
             Random r = new Random();
             int yil1=1995, yil2=1997;
 
-        
+            int n = 50;
+            nRandomBDayGenerator(r, yil1, yil2, n);
 
             Console.Read();
+        }
+
+        private static void nRandomBDayGenerator(Random r, int yil1, int yil2, int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                randomBDayGeneratorBetweenTwoYears(r, yil1, yil2);
+            }
         }
 
         private static DateTime randomBDayGeneratorBetweenTwoYears(Random r, int yil1, int yil2)
@@ -24,7 +33,7 @@ namespace Project1
 
             int yil = r.Next(yil1, yil2 + 1);
             int ay = r.Next(1, 13);
-            int gun = DateTime.IsLeapYear(yil) ? r.Next(1, 30) : r.Next(1, 29);
+            int gun = r.Next(DateTime.DaysInMonth(yil, ay)+1);
             return new DateTime(yil, ay, gun);
         }
     }
