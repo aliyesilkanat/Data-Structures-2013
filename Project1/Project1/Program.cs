@@ -12,8 +12,27 @@ namespace Project1
         {
             Random r = new Random();
             int yil1=1995, yil2=1997;
-
+            int [,] cakismaSayilari= new int[10,4];
             int n = 50;
+            int deneyIndex=0;
+            switch (n)
+            {
+                case 50:
+                    deneyIndex = 0;
+                    break;
+                case 100:
+                    deneyIndex = 1;
+                    break;
+                case 500:
+                    deneyIndex = 2;
+                    break;
+                case 1000:
+                    deneyIndex = 3;
+                    break;
+
+                default:
+                    break;
+            }
             for (int k = 0; k < 10; k++)
             {
 
@@ -49,6 +68,8 @@ namespace Project1
                        Console.Write(String.Format("{0,-10}",CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(t+1)+" "));
                        for (int l = 0; l < DateTime.DaysInMonth(i, t + 1); l++)
                        {
+                           if (yildakiDGunleri[t][l] > 1)
+                               cakismaSayilari[k,deneyIndex] += yildakiDGunleri[t][l]-1;
                            Console.Write(yildakiDGunleri[t][l] + " ");
                        }
                        Console.WriteLine();
@@ -58,9 +79,36 @@ namespace Project1
                 if (k<9)
                 {
                     Console.WriteLine("Sonraki deneye geçmek için bir tuşa basın...");
-                    Console.ReadLine();  
+                    //Console.ReadLine();  
                 } 
             }
+
+            Console.WriteLine(String.Format("{0,37}","n=50   n=100  n=500  n=1000"));
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write(String.Format("{0,-10}","Deney "+i) );
+
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(String.Format("{0,-7}",cakismaSayilari[i - 1,j]));
+                   
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.Write(String.Format("{0,-10}", "Ortalama"));
+            
+            for (int i = 0; i < 4; i++)
+            {
+                double ort=0;
+                for (int j = 0; j < 10; j++)
+                {
+                    ort +=Convert.ToDouble( cakismaSayilari[j, i]);
+                }
+                Console.Write(String.Format("{0,-7}",ort / 10));
+                
+            }    
+            
   
             Console.Read();
         }
