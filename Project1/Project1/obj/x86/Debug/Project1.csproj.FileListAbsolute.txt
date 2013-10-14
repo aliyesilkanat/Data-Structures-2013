@@ -2,3 +2,4 @@ C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Projec
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project1\Project1\bin\Debug\Project1.pdb
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project1\Project1\obj\x86\Debug\Project1.exe
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project1\Project1\obj\x86\Debug\Project1.pdb
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project1\Project1\obj\x86\Debug\Project1.csprojResolveAssemblyReference.cache
