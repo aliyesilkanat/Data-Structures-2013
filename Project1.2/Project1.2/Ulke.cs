@@ -15,9 +15,8 @@ namespace Project1._2
         {
             kontenjan = k;
             isim = i;
-         
         }
-      
+     
         private int kontenjan;
 
         public int Kontenjan
