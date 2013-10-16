@@ -17,16 +17,55 @@ namespace Project1._2
 
             List<Ogrenci> ogrenciListesi = new List<Ogrenci>();
             ogrenciOlusturma(r, ogrenciListesi);
-
             ogrencileriYerlestir(ulkeListesi, ogrenciListesi);
-           
             Console.Read();
         }
+        private static int SayiAl()
+        {
+            bool hatali;
+            int secim = 0;
+            do
+            {
+                hatali = true;
+                try
+                {
+                    secim = Int32.Parse(Console.ReadLine());
+                    hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
+
+        private static int SayiAl(int a, int u)
+        {
+            bool hatali;
+            int secim = 0;
+            do
+            {
+                hatali = true;
+
+                try
+                {
+                    secim = Int32.Parse(Console.ReadLine());
+                    if (secim <= u && secim >= a)
+                        hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
+
+
 
         private static void ogrencileriYerlestir(List<Ulke> ulkeListesi, List<Ogrenci> ogrenciListesi)
         {
-
-
             int totalKontenjan = 0;
             foreach (Ulke item in ulkeListesi)
             {
@@ -54,21 +93,21 @@ namespace Project1._2
             if (ogrenciListesi.Count > 0)
             {
                 Console.WriteLine("Yerleştirilemeyen öğrencilerin sayısı:" + ogrenciListesi.Count);
-                Console.WriteLine("İsim\tSoyisim\tDeğerlendirme Puanı");
+                Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", "İsim", "Soyisim", "Değerlendirme Puanı"));
                 foreach (Ogrenci item in ogrenciListesi)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", item.Ad, item.Soyad, item.DegerlendirmeNotu));
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("Ülkeler:");
             foreach (Ulke item in ulkeListesi)
             {
-                Console.WriteLine(item.Isim+ " Kontenjan:" +item.Kontenjan+ " Doluluk Yüzdesi:%"+item.DolulukYuzdesi());
+                Console.WriteLine(item.Isim+ " Kontenjan:" +item.Kontenjan+ " Yerleşen Öğrenci Sayısı:"+item.Ogrenciler.Count+ " Doluluk Yüzdesi:%"+item.DolulukYuzdesi());
+                Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", "İsim", "Soyisim", "Değerlendirme Puanı"));
                 foreach (Ogrenci o in item.Ogrenciler)
                 {
-                    Console.WriteLine("İsim\tSoyisim\tDeğerlendirme Puanı");
-                    Console.WriteLine(o);
+                    Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", o.Ad, o.Soyad, o.DegerlendirmeNotu));
                 }
                 Console.WriteLine();
             }
@@ -81,28 +120,10 @@ namespace Project1._2
             string[] isimler = { "Ali", "Hasan", "Fatma", "Oğuz", "Ayşe", "Zeynep", "Elif", "Merve", "Ece", "Esra", "Kaan", "Özlem", "Yasemin", "Anıl", "Mehmet", "Mustafa", "Ahmet", "Gamze", "Hüseyin", "İbrahim" };
             string[] soyisimler = { "Yıldız", "Yıldırım", "Avcı", "Öztürk", "Kaya", "Erdem", "Aydın", "Özdemir", "Arslan", "Doğan", "Kılıç", "Çetin", "Kara", "Koç", "Uğur", "Kurt", "Özkan", "Eren", "Şimşek", "Yılmaz" };
 
-            bool hatali = true;
             int basvuranOgrenciSayisi = 0;
-            do
-            {
-                Console.WriteLine("Başvuran öğrenci sayısını giriniz: (1-150) ");
+            Console.WriteLine("Başvuran öğrenci sayısını giriniz: (1-150) ");
 
-                try
-                {
-                    basvuranOgrenciSayisi = Int32.Parse(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Hatali deger girdiniz lütfen tekrar deneyiniz!\n");
-                    continue;
-                }
-                if (basvuranOgrenciSayisi > 150 || basvuranOgrenciSayisi < 1)
-                {
-                    Console.WriteLine("Lütfen belirtilen değer aralığında giriniz: (1-150)");
-                }
-                else hatali = false;
-
-            } while (hatali == true);
+            basvuranOgrenciSayisi = SayiAl(1,150);
 
             for (int i = 0; i < basvuranOgrenciSayisi; i++)
             {
@@ -115,41 +136,19 @@ namespace Project1._2
         private static void kontenjanSayilariniAl(Random r,List<Ulke> ulkeListesi)
         {
             string[] ulkeler = { "ENG", "GER", "FRE", "ITA", "ESP", "USA", "JAP", "CHN", "RUS" };
-            bool hatali = true;
             bool kontenjanGirisi = true;
-            do
-            {
-                Console.WriteLine("Kontenjanları girmek için 0'ı:\nRastgele kontenjan değerleri(0-10) atamak için herhangi bir değeri tuşlayınız: ");
-                try
-                {
-                    kontenjanGirisi = Int32.Parse(Console.ReadLine()) == 0 ? true : false;
-                    hatali = false;
-                }
-                catch (FormatException)
-                { Console.WriteLine("Hatalı değer girdiniz lütfen tekrar deneyiniz!\n"); }
-
-            } while (hatali == true);
+            Console.WriteLine("Kontenjanları girmek için 0'ı:\nRastgele kontenjan değerleri(0-10) atamak için herhangi bir değeri tuşlayınız: ");
+            kontenjanGirisi=SayiAl()==0?true:false;
+           
             if (kontenjanGirisi)
             {
                 for (int i = 0; i < ulkeler.Length; i++)
                 {
-                    hatali = true;
-                    while (hatali)
-                    {
-                        try
-                        {
-                            Console.Write(ulkeler[i] + " ülkesi için kontenjan sayısını giriniz: ");
-                            int kont = Int32.Parse(Console.ReadLine());
-                            if (kont != 0)
-                                ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine("Hatalı değer girdiniz lütfen tekrar deneyiniz!\n");
-                            continue;
-                        }
-                        hatali = false;
-                    }
+                    Console.Write(ulkeler[i] + " ülkesi için kontenjan sayısını giriniz: ");
+                    int kont = SayiAl();
+                    if (kont != 0)
+                        ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
+
                 }
             }
             else
