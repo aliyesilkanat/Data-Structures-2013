@@ -21,6 +21,13 @@ namespace Project1
                         int yil1 = SayiAl();
                         Console.Write("İkinci yılı giriniz: ");
                         int yil2 = SayiAl();
+                        if (yil1 > yil2)
+                        {
+                            int temp=yil1;
+                            yil1 = yil2;
+                            yil2 = temp;
+
+                        }
                         Console.WriteLine("Her deneyi gerçekleştirmek için 1'i\nSadece istatistikleri göstermek için 2'yi tuşlayınız: ");
                         int deney = SayiAl(1, 2);
                         if (deney == 1)
