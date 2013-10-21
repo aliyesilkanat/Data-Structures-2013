@@ -16,7 +16,8 @@ namespace DSHomework2
             {
                 Console.Write(item+" ");
             }
-            Console.ReadKey();         }
+            Console.ReadKey(); 
+        }
 
         private static void Ltopla(int[,] matris, int[] dizi)
         {

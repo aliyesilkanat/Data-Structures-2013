@@ -114,6 +114,7 @@ namespace Project1
             int[] nDizisi = { 50, 100, 500, 1000 };
             foreach (int n in nDizisi)
             {
+                Console.WriteLine("Üretilen doğum günü sayısı(n):"+n);
                 int deneyIndex = 0;
                 switch (n)
                 {
@@ -146,7 +147,7 @@ namespace Project1
                         {
 
                             Console.Write(o + 1);
-                            if (o < 10)
+                            if (o < 9)
                                 Console.Write(" ");
                         }
                         Console.WriteLine();
@@ -179,7 +180,7 @@ namespace Project1
                     if (k < 9)
                     {
                         Console.WriteLine("Sonraki deneye geçmek için bir tuşa basın...");
-                        //Console.ReadLine();  
+                        Console.ReadLine();  
                     }
                 }
             }
