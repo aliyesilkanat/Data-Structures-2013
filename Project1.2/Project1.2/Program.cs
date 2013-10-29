@@ -91,39 +91,22 @@ namespace Project1._2
             //    if (--bosKontenjan == 0)
             //        break;
             //}
-        //    float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
-        //    foreach (Ulke u in ulkeListesi)
-        //    {
-        //        for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
-        //        {
-        //            u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-        //            ogrenciListesi.RemoveAt(0);
-        //            ogrenciListesi.RemoveAll(item => item == null);
-        //            if (--bosKontenjan == 0 || u.Ogrenciler.Count == u.Kontenjan)
-        //                break;
-        //        }
-        //        if (bosKontenjan == 0)
-        //            break;
-        //    }
-        //if(bosKontenjan>0)
-        //    {
-        //        Ulke minOranUlke = null;
-        //        float minOran = 1;
-        //        foreach (Ulke u in ulkeListesi)
-        //        {
-        //            if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
-        //            {
-        //                minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
-        //                minOranUlke = u;
-        //            }
-        //        }
-        //        minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-        //        ogrenciListesi.RemoveAt(0);
-        //        ogrenciListesi.RemoveAll(item => item == null);
-       
-        //    }
-            //ALI
-            for (int i = 0; i < totalOgrenciSayisi; i++)
+            //Hedef Oran
+            float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
+            foreach (Ulke u in ulkeListesi)
+            {
+                for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
+                {
+                    u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                    ogrenciListesi.RemoveAt(0);
+                    ogrenciListesi.RemoveAll(item => item == null);
+                    if (--bosKontenjan == 0 || u.Ogrenciler.Count == u.Kontenjan)
+                        break;
+                }
+                if (bosKontenjan == 0)
+                    break;
+            }
+        if(bosKontenjan>0 && ogrenciListesi.Count>0)
             {
                 Ulke minOranUlke = null;
                 float minOran = 1;
@@ -138,10 +121,27 @@ namespace Project1._2
                 minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                 ogrenciListesi.RemoveAt(0);
                 ogrenciListesi.RemoveAll(item => item == null);
-                if (--bosKontenjan == 0)
-                    break;
-
+       
             }
+            //Bir sonraki min
+            //for (int i = 0; i < totalOgrenciSayisi; i++)
+            //{
+            //    Ulke minOranUlke = null;
+            //    float minOran = 1;
+            //    foreach (Ulke u in ulkeListesi)
+            //    {
+            //        if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
+            //        {
+            //            minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
+            //            minOranUlke = u;
+            //        }
+            //    }
+            //    minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+            //    ogrenciListesi.RemoveAt(0);
+            //    ogrenciListesi.RemoveAll(item => item == null);
+            //    if (--bosKontenjan == 0)
+            //        break;
+            //}
             if (ogrenciListesi.Count > 0)
             {
                 Console.WriteLine("Yerleştirilemeyen öğrencilerin sayısı:" + ogrenciListesi.Count);
