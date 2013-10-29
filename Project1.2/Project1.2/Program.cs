@@ -124,38 +124,79 @@ namespace Project1._2
 
             //}
             //Bir sonraki min
-            if (totalKontenjan <= ogrenciListesi.Count)
+            //if (totalKontenjan <= ogrenciListesi.Count)
+            //{
+            //    for (int i = 0; i < totalOgrenciSayisi; i++)
+            //    {
+            //        Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
+            //        atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+            //        ogrenciListesi.RemoveAt(0);
+            //        ogrenciListesi.RemoveAll(item => item == null);
+            //        if (--bosKontenjan == 0)
+            //            break;
+            //    }
+            //}
+            //else
+            //{
+                //for (int i = 0; i < totalOgrenciSayisi; i++)
+                //{
+                //    Ulke minOranUlke = null;
+                //    float minOran = 1;
+                //    minOranUlke = ulkeListesi[0];
+                //    foreach (Ulke u in ulkeListesi)
+                //    {
+                //        if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
+                //        {
+                //            minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
+                //            minOranUlke = u;
+                //        }
+                //    }
+                //    minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                //    ogrenciListesi.RemoveAt(0);
+                //    ogrenciListesi.RemoveAll(item => item == null);
+                //    if (--bosKontenjan == 0)
+                //        break;
+                //}
+               
+
+            //}
+            float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
+            if (totalOgrenciSayisi>=totalKontenjan) //Ülkede doluluk oranın taşmaması için
             {
-                for (int i = 0; i < totalOgrenciSayisi; i++)
+                hedeflenenOran = 1.0f;
+            }
+            foreach (Ulke u in ulkeListesi)
                 {
-                    Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
-                    atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
+                {
+                    u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                     ogrenciListesi.RemoveAt(0);
                     ogrenciListesi.RemoveAll(item => item == null);
-                    if (--bosKontenjan == 0)
+                    if (--bosKontenjan == 0 || ogrenciListesi.Count==0)
                         break;
                 }
+                if (bosKontenjan == 0 || ogrenciListesi.Count == 0)
+                    break;
             }
-            else
+            if (bosKontenjan > 0 && ogrenciListesi.Count > 0)
             {
-                for (int i = 0; i < totalOgrenciSayisi; i++)
+                for (int i = totalKontenjan-bosKontenjan; i < totalOgrenciSayisi; i++)
                 {
-                    Ulke minOranUlke = null;
-                    float minOran = 1;
-                    minOranUlke = ulkeListesi[0];
-                    foreach (Ulke u in ulkeListesi)
+                    
+               
+                Ulke minOranUlke = null;
+                float minOran = 1.0f;
+                foreach (Ulke u in ulkeListesi)
+                {
+                    if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
                     {
-                        if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
-                        {
-                            minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
-                            minOranUlke = u;
-                        }
+                        minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
+                        minOranUlke = u;
                     }
-                    minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-                    ogrenciListesi.RemoveAt(0);
-                    ogrenciListesi.RemoveAll(item => item == null);
-                    if (--bosKontenjan == 0)
-                        break;
+                }
+                minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                ogrenciListesi.RemoveAt(0);
+                ogrenciListesi.RemoveAll(item => item == null);
                 }
             }
             if (ogrenciListesi.Count > 0)
