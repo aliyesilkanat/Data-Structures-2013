@@ -104,10 +104,13 @@ namespace Project1._2
             foreach (Ulke item in ulkeListesi)
             {
                 Console.WriteLine(item.Isim+ " Kontenjan:" +item.Kontenjan+ " Yerleşen Öğrenci Sayısı:"+item.Ogrenciler.Count+ " Doluluk Yüzdesi:%"+item.DolulukYuzdesi());
-                Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", "İsim", "Soyisim", "Değerlendirme Puanı"));
-                foreach (Ogrenci o in item.Ogrenciler)
+                if (item.Ogrenciler.Count != 0)
                 {
-                    Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", o.Ad, o.Soyad, o.DegerlendirmeNotu));
+                    Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", "İsim", "Soyisim", "Değerlendirme Puanı"));
+                    foreach (Ogrenci o in item.Ogrenciler)
+                    {
+                        Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", o.Ad, o.Soyad, o.DegerlendirmeNotu));
+                    }
                 }
                 Console.WriteLine();
             }
