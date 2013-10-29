@@ -100,13 +100,13 @@ namespace Project1._2
                     u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                     ogrenciListesi.RemoveAt(0);
                     ogrenciListesi.RemoveAll(item => item == null);
-                    if (--bosKontenjan == 0 || u.Ogrenciler.Count == u.Kontenjan)
+                    if (--bosKontenjan == 0 || ogrenciListesi.Count==0)
                         break;
                 }
                 if (bosKontenjan == 0)
                     break;
             }
-        if(bosKontenjan>0 && ogrenciListesi.Count>0)
+            if (bosKontenjan > 0 && ogrenciListesi.Count > 0)
             {
                 Ulke minOranUlke = null;
                 float minOran = 1;
@@ -121,7 +121,7 @@ namespace Project1._2
                 minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                 ogrenciListesi.RemoveAt(0);
                 ogrenciListesi.RemoveAll(item => item == null);
-       
+
             }
             //Bir sonraki min
             //for (int i = 0; i < totalOgrenciSayisi; i++)
