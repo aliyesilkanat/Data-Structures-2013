@@ -11,9 +11,9 @@ namespace Project1._2
         static void Main(string[] args)
         {
             Random r = new Random();
-            
+
             List<Ulke> ulkeListesi = new List<Ulke>();
-            kontenjanSayilariniAl(r,ulkeListesi);
+            kontenjanSayilariniAl(r, ulkeListesi);
 
             List<Ogrenci> ogrenciListesi = new List<Ogrenci>();
             ogrenciOlusturma(r, ogrenciListesi);
@@ -81,14 +81,50 @@ namespace Project1._2
 
             int bosKontenjan = totalKontenjan;
             int totalOgrenciSayisi = ogrenciListesi.Count;
-            for (int i = 0; i < totalOgrenciSayisi; i++)
+
+            //for (int i = 0; i < totalOgrenciSayisi; i++)
+            //{
+            //    Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
+            //    atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+            //    ogrenciListesi.RemoveAt(0);
+            //    ogrenciListesi.RemoveAll(item => item == null);
+            //    if (--bosKontenjan == 0)
+            //        break;
+            //}
+            float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
+            foreach (Ulke u in ulkeListesi)
             {
-                Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
-                atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
+                {
+                    u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                    ogrenciListesi.RemoveAt(0);
+                    ogrenciListesi.RemoveAll(item => item == null);
+                    if (--bosKontenjan == 0 || u.Ogrenciler.Count==u.Kontenjan)
+                        break;
+                }
+                if (bosKontenjan == 0)
+                    break;
+            }
+            if (bosKontenjan>0) //Son kalan değer
+            {
+                Ulke minOranUlke=null;
+
+                float minOran = 100; 
+                foreach (Ulke u in ulkeListesi)
+                { 
+  
+                    if (minOran >(float)(u.Ogrenciler.Count+1)/u.Kontenjan)
+                    {
+                        minOran =(float)(u.Ogrenciler.Count+1)/u.Kontenjan;
+                        minOranUlke = u;
+                    }
+
+                }
+                minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                 ogrenciListesi.RemoveAt(0);
                 ogrenciListesi.RemoveAll(item => item == null);
-                if (--bosKontenjan == 0)
-                    break;
+               
+                
             }
             if (ogrenciListesi.Count > 0)
             {
@@ -103,7 +139,7 @@ namespace Project1._2
             Console.WriteLine("Ülkeler:");
             foreach (Ulke item in ulkeListesi)
             {
-                Console.WriteLine(item.Isim+ " Kontenjan:" +item.Kontenjan+ " Yerleşen Öğrenci Sayısı:"+item.Ogrenciler.Count+ " Doluluk Yüzdesi:%"+item.DolulukYuzdesi());
+                Console.WriteLine(item.Isim + " Kontenjan:" + item.Kontenjan + " Yerleşen Öğrenci Sayısı:" + item.Ogrenciler.Count + " Doluluk Yüzdesi:%" + item.DolulukYuzdesi());
                 if (item.Ogrenciler.Count != 0)
                 {
                     Console.WriteLine(String.Format("{0,-9}{1,-10}{2,-20}", "İsim", "Soyisim", "Değerlendirme Puanı"));
@@ -126,23 +162,23 @@ namespace Project1._2
             int basvuranOgrenciSayisi = 0;
             Console.WriteLine("Başvuran öğrenci sayısını giriniz: (1-150) ");
 
-            basvuranOgrenciSayisi = SayiAl(1,150);
+            basvuranOgrenciSayisi = SayiAl(1, 150);
 
             for (int i = 0; i < basvuranOgrenciSayisi; i++)
             {
-                int degerlendirmeNotu = r.Next(40, 101);
+                int degerlendirmeNotu = r.Next(60, 101);
                 if (degerlendirmeNotu >= 60)
                     ogrenciListesi.Add(new Ogrenci(isimler[r.Next(20)], soyisimler[r.Next(20)], degerlendirmeNotu));
             }
         }
 
-        private static void kontenjanSayilariniAl(Random r,List<Ulke> ulkeListesi)
+        private static void kontenjanSayilariniAl(Random r, List<Ulke> ulkeListesi)
         {
             string[] ulkeler = { "ENG", "GER", "FRE", "ITA", "ESP", "USA", "JAP", "CHN", "RUS" };
             bool kontenjanGirisi = true;
             Console.WriteLine("Kontenjanları girmek için 0'ı:\nRastgele kontenjan değerleri(0-10) atamak için herhangi bir değeri tuşlayınız: ");
-            kontenjanGirisi=SayiAl()==0?true:false;
-           
+            kontenjanGirisi = SayiAl() == 0 ? true : false;
+
             if (kontenjanGirisi)
             {
                 for (int i = 0; i < ulkeler.Length; i++)
@@ -160,12 +196,12 @@ namespace Project1._2
                 {
                     int kont = r.Next(11);
                     if (kont != 0)
-                    ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
+                        ulkeListesi.Add(new Ulke(kont, ulkeler[i]));
                 }
             }
 
             return;
         }
-        
+
     }
 }
