@@ -81,123 +81,14 @@ namespace Project1._2
 
             int bosKontenjan = totalKontenjan;
             int totalOgrenciSayisi = ogrenciListesi.Count;
-
-            //for (int i = 0; i < totalOgrenciSayisi; i++)
-            //{
-            //    Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
-            //    atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-            //    ogrenciListesi.RemoveAt(0);
-            //    ogrenciListesi.RemoveAll(item => item == null);
-            //    if (--bosKontenjan == 0)
-            //        break;
-            //}
-            //Hedef Oran
-            //float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
-            //foreach (Ulke u in ulkeListesi)
-            //{
-            //    for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
-            //    {
-            //        u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-            //        ogrenciListesi.RemoveAt(0);
-            //        ogrenciListesi.RemoveAll(item => item == null);
-            //        if (--bosKontenjan == 0 || ogrenciListesi.Count==0)
-            //            break;
-            //    }
-            //    if (bosKontenjan == 0 || ogrenciListesi.Count == 0)
-            //        break;
-            //}
-            //if (bosKontenjan > 0 && ogrenciListesi.Count > 0)
-            //{
-            //    Ulke minOranUlke = null;
-            //    float minOran = 100;
-            //    foreach (Ulke u in ulkeListesi)
-            //    {
-            //        if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
-            //        {
-            //            minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
-            //            minOranUlke = u;
-            //        }
-            //    }
-            //    minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-            //    ogrenciListesi.RemoveAt(0);
-            //    ogrenciListesi.RemoveAll(item => item == null);
-
-            //}
-            //Bir sonraki min
-            //if (totalKontenjan <= ogrenciListesi.Count)
-            //{
-            //    for (int i = 0; i < totalOgrenciSayisi; i++)
-            //    {
-            //        Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
-            //        atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-            //        ogrenciListesi.RemoveAt(0);
-            //        ogrenciListesi.RemoveAll(item => item == null);
-            //        if (--bosKontenjan == 0)
-            //            break;
-            //    }
-            //}
-            //else
-            //{
-                //for (int i = 0; i < totalOgrenciSayisi; i++)
-                //{
-                //    Ulke minOranUlke = null;
-                //    float minOran = 1;
-                //    minOranUlke = ulkeListesi[0];
-                //    foreach (Ulke u in ulkeListesi)
-                //    {
-                //        if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
-                //        {
-                //            minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
-                //            minOranUlke = u;
-                //        }
-                //    }
-                //    minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-                //    ogrenciListesi.RemoveAt(0);
-                //    ogrenciListesi.RemoveAll(item => item == null);
-                //    if (--bosKontenjan == 0)
-                //        break;
-                //}
-               
-
-            //}
-            float hedeflenenOran = (float)totalOgrenciSayisi / totalKontenjan;
-            if (totalOgrenciSayisi>=totalKontenjan) //Ülkede doluluk oranın taşmaması için
+            for (int i = 0; i < totalOgrenciSayisi; i++)
             {
-                hedeflenenOran = 1.0f;
-            }
-            foreach (Ulke u in ulkeListesi)
-                {
-                for (int i = 0; i < Math.Round(hedeflenenOran * u.Kontenjan); i++)
-                {
-                    u.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
-                    ogrenciListesi.RemoveAt(0);
-                    ogrenciListesi.RemoveAll(item => item == null);
-                    if (--bosKontenjan == 0 || ogrenciListesi.Count==0)
-                        break;
-                }
-                if (bosKontenjan == 0 || ogrenciListesi.Count == 0)
-                    break;
-            }
-            if (bosKontenjan > 0 && ogrenciListesi.Count > 0)
-            {
-                for (int i = totalKontenjan-bosKontenjan; i < totalOgrenciSayisi; i++)
-                {
-                    
-               
-                Ulke minOranUlke = null;
-                float minOran = 1.0f;
-                foreach (Ulke u in ulkeListesi)
-                {
-                    if (minOran > (float)(u.Ogrenciler.Count + 1) / u.Kontenjan)
-                    {
-                        minOran = (float)(u.Ogrenciler.Count + 1) / u.Kontenjan;
-                        minOranUlke = u;
-                    }
-                }
-                minOranUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
+                Ulke atanacakUlke = ulkeListesi.OrderBy(item => item.DolulukYuzdesi()).First();
+                atanacakUlke.Ogrenciler.Add(new Ogrenci(ogrenciListesi[0]));
                 ogrenciListesi.RemoveAt(0);
                 ogrenciListesi.RemoveAll(item => item == null);
-                }
+                if (--bosKontenjan == 0)
+                    break;
             }
             if (ogrenciListesi.Count > 0)
             {
@@ -239,7 +130,7 @@ namespace Project1._2
 
             for (int i = 0; i < basvuranOgrenciSayisi; i++)
             {
-                int degerlendirmeNotu = r.Next(60, 101);
+                int degerlendirmeNotu = r.Next(40, 101);
                 if (degerlendirmeNotu >= 60)
                     ogrenciListesi.Add(new Ogrenci(isimler[r.Next(20)], soyisimler[r.Next(20)], degerlendirmeNotu));
             }
