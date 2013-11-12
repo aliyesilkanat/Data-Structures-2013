@@ -12,6 +12,7 @@ namespace Project2._1
         static void Main(string[] args)
         {
 
+            Random r = new Random();
             ArrayList otopark = new ArrayList();
             CircularList ustKat = new CircularList();
             Queue<string> zeminKat = new Queue<string>();
@@ -20,22 +21,42 @@ namespace Project2._1
             otopark.Add(zeminKat);
             otopark.Add(ortaKat);
             otopark.Add(ustKat);
-            Random r = new Random();
+
+
             KatlariDoldur(otopark, r);
+
+            KatlariYazdir(otopark);
+
+
             //DaireselListeTest();
             Console.Read();
+        }
+
+        private static void KatlariYazdir(ArrayList otopark)
+        {
+            Console.WriteLine("Birinci kat:");
+            foreach (string item in ((Queue<string>)otopark[0]))
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine("\nİkinci kat:");
+            foreach (string item in ((Stack<string>)otopark[1]))
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine("\nÜçüncü kat:");
+            ((CircularList)otopark[2]).yazdir();
         }
 
         private static void KatlariDoldur(ArrayList otopark, Random r)
         {
             string[] renkler = { "Siyah", "Gümüş", "Gri", "Beyaz", "Kırmızı", "Bordo", "Mor", "Yeşil", "Sarı", "Turuncu", "Mavi", "Lacivert" };
-            string rastgeleRenk = renkler[r.Next(0, renkler.Length)];
 
             for (int i = 0; i < 9; i++)
             {
-                ((CircularList)otopark[2]).insertBegin(rastgeleRenk);
-                ((Queue<string>)otopark[0]).Enqueue(rastgeleRenk);
-                ((Stack<string>)otopark[1]).Push(rastgeleRenk);
+                ((Queue<string>)otopark[0]).Enqueue(renkler[r.Next(0, renkler.Length)]);
+                ((Stack<string>)otopark[1]).Push(renkler[r.Next(0, renkler.Length)]);
+                ((CircularList)otopark[2]).insertBegin(renkler[r.Next(0, renkler.Length)]);
             }
         }
 

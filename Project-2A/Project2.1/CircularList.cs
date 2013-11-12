@@ -123,7 +123,7 @@ namespace Project2._1
             {
                 do
                 {
-                    Console.WriteLine(etkin.Renk +" ");
+                    Console.Write(etkin.Renk +" ");
                     etkin = etkin.Sonraki;
                 } while (etkin != ilk);
             }
