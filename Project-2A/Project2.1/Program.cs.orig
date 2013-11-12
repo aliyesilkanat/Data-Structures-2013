@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Project2._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+<<<<<<< HEAD
+            CircularList cl = new CircularList();
+            cl.insertBegin("arba");
+            cl.insertEnd("asdasda");
+            cl.insertEnd("son");
+            cl.yazdir();
+            cl.Atla(3);
+            Console.Read();
+=======
+            Console.WriteLine("IZEL");
+>>>>>>> b40104f56568ee839c889d53152e34dd4dd3bcf4
+        }
+    }
+}
