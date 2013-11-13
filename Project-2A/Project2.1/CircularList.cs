@@ -107,11 +107,12 @@ namespace Project2._1
 
         public void Atla(int n)
         {
-            int count = 0;
-            while (ilk.Sonraki != ilk && count != n)
+            int count = 1;
+            while ( count != n)
             {
-                sonCikan = sonCikan.Sonraki;
                 count++;
+                sonCikan = sonCikan.Sonraki;
+                
             }
         }
 
