@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Project2._2
 {
-    class Araba
+    class Araba: IComparable<Araba>
     {
-        public int iss; // iss=islem suresi
+        public int islemSuresi; // iss=islem suresi
         public int sira;
 
 
@@ -15,9 +15,19 @@ namespace Project2._2
         public Araba(int sira, int iss)
         {
             this.sira = sira;
-            this.iss = iss;
+            this.islemSuresi = iss;
         }
 
-  
+        public int CompareTo(Araba ar)
+        {
+            return this.islemSuresi.CompareTo(ar.islemSuresi);
+        }
+       
+
+
+        public override String ToString() {
+
+            return "Sıra no:\t" + sira + "İslem suresi:\t" + islemSuresi;
+        }
     }
 }
