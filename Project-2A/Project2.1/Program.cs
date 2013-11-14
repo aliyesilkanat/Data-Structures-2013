@@ -11,10 +11,10 @@ namespace Project2._1
 
         static void Main(string[] args)
         {
-
+            int n=3;
             Random r = new Random();
             ArrayList otopark = new ArrayList();
-            CircularList ustKat = new CircularList();
+            CircularList ustKat = new CircularList(n);
             Queue<string> zeminKat = new Queue<string>();
             Stack<string> ortaKat = new Stack<string>();
 
@@ -28,7 +28,7 @@ namespace Project2._1
             KatlariYazdir(otopark);
 
 
-            //DaireselListeTest();
+            DaireselListeTest(n);
             Console.Read();
         }
 
@@ -60,15 +60,15 @@ namespace Project2._1
             }
         }
 
-        private static void DaireselListeTest()
+        private static void DaireselListeTest(int n)
         {
-
-            CircularList cl = new CircularList();
+            CircularList cl = new CircularList(n);
             cl.insertBegin("arba");
             cl.insertEnd("asdasda");
             cl.insertEnd("son");
+            cl.insertBegin("aaaaa");
             cl.yazdir();
-            cl.Atla(3);
+            
         }
     }
 }
