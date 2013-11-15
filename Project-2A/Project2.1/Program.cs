@@ -26,8 +26,7 @@ namespace Project2._1
             KatlariDoldur(otopark, r);
 
             KatlariYazdir(otopark);
-
-
+  
             //DaireselListeTest();
             Console.Read();
         }
