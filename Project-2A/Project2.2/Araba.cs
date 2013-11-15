@@ -9,13 +9,15 @@ namespace Project2._2
     {
         public int islemSuresi; // iss=islem suresi
         public int sira;
+        public int beklemeSuresi;
 
 
 
-        public Araba(int sira, int iss)
+        public Araba(int sira, int iss,int beklemeSuresi)
         {
             this.sira = sira;
             this.islemSuresi = iss;
+            this.beklemeSuresi = beklemeSuresi;
         }
 
         public int CompareTo(Araba ar)
@@ -27,7 +29,8 @@ namespace Project2._2
 
         public override String ToString() {
 
-            return "Sıra no:\t" + sira + "İslem suresi:\t" + islemSuresi;
+            return "Sıra no:" + sira + "\t İslem suresi:" + islemSuresi+"\t Bekleme Suresi:"+beklemeSuresi
+                ;
         }
     }
 }
