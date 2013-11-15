@@ -15,16 +15,21 @@ namespace Project2._2
 
         }
 
-        public void ekle(Araba ar){
+        public void ekle(Araba ar)
+        {
+
             alist.Add(ar);
-       
+
         }
 
-        
-        public Araba cikar(){
+
+        public Araba cikar()
+        {
             alist.Sort();
-           
-            Araba temp=alist[0];
+
+
+
+            Araba temp = alist[0];
             alist.RemoveAt(0);
             return temp;
         }
