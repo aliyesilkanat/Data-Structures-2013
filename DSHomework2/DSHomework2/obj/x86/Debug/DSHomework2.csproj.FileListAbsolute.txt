@@ -3,3 +3,5 @@ C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\DSHome
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\DSHomework2\DSHomework2\obj\x86\Debug\DSHomework2.exe
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\DSHomework2\DSHomework2\obj\x86\Debug\DSHomework2.pdb
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\DSHomework2\DSHomework2\obj\x86\Debug\DSHomework2.csprojResolveAssemblyReference.cache
+C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\DSHomework2\DSHomework2\obj\x86\Debug\DSHomework2.exe
+C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\DSHomework2\DSHomework2\obj\x86\Debug\DSHomework2.pdb

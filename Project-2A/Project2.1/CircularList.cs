@@ -31,11 +31,39 @@ namespace Project2._1
     class CircularList
     {
         private Node ilk;
-        private Node sonCikan;
-
-        public CircularList()
+        private Node cikacak;
+        private int n;
+        public int GetBoyut()
         {
+            int boyut = 0;
+            if (ilk == null)
+                return 0;
+            else
+            {
+                boyut = 1;
+                Node gecici = ilk.Sonraki;
+                while (gecici == ilk)
+                {
+                    boyut++;
+                    gecici = gecici.Sonraki;
+                }
+                return boyut;
+            }
+         
+        }
+        public int N
+        {
+            get { return n; }
+            set { n = value; }
+        }
+
+
+        public CircularList(int n)
+        {
+            cikacak = null;
             ilk = null;
+            this.n = n;
+
         }
 
         public Boolean isEmpty()
@@ -58,11 +86,11 @@ namespace Project2._1
                 {
                     tp = tp.Sonraki;
                 }
-                tp.Sonraki=yeni;
+                tp.Sonraki = yeni;
             }
-            yeni.Sonraki=ilk;
+            yeni.Sonraki = ilk;
 
-            sonCikan = yeni;
+            cikacak = yeni;
         }
 
         public void insertBegin(String re)
@@ -80,40 +108,49 @@ namespace Project2._1
                 {
                     tp = tp.Sonraki;
                 }
-                tp.Sonraki=yeni2;
-                yeni2.Sonraki=ilk;
+                tp.Sonraki = yeni2;
+                yeni2.Sonraki = ilk;
             }
             ilk = yeni2;
         }
 
-        public Node cikart()
+        public Node Cikar()
         {
-            Node cikar = null;
+            Atla(n);
+            Node cikarilan = null;
             if (!isEmpty())
             {
-                if (sonCikan.Sonraki== ilk)
+                if (cikacak == ilk)
                     ilk = ilk.Sonraki;
 
-                cikar = sonCikan.Sonraki;
+                cikarilan = cikacak;
 
-                if (sonCikan.Sonraki == sonCikan)
+                if (cikacak.Sonraki == cikacak)
                     ilk = null;
+                else
+                {
+                    Node gecici = ilk;
+                    while (gecici.Sonraki != cikacak)
+                        gecici = gecici.Sonraki;
+                    gecici.Sonraki = gecici.Sonraki.Sonraki;
+                }
 
-                sonCikan.Sonraki=sonCikan.Sonraki.Sonraki;
             }
 
-            return cikar;
+            return cikarilan;
         }
 
-        public void Atla(int n)
+        private void Atla(int n)
         {
-            int count = 1;
-            while ( count != n)
+            if (cikacak == null)
             {
-                count++;
-                sonCikan = sonCikan.Sonraki;
-                
-            }
+                cikacak = ilk;
+
+            } if (n != 1)
+                for (int i = 1; i < n; i++)
+                {
+                    cikacak = cikacak.Sonraki;
+                }
         }
 
         public void yazdir()
@@ -124,7 +161,7 @@ namespace Project2._1
             {
                 do
                 {
-                    Console.Write(etkin.Renk +" ");
+                    Console.Write(etkin.Renk + " ");
                     etkin = etkin.Sonraki;
                 } while (etkin != ilk);
             }
