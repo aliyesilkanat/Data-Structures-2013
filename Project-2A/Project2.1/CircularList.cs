@@ -114,7 +114,7 @@ namespace Project2._1
             ilk = yeni2;
         }
 
-        public Node Cikar()
+        public string Cikar()
         {
             Atla(n);
             Node cikarilan = null;
@@ -137,7 +137,7 @@ namespace Project2._1
 
             }
 
-            return cikarilan;
+            return cikarilan.Renk;
         }
 
         private void Atla(int n)
@@ -159,9 +159,10 @@ namespace Project2._1
 
             if (!isEmpty())
             {
+                int sayac = 1;
                 do
                 {
-                    Console.Write(etkin.Renk + " ");
+                    Console.WriteLine(sayac++ +") "+etkin.Renk);
                     etkin = etkin.Sonraki;
                 } while (etkin != ilk);
             }
