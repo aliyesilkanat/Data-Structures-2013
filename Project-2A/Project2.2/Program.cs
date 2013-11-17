@@ -8,18 +8,19 @@ namespace Project2._2
     class Program
     {
 
+
         static void Main(string[] args)
         {
+
             Random rnd = new Random();
             Console.WriteLine("Kuyruğa eklenecek araba sayısını giriniz: ");
             int n = SayiAl();
             Kuyruk kuyruk = new Kuyruk();
             int[] bs = new int[n];
             OncelikKuyrugu on = new OncelikKuyrugu();
-            int bekleme = 0;
-
             for (int i = 0; i < n; i++)
             {
+                int bekleme = 0;
                 int islemSuresi = rnd.Next(15, 251);
                 if (i == 0)
                     bekleme = islemSuresi;
@@ -39,6 +40,9 @@ namespace Project2._2
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", (kuyruk.ElementAt(i).sira), kuyruk.ElementAt(i).islemSuresi, kuyruk.ElementAt(i).beklemeSuresi));
             }
 
+
+
+
             int[] ilkBeklemeDegerleri = new int[n];
 
             for (int i = 0; i < kuyruk.Count; i++)
@@ -46,7 +50,7 @@ namespace Project2._2
                 ilkBeklemeDegerleri[i] = kuyruk.ElementAt(i).beklemeSuresi;         //Zaman farkını bulmak için, ilk değerleri de bir yerde saklamak gerekiyor.
             }
 
-            int ilkToplam = diziToplamı(ilkBeklemeDegerleri);
+            int ilkToplam = ilkBeklemeDegerleri.Sum();
             double ilkOrt = ortalamaBul(kuyruk);
             Console.WriteLine("Ortalama bekleme suresi: " + ortalamaBul(kuyruk));
 
@@ -58,7 +62,7 @@ namespace Project2._2
             }
 
             int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
-            int sonToplam = diziToplamı(sonBeklemeDegerleri);
+            int sonToplam = sonBeklemeDegerleri.Sum(); ;
 
             for (int i = 0; i < sl.Count; i++)
             {
@@ -106,27 +110,14 @@ namespace Project2._2
             for (int i = 0; i < sl.Count; i++)
             {
                 kuyrukdizisi[mini(toplam)].Ekle(sl.ElementAt(i));
-                int sayi = mini(toplam);
-                switch (sayi)
-                {
-                    case 0:
-                        {
-                            toplam[0] += sl.ElementAt(i).islemSuresi;
-                            break;
-                        }
-                    case 1:
-                        {
-                            toplam[1] += sl.ElementAt(i).islemSuresi;
-                            break;
-                        }
-                    case 2:
-                        {
-                            toplam[2] += sl.ElementAt(i).islemSuresi;
-                            break;
-                        }
-                }
+                toplam[mini(toplam)] += sl.ElementAt(i).islemSuresi;
+            }
+            foreach (Kuyruk item in kuyrukdizisi)
+            {
+                beklemeSuresiHesapla(item);
             }
 
+          
             Console.WriteLine("GISE1");
             Console.WriteLine("---------------");
             kuyrukYazdir(kuyrukdizisi[0]);
@@ -148,8 +139,22 @@ namespace Project2._2
 
             Console.Read();
 
-        }
 
+        }
+        public static void beklemeSuresiHesapla(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
+        {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
+            for (int i = 0; i < kuyruk.Count; i++)
+            {
+                int beklemeSuresi = 0;
+                for (int j = i; j >= 0; j--)
+                {
+                    beklemeSuresi += kuyruk.ElementAt(j).islemSuresi;
+                }
+                kuyruk.ElementAt(i).beklemeSuresi = beklemeSuresi;
+            }
+            
+        }
+    
         public static int[] beklemeSuresiBul(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
         {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
             int[] bs = new int[kuyruk.Count];  //bs=arabaların bekleme süresinin listesi
@@ -163,6 +168,7 @@ namespace Project2._2
             return bs;
         }
 
+
         public static void kuyrukYazdir(Kuyruk kuyruk)
         {
             foreach (Araba item in kuyruk.arabaKuyrugu)
@@ -171,18 +177,9 @@ namespace Project2._2
             }
         }
 
-        public static int diziToplamı(int[] dizi)
-        {
-            int toplam = 0;
-            for (int i = 0; i < dizi.Length; i++)
-            {
-                toplam += dizi[i];
-            }
-            return toplam;
-        }
-
         public static int mini(int[] dizi)  //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
         {
+
             int index = 2;
             int min = dizi[2];
 
@@ -200,7 +197,7 @@ namespace Project2._2
             return index;
         }
 
-        public static int maxi(int[] dizi) //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
+        public static int maxi(int[] dizi) //3lü gişede işlem süresi en fazla olan gişeyi bulmak için kullanılır.
         {
             int index = 2;
             int maxi = dizi[2];
@@ -229,6 +226,17 @@ namespace Project2._2
 
             return (double)toplam / kuyruk.Count;
         }
+        public static int Menu()
+        {
+            int secim;
+            Console.WriteLine("1. Kuyruk");
+            Console.WriteLine("2. Oncelik kuyrugu");
+            Console.WriteLine("3. 3 cikisli otopark");
+            Console.WriteLine("4.Cikis");
+            Console.Write("Lutfen seciminizi giriniz:");
+            secim = SayiAl(1, 4);
+            return secim;
+        }
         private static int SayiAl()
         {
             bool hatali;
@@ -240,6 +248,27 @@ namespace Project2._2
                 {
                     secim = Int32.Parse(Console.ReadLine());
                     hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
+        private static int SayiAl(int a, int u)
+        {
+            bool hatali;
+            int secim = 0;
+            do
+            {
+                hatali = true;
+
+                try
+                {
+                    secim = Int32.Parse(Console.ReadLine());
+                    if (secim <= u && secim >= a)
+                        hatali = false;
                 }
                 catch (FormatException)
                 {
