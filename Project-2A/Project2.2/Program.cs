@@ -62,7 +62,7 @@ namespace Project2._2
             }
 
             int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
-            int sonToplam = sonBeklemeDegerleri.Sum(); ;
+            int sonToplam = sonBeklemeDegerleri.Sum(); 
 
             for (int i = 0; i < sl.Count; i++)
             {
@@ -116,6 +116,7 @@ namespace Project2._2
             {
                 beklemeSuresiHesapla(item);
             }
+            
 
           
             Console.WriteLine("GISE1");
@@ -134,7 +135,8 @@ namespace Project2._2
             Console.WriteLine("Toplam islem suresi: " + toplam[2]);
 
             Console.WriteLine("\n\n\nÜÇLÜ GİŞE VS TEKLİ GİŞE");
-            Console.WriteLine("Üçlü gişede toplam işlem süresi:" + toplam[maxi(toplam)]);
+            int giselerdeToplamIslemSuresi=toplam[0]+toplam[1]+toplam[2];
+            Console.WriteLine("Üçlü gişede toplam işlem süresi:" + giselerdeToplamIslemSuresi);
             Console.WriteLine("Tekli gişede toplam işlem süresi:" + sonToplam);
 
             Console.Read();
