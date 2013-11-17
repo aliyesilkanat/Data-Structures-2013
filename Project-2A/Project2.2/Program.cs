@@ -20,18 +20,13 @@ namespace Project2._2
             OncelikKuyrugu on = new OncelikKuyrugu();
             for (int i = 0; i < n; i++)
             {
-                int bekleme = 0;
-                int islemSuresi = rnd.Next(15, 251);
-                if (i == 0)
-                    bekleme = islemSuresi;
-                else
-                {
-                    for (int j = i - 1; j >= 0; j--)
-                    {
-                        bekleme += islemSuresi + kuyruk.ElementAt(j).islemSuresi;
-                    }
-                }
 
+                int islemSuresi = rnd.Next(15, 251);
+                int bekleme = islemSuresi;
+                for (int j = 0; j < i; j++)
+                {
+                    bekleme += kuyruk.ElementAt(j).islemSuresi;
+                }
                 Araba araba = new Araba(i, islemSuresi, bekleme);   //i sıra no olarak kullanıldı
                 kuyruk.Ekle(araba);
                 on.ekle(araba);
@@ -39,9 +34,6 @@ namespace Project2._2
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", "Sira No", "İs.Sur", "Bekleme"));
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", (kuyruk.ElementAt(i).sira), kuyruk.ElementAt(i).islemSuresi, kuyruk.ElementAt(i).beklemeSuresi));
             }
-
-
-
 
             int[] ilkBeklemeDegerleri = new int[n];
 
@@ -62,7 +54,7 @@ namespace Project2._2
             }
 
             int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
-            int sonToplam = sonBeklemeDegerleri.Sum(); 
+            int sonToplam = sonBeklemeDegerleri.Sum();
 
             for (int i = 0; i < sl.Count; i++)
             {
@@ -116,9 +108,9 @@ namespace Project2._2
             {
                 beklemeSuresiHesapla(item);
             }
-            
 
-          
+
+
             Console.WriteLine("GISE1");
             Console.WriteLine("---------------");
             kuyrukYazdir(kuyrukdizisi[0]);
@@ -135,7 +127,7 @@ namespace Project2._2
             Console.WriteLine("Toplam islem suresi: " + toplam[2]);
 
             Console.WriteLine("\n\n\nÜÇLÜ GİŞE VS TEKLİ GİŞE");
-            int giselerdeToplamIslemSuresi=toplam[0]+toplam[1]+toplam[2];
+            int giselerdeToplamIslemSuresi = toplam[0] + toplam[1] + toplam[2];
             Console.WriteLine("Üçlü gişede toplam işlem süresi:" + giselerdeToplamIslemSuresi);
             Console.WriteLine("Tekli gişede toplam işlem süresi:" + sonToplam);
 
@@ -154,9 +146,9 @@ namespace Project2._2
                 }
                 kuyruk.ElementAt(i).beklemeSuresi = beklemeSuresi;
             }
-            
+
         }
-    
+
         public static int[] beklemeSuresiBul(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
         {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
             int[] bs = new int[kuyruk.Count];  //bs=arabaların bekleme süresinin listesi
