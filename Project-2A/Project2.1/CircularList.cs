@@ -114,7 +114,7 @@ namespace Project2._1
             ilk = yeni2;
         }
 
-        public string Cikar()
+        public string Cikar() //Balon problemine benzer şekilde n adet araba atlanarak çıkarma işlemi yapılır.
         {
             Atla(n);
             Node cikarilan = null;
@@ -140,7 +140,7 @@ namespace Project2._1
             return cikarilan.Renk;
         }
 
-        private void Atla(int n)
+        private void Atla(int n) //Kullanıcıdan alınan n değerine göre balon problemine benzer şekilde n adet araba atlanarak 
         {
             if (cikacak == null)
             {
@@ -153,7 +153,7 @@ namespace Project2._1
                 }
         }
 
-        public void yazdir()
+        public void yazdir() //Dairesel bağlaçlı listedeki arabaları yazdırır.
         {
             Node etkin = ilk;
 

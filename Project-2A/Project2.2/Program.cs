@@ -42,8 +42,8 @@ namespace Project2._2
             int[] ilkBeklemeDegerleri = new int[n];
 
             for (int i = 0; i <kuyruk.Count; i++)
-            {                                                                       //kuyrugu islemSuresi ne göre sıraladıgımda beklemeSuresi degerleri değişecek.
-                ilkBeklemeDegerleri[i] = kuyruk.ElementAt(i).beklemeSuresi;         //Zaman farkını bulmam için,ilk değerleri de bir yerde saklamam gerekli
+            {                                                                       //Kuyruk işlem süresine göre sıralandığında bekleme süresi değerleri değişir.
+                ilkBeklemeDegerleri[i] = kuyruk.ElementAt(i).beklemeSuresi;         //Zaman farkını bulmak için, ilk değerleri de bir yerde saklamak gerekiyor.
             }
 
             int ilkToplam = diziToplamı(ilkBeklemeDegerleri);
@@ -95,9 +95,8 @@ namespace Project2._2
             double yuzde = (ilkOrt - ortalamaBul(sl))*100 / ilkOrt ;
             Console.WriteLine("Yuzde:"+yuzde);
 
-           //UCLU GISE
-
-            Queue<Araba>[] kuyrukdizisi = new Queue<Araba>[3];  //3 kuyrugu bir dizi yaptım.
+           //Üç Çıkışlı Otopark
+            Queue<Araba>[] kuyrukdizisi = new Queue<Araba>[3];  //3 kuyruk bir dizi olarak tutuldu.
             for (int i = 0; i < 3; i++)
             {
                 kuyrukdizisi[i] = new Queue<Araba>();  
@@ -150,8 +149,8 @@ namespace Project2._2
 
        }
 
-        public static int[] beklemeSuresiBul(Queue<Araba> kuyruk)  //Bu metodu sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanacağım
-        {                                                           //Arguman olarak sadece  sıralanmısListe yi verecegim, return edilen  dizinin elemanlarını, sıralanmısListenin beklemeSurelerine atayacağım.  
+        public static int[] beklemeSuresiBul(Queue<Araba> kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
+        {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
             int[] bs = new int[kuyruk.Count];  //bs=arabaların bekleme süresinin listesi
             for (int i = 0; i < kuyruk.Count; i++)
             {
@@ -180,7 +179,7 @@ namespace Project2._2
             return toplam;
         }
 
-        public static int mini(int[] dizi)  //3lü gişede işlem süresi en az olan gişeyi bulmak için
+        public static int mini(int[] dizi)  //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
         {  
            int index=2;
            int min=dizi[2];
@@ -199,8 +198,8 @@ namespace Project2._2
             return index;
         }
 
-        public static int maxi(int[] dizi)
-        {   //3lü gişede işlem süresi en az olan gişeyi bulmak için
+        public static int maxi(int[] dizi) //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
+        {   
             int index = 2;
             int maxi = dizi[2];
 
