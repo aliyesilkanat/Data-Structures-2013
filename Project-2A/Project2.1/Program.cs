@@ -16,8 +16,6 @@ namespace Project2._1
             int n = SayiAl();
             ArrayList otopark = new ArrayList();
 
-
-
             KatlariDoldur(otopark, r, n);
             Console.WriteLine("1) Josephus");
             Console.WriteLine("2) İşlem Süresi");
@@ -36,18 +34,13 @@ namespace Project2._1
                         Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
                         break;
                     }
-
             }
-
-
-
 
             Console.Read();
         }
 
         private static int IslemSay(Random r, ArrayList otopark, int n)
         {
-
             int sayac = 0;
             int start, end;
 
@@ -59,11 +52,8 @@ namespace Project2._1
                 KatlariDoldur(otopark, r, n);
                 for (int i = 0; i < 27; i++)
                 {
-
                     BirArabayiCikar(otopark);
-
                 }
-
 
                 start = DateTime.Now.Second;
                 sayac++;
@@ -78,7 +68,6 @@ namespace Project2._1
             Console.WriteLine("Son çıkacak olan araba (Yığının en altındaki araba): " + ((Stack<string>)otopark[1]).ElementAt(8));
             for (int i = 0; i < 27; i++)
             {
-
                 KatlariYazdir(otopark);
                 Console.WriteLine("Otoparktan çıkan araba: " + BirArabayiCikar(otopark));
                 if (i < 26)

@@ -11,8 +11,6 @@ namespace Project2._2
         public int sira;
         public int beklemeSuresi;
 
-
-
         public Araba(int sira, int iss,int beklemeSuresi)
         {
             this.sira = sira;
@@ -24,13 +22,10 @@ namespace Project2._2
         {
             return this.islemSuresi.CompareTo(ar.islemSuresi);
         }
-       
 
-
-        public override String ToString() {
-
-            return "Sıra no:" + sira + "\t İslem suresi:" + islemSuresi+"\t Bekleme Suresi:"+beklemeSuresi
-                ;
+        public override String ToString() 
+        {
+            return "Sıra no:" + sira + "\t İslem suresi:" + islemSuresi + "\t Bekleme Suresi:" + beklemeSuresi;     
         }
     }
 }
