@@ -14,16 +14,21 @@ namespace Project2._2
             arabaKuyrugu = new List<Araba>();
         }
 
-        public void ekle(Araba araba)
+        public void Ekle(Araba araba)
         {
             arabaKuyrugu.Add(araba);
         }
 
-        public Araba cikar()
+        public Araba Cikar()
         {
             Araba temp = arabaKuyrugu[0];
             arabaKuyrugu.RemoveAt(0);
             return temp;
         }
+        public Araba ElementAt(int n)
+        {
+            return arabaKuyrugu[n];
+        }
+        public int Count { get { return arabaKuyrugu.Count; } }
     }
 }
