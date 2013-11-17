@@ -20,7 +20,8 @@ namespace Project2._2
             int bekleme = 0;
             for (int i = 0; i < n; i++)
             {
-               int  islemSuresi = rnd.Next(235) + 15;
+                int islemSuresi = rnd.Next(15, 251);//15 ile 250 arasında
+               //int  islemSuresi = rnd.Next(235) + 15;
                if (i == 0)
                    bekleme = islemSuresi;
                else
