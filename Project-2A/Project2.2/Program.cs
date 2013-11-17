@@ -13,7 +13,7 @@ namespace Project2._2
             Random rnd = new Random();
             Console.WriteLine("Kuyruğa eklenecek araba sayısını giriniz: ");
             int n = Int16.Parse(Console.ReadLine());
-            Queue<Araba> kuyruk = new Queue<Araba>();
+            Kuyruk kuyruk = new Kuyruk();
             int[] bs=new int[n];
             OncelikKuyrugu on = new OncelikKuyrugu();
             int bekleme = 0;
@@ -32,7 +32,7 @@ namespace Project2._2
                }
                
                 Araba araba = new Araba(i, islemSuresi,bekleme);   //i sıra no olarak kullanıldı
-                kuyruk.Enqueue(araba);
+                kuyruk.ekle(araba);
                 on.ekle(araba);
                
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", "Sira No", "İs.Sur", "Bekleme"));
@@ -50,11 +50,11 @@ namespace Project2._2
             double ilkOrt = ortalamaBul(kuyruk);
             Console.WriteLine("Ortalama bekleme suresi: " + ortalamaBul(kuyruk));
 
-            Queue<Araba> sl = new Queue<Araba>();   //sl=sıralanmış liste
+            Kuyruk sl = new Kuyruk();   //sl=sıralanmış liste
           
             for (int i = 0; i < kuyruk.Count; i++)
             {
-                sl.Enqueue(on.cikar());
+                sl.ekle(on.cikar());
             } 
             
             int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
@@ -96,10 +96,10 @@ namespace Project2._2
             Console.WriteLine("Yuzde:"+yuzde);
 
            //Üç Çıkışlı Otopark
-            Queue<Araba>[] kuyrukdizisi = new Queue<Araba>[3];  //3 kuyruk bir dizi olarak tutuldu.
+            Kuyruk[] kuyrukdizisi = new Kuyruk[3];  //3 kuyruk bir dizi olarak tutuldu.
             for (int i = 0; i < 3; i++)
             {
-                kuyrukdizisi[i] = new Queue<Araba>();  
+                kuyrukdizisi[i] = new Kuyruk();  
             }
             int[] toplam = new int[3];
 
@@ -149,7 +149,7 @@ namespace Project2._2
 
        }
 
-        public static int[] beklemeSuresiBul(Queue<Araba> kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
+        public static int[] beklemeSuresiBul(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
         {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
             int[] bs = new int[kuyruk.Count];  //bs=arabaların bekleme süresinin listesi
             for (int i = 0; i < kuyruk.Count; i++)
@@ -162,7 +162,7 @@ namespace Project2._2
             return bs;
         }
 
-        public static void kuyrukYazdir(Queue<Araba> kuyruk) 
+        public static void kuyrukYazdir(Kuyruk kuyruk) 
         {
             foreach (Araba item in kuyruk)
             {
