@@ -11,21 +11,19 @@ namespace Project2._1
 
         static void Main(string[] args)
         {
-            Random r = new Random();
+            Random r = new Random(); 
             Console.Write("N değerini giriniz:");
-            int n = SayiAl();
-            ArrayList otopark = new ArrayList();
+            int n = SayiAl(); //Balon problemi için kullanıcıdan n değeri alır.
+            ArrayList otopark = new ArrayList(); 
 
-
-
-            KatlariDoldur(otopark, r, n);
-            Console.WriteLine("1) Josephus");
+            KatlariDoldur(otopark, r, n); //Otoparkın 3 katında bulunan veri yapılarına 9'ar adet araba yerleştirir.
+            Console.WriteLine("1) Josephus"); 
             Console.WriteLine("2) İşlem Süresi");
             Console.WriteLine("Seçiminiz:");
             int secim = SayiAl();
-            switch (secim)
+            switch (secim) //Kullanıcının seçimine göre işlem yapılır.
             {
-                case 1:
+                case 1: 
                     {
                         KatlariYazdir(otopark);
                         TumArabalariCikar(otopark);
@@ -36,18 +34,13 @@ namespace Project2._1
                         Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
                         break;
                     }
-
             }
-
-
-
 
             Console.Read();
         }
 
-        private static int IslemSay(Random r, ArrayList otopark, int n)
+        private static int IslemSay(Random r, ArrayList otopark, int n) //3 saniyede ortalama kaç adet otopark işlemi çözebildiğini hesaplar.
         {
-
             int sayac = 0;
             int start, end;
 
@@ -59,11 +52,8 @@ namespace Project2._1
                 KatlariDoldur(otopark, r, n);
                 for (int i = 0; i < 27; i++)
                 {
-
                     BirArabayiCikar(otopark);
-
                 }
-
 
                 start = DateTime.Now.Second;
                 sayac++;
@@ -71,14 +61,13 @@ namespace Project2._1
             return sayac;
         }
 
-        private static void TumArabalariCikar(ArrayList otopark)
+        private static void TumArabalariCikar(ArrayList otopark)//Tüm arabalar bitene kadar bir arabanın çıkarılması işlemi tekrarlanır.
         {
             KatlariYazdir(otopark);
-
+            
             Console.WriteLine("Son çıkacak olan araba (Yığının en altındaki araba): " + ((Stack<string>)otopark[1]).ElementAt(8));
             for (int i = 0; i < 27; i++)
             {
-
                 KatlariYazdir(otopark);
                 Console.WriteLine("Otoparktan çıkan araba: " + BirArabayiCikar(otopark));
                 if (i < 26)
@@ -89,20 +78,18 @@ namespace Project2._1
             }
         }
 
-        private static string BirArabayiCikar(ArrayList otopark)
+        private static string BirArabayiCikar(ArrayList otopark)//Arabalar sadece 1. kattan çıkabilmektedir ve 1 adet araba kaza testi için otoparktan alınmaktadır.
         {
-
             string cikanAraba = ((Queue<string>)otopark[0]).Dequeue();
             if (((Stack<string>)otopark[1]).Count != 0)
-                ((Queue<string>)otopark[0]).Enqueue(((Stack<string>)otopark[1]).Pop());
+                ((Queue<string>)otopark[0]).Enqueue(((Stack<string>)otopark[1]).Pop());//Ardından 2. kattaki yığıttan bir araba 1. kata inmektedir.
             if (!((CircularList)otopark[2]).isEmpty())
-                ((Stack<string>)otopark[1]).Push(((CircularList)otopark[2]).Cikar());
+                ((Stack<string>)otopark[1]).Push(((CircularList)otopark[2]).Cikar());//3. kattaki bağlaçlı listeden de bir araba 2. kata inmektedir.
 
             return cikanAraba;
-
         }
 
-        private static void KatlariYazdir(ArrayList otopark)
+        private static void KatlariYazdir(ArrayList otopark) //Katlara yerleştirilen arabaları ekrana yazdırır.
         {
             Console.WriteLine("Birinci kat:");
             if (((Queue<string>)otopark[0]).Count == 0)
@@ -126,7 +113,7 @@ namespace Project2._1
             ((CircularList)otopark[2]).yazdir();
         }
 
-        private static void KatlariDoldur(ArrayList otopark, Random r, int n)
+        private static void KatlariDoldur(ArrayList otopark, Random r, int n) // Tüm veri yapılarına 9'ar adet araba yerleştirir.
         {
             CircularList ustKat = new CircularList(n);
             Queue<string> zeminKat = new Queue<string>();
@@ -137,7 +124,7 @@ namespace Project2._1
             otopark.Add(ustKat);
             string[] renkler = { "Siyah", "Gümüş", "Gri", "Beyaz", "Kırmızı", "Bordo", "Mor", "Yeşil", "Sarı", "Turuncu", "Mavi", "Lacivert" };
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++) //Tüm veri yapılarında bulunan arabalara rastgele birer renk ataması yapılır.
             {
                 ((Queue<string>)otopark[0]).Enqueue(renkler[r.Next(0, renkler.Length)]);
                 ((Stack<string>)otopark[1]).Push(renkler[r.Next(0, renkler.Length)]);
@@ -145,7 +132,7 @@ namespace Project2._1
             }
         }
 
-        private static int SayiAl()
+        private static int SayiAl() //Try catch ile hata yakalayarak yapılmış sayısal methodu string girişine izin vermez.
         {
             bool hatali;
             int secim = 0;
@@ -164,9 +151,5 @@ namespace Project2._1
             } while (hatali);
             return secim;
         }
-
-
-
-
     }
 }

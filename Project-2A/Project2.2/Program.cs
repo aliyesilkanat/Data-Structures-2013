@@ -9,15 +9,15 @@ namespace Project2._2
     {
         
         static void Main(string[] args)
-       
         {   
             Random rnd = new Random();
-            Console.WriteLine("kac tane araba olusturmak istersiniz");
+            Console.WriteLine("Kuyruğa eklenecek araba sayısını giriniz: ");
             int n = Int16.Parse(Console.ReadLine());
-            Queue<Araba> kuyruk = new Queue<Araba>();
+            Kuyruk kuyruk = new Kuyruk();
             int[] bs=new int[n];
             OncelikKuyrugu on = new OncelikKuyrugu();
             int bekleme = 0;
+            
             for (int i = 0; i < n; i++)
             {
                 int islemSuresi = rnd.Next(15, 251);//15 ile 250 arasında
@@ -33,39 +33,40 @@ namespace Project2._2
                }
                
                 Araba araba = new Araba(i, islemSuresi,bekleme);   //i sıra no olarak kullanıldı
-                kuyruk.Enqueue(araba);
+                kuyruk.ekle(araba);
                 on.ekle(araba);
                
-                
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", "Sira No", "İs.Sur", "Bekleme"));
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", (kuyruk.ElementAt(i).sira), kuyruk.ElementAt(i).islemSuresi, kuyruk.ElementAt(i).beklemeSuresi));
             }
             
             int[] ilkBeklemeDegerleri = new int[n];
+
             for (int i = 0; i <kuyruk.Count; i++)
-            {                                                                       //kuyrugu islemSuresi ne göre sıraladıgımda beklemeSuresi degerleri değişecek.
-                ilkBeklemeDegerleri[i] = kuyruk.ElementAt(i).beklemeSuresi;         //Zaman farkını bulmam için,ilk değerleri de bir yerde saklamam gerekli
-            
+            {                                                                       //Kuyruk işlem süresine göre sıralandığında bekleme süresi değerleri değişir.
+                ilkBeklemeDegerleri[i] = kuyruk.ElementAt(i).beklemeSuresi;         //Zaman farkını bulmak için, ilk değerleri de bir yerde saklamak gerekiyor.
             }
 
             int ilkToplam = diziToplamı(ilkBeklemeDegerleri);
             double ilkOrt = ortalamaBul(kuyruk);
-           Console.WriteLine("ortalama bekleme suresi: " + ortalamaBul(kuyruk));
+            Console.WriteLine("Ortalama bekleme suresi: " + ortalamaBul(kuyruk));
 
-            Queue<Araba> sl = new Queue<Araba>();   //sl=sıralanmış liste
+            Kuyruk sl = new Kuyruk();   //sl=sıralanmış liste
           
             for (int i = 0; i < kuyruk.Count; i++)
             {
-                sl.Enqueue(on.cikar());
-            } int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
-              int sonToplam = diziToplamı(sonBeklemeDegerleri);
+                sl.ekle(on.cikar());
+            } 
+            
+            int[] sonBeklemeDegerleri = beklemeSuresiBul(sl);
+            int sonToplam = diziToplamı(sonBeklemeDegerleri);
            
-
             for (int i = 0; i < sl.Count; i++)
             {
                 sl.ElementAt(i).beklemeSuresi = sonBeklemeDegerleri[i]; 
             }
             Console.WriteLine("\n\n\nISLEM SURESI EN KISA OLAN ARABA ONCELİKLİ CIKACAK SEKİLDE KUYRUK OLUSTURULDU.\n\n");
+            
             for (int i = 0; i < sl.Count; i++)
             {
                 Console.WriteLine(String.Format("{0,-8}{1,-10}{2,-20}", "Sira No", "İs.Sur", "Bekleme"));
@@ -76,6 +77,7 @@ namespace Project2._2
            
             Console.WriteLine("\n\nBEKLEME SURESİ DEGİSEN ARABALAR");
             Console.WriteLine("-----------------------------------");
+            
             for (int i = 0; i < n; i++)
             {
                 int a = sl.ElementAt(i).sira;
@@ -85,7 +87,6 @@ namespace Project2._2
                     Console.Write("\tEski Bekleme Suresi:" + ilkBeklemeDegerleri[a]);
                     Console.Write("\tZaman farkı:" + Math.Abs((ilkBeklemeDegerleri[a] - sl.ElementAt(i).beklemeSuresi)));
                     Console.WriteLine("\n");
-
                 }
             }
 
@@ -95,12 +96,11 @@ namespace Project2._2
             double yuzde = (ilkOrt - ortalamaBul(sl))*100 / ilkOrt ;
             Console.WriteLine("Yuzde:"+yuzde);
 
-           //UCLU GISE
-
-            Queue<Araba>[] kuyrukdizisi = new Queue<Araba>[3];  //3 kuyrugu bir dizi yaptım.
+           //Üç Çıkışlı Otopark
+            Kuyruk[] kuyrukdizisi = new Kuyruk[3];  //3 kuyruk bir dizi olarak tutuldu.
             for (int i = 0; i < 3; i++)
             {
-                kuyrukdizisi[i] = new Queue<Araba>();  
+                kuyrukdizisi[i] = new Kuyruk();  
             }
             int[] toplam = new int[3];
 
@@ -111,33 +111,21 @@ namespace Project2._2
                 switch(sayi) {
                     case 0:
                         {
-
-
                             toplam[0] += sl.ElementAt(i).islemSuresi;
-
-                      
-                               
-                             break;
+                            break;
                         }
                     case 1:
                         {
-
-
                             toplam[1] += sl.ElementAt(i).islemSuresi;
-                            
-                             break;
+                            break;
                         }
                     case 2:
                         {
-
-
                             toplam[2] += sl.ElementAt(i).islemSuresi;
-                            
-                             break;
+                            break;
                         }
                 }
             }
-
 
             Console.WriteLine("GISE1");
             Console.WriteLine("---------------");
@@ -158,19 +146,12 @@ namespace Project2._2
             Console.WriteLine("Üçlü gişede toplam işlem süresi:"+toplam[maxi(toplam)]);
             Console.WriteLine("Tekli gişede toplam işlem süresi:"+sonToplam);
 
-
-            
-
-            
-
-
             Console.Read();
-        
 
        }
 
-        public static int[] beklemeSuresiBul(Queue<Araba> kuyruk)  //Bu metodu sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanacağım
-        {                                                           //Arguman olarak sadece  sıralanmısListe yi verecegim, return edilen  dizinin elemanlarını, sıralanmısListenin beklemeSurelerine atayacağım.  
+        public static int[] beklemeSuresiBul(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
+        {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
             int[] bs = new int[kuyruk.Count];  //bs=arabaların bekleme süresinin listesi
             for (int i = 0; i < kuyruk.Count; i++)
             {
@@ -178,19 +159,17 @@ namespace Project2._2
                 {
                     bs[i] += kuyruk.ElementAt(j).islemSuresi;
                 }
-
             }
-
-            return bs;    // 
+            return bs;
         }
 
-        public static void kuyrukYazdir(Queue<Araba> kuyruk) {
+        public static void kuyrukYazdir(Kuyruk kuyruk) 
+        {
             foreach (Araba item in kuyruk)
             {
                 Console.WriteLine(item.ToString());
             }
         }
-
 
         public static int diziToplamı(int[] dizi) {
             int toplam = 0;
@@ -199,48 +178,45 @@ namespace Project2._2
                 toplam += dizi[i];
             }
             return toplam;
-        
         }
 
-        public static int mini(int[] dizi) {   //3lü gişede işlem süresi en az olan gişeyi bulmak için
+        public static int mini(int[] dizi)  //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
+        {  
            int index=2;
-
            int min=dizi[2];
           
             if (dizi[1]<= min)
-           { index = 1; min = dizi[1]; }
+            { 
+                index = 1; 
+                min = dizi[1]; 
+            }
            
             if (dizi[0] <= min)
-           { index = 0; min = dizi[0]; }
-
-            
-           return index;
-
-           
+            { 
+                index = 0; 
+                min = dizi[0]; 
+            }
+            return index;
         }
 
-        public static int maxi(int[] dizi)
-        {   //3lü gişede işlem süresi en az olan gişeyi bulmak için
+        public static int maxi(int[] dizi) //3lü gişede işlem süresi en az olan gişeyi bulmak için kullanılır.
+        {   
             int index = 2;
-
             int maxi = dizi[2];
 
             if (dizi[1] >= maxi)
-            { index = 1; maxi = dizi[1]; }
+            {   index = 1; 
+                maxi = dizi[1]; 
+            }
 
             if (dizi[0] >= maxi)
-            { index = 0; maxi = dizi[0]; }
-
-
+            { 
+                index = 0; 
+                maxi = dizi[0]; 
+            }
             return index;
-
-
         }
         
-
-
-
-
         public static double ortalamaBul(Queue<Araba> kuyruk)
         {
             int toplam = 0;
@@ -251,7 +227,6 @@ namespace Project2._2
 
             return (double)toplam / kuyruk.Count;
         }
-
     }
 
 }

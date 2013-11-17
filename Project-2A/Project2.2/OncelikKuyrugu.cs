@@ -12,22 +12,16 @@ namespace Project2._2
         public OncelikKuyrugu()
         {
             alist = new List<Araba>();
-
         }
 
         public void ekle(Araba ar)
         {
-
             alist.Add(ar);
-
         }
-
 
         public Araba cikar()
         {
             alist.Sort();
-
-
 
             Araba temp = alist[0];
             alist.RemoveAt(0);
