@@ -27,5 +27,10 @@ namespace Project2._2
             alist.RemoveAt(0);
             return temp;
         }
+        public Araba ElementAt(int n)
+        {
+            return alist[n];
+        }
+        public int Count { get { return alist.Count; } }
     }
 }
