@@ -154,5 +154,26 @@ namespace Project2._1
             } while (hatali);
             return secim;
         }
+        private static int SayiAl(int a, int u)//Belirtilen aralıkta sayı alır, Try catch ile hata yakalayarak yapılmış sayısal methodu string girişine izin vermez.
+        {
+            bool hatali;
+            int secim = 0;
+            do
+            {
+                hatali = true;
+
+                try
+                {
+                    secim = Int32.Parse(Console.ReadLine());
+                    if (secim <= u && secim >= a)
+                        hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
     }
 }
