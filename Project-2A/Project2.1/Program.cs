@@ -22,7 +22,7 @@ namespace Project2._1
                 Console.WriteLine("2) İşlem Süresi");
                 Console.WriteLine("3) Cıkış");
                 Console.Write("Seçiminiz:");
-                secim = SayiAl();
+                secim = SayiAl(1,3);
                 switch (secim) //Kullanıcının seçimine göre işlem yapılır.
                 {
                     case 1:
