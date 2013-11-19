@@ -16,26 +16,32 @@ namespace Project2._1
             int n = SayiAl(); //Balon problemi için kullanıcıdan n değeri alır.
             ArrayList otopark = new ArrayList();
 
-            KatlariDoldur(otopark, r, n); //Otoparkın 3 katında bulunan veri yapılarına 9'ar adet araba yerleştirir.
-            Console.WriteLine("1) Josephus");
-            Console.WriteLine("2) İşlem Süresi");
-            Console.WriteLine("Seçiminiz:");
-            int secim = SayiAl();
-            switch (secim) //Kullanıcının seçimine göre işlem yapılır.
+    
+         
+            int secim;
+            do
             {
-                case 1:
-                    {
-                        TumArabalariCikar(otopark);
-                        break;
-                    }
-                case 2:
-                    {
-                        Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
-                        break;
-                    }
+                Console.WriteLine("1) Josephus");
+                Console.WriteLine("2) İşlem Süresi");
+                Console.WriteLine("3) Cıkış");
+                Console.Write("Seçiminiz:");
+                secim = SayiAl();
+                switch (secim) //Kullanıcının seçimine göre işlem yapılır.
+                {
+                    case 1:
+                        {
+                            KatlariDoldur(otopark, r, n); //Otoparkın 3 katında bulunan veri yapılarına 9'ar adet araba yerleştirir.
+                            TumArabalariCikar(otopark);
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
+                            break;
+                        }
+                }
             }
-
-            Console.Read();
+            while (secim != 3);
         }
 
         private static int IslemSay(Random r, ArrayList otopark, int n) //3 saniyede ortalama kaç adet otopark işlemi çözebildiğini hesaplar.
@@ -67,7 +73,7 @@ namespace Project2._1
             Console.WriteLine("Son çıkacak olan araba (Yığının en altındaki araba): " + ((Stack<string>)otopark[1]).ElementAt(8));
             for (int i = 0; i < 27; i++)
             {
-                Console.WriteLine(i+1  +  ". tur:");
+                Console.WriteLine(i + 1 + ". tur:");
                 Console.WriteLine("Otoparktan çıkan araba: " + BirArabayiCikar(otopark));
                 KatlariYazdir(otopark);
                 if (i < 26)
