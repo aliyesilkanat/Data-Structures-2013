@@ -15,9 +15,6 @@ namespace Project2._1
             Console.Write("N değerini giriniz:");
             int n = SayiAl(); //Balon problemi için kullanıcıdan n değeri alır.
             ArrayList otopark = new ArrayList();
-
-    
-         
             int secim;
             do
             {
@@ -134,7 +131,7 @@ namespace Project2._1
             {
                 ((Queue<string>)otopark[0]).Enqueue(renkler[r.Next(0, renkler.Length)]);
                 ((Stack<string>)otopark[1]).Push(renkler[r.Next(0, renkler.Length)]);
-                ((CircularList)otopark[2]).insertBegin(renkler[r.Next(0, renkler.Length)]);
+                ((CircularList)otopark[2]).Ekle(renkler[r.Next(0, renkler.Length)]);
             }
         }
 
