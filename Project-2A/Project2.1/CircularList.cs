@@ -71,27 +71,27 @@ namespace Project2._1
             return ilk == null;
         }
 
-        public void insertEnd(String re)
-        {
-            Node yeni = new Node(re);
+        //public void insertEnd(String re)
+        //{
+        //    Node yeni = new Node(re);
 
-            if (isEmpty())
-            {
-                ilk = yeni;
-            }
-            else
-            {
-                Node tp = ilk;
-                while (tp.Sonraki != ilk)
-                {
-                    tp = tp.Sonraki;
-                }
-                tp.Sonraki = yeni;
-            }
-            yeni.Sonraki = ilk;
+        //    if (isEmpty())
+        //    {
+        //        ilk = yeni;
+        //    }
+        //    else
+        //    {
+        //        Node tp = ilk;
+        //        while (tp.Sonraki != ilk)
+        //        {
+        //            tp = tp.Sonraki;
+        //        }
+        //        tp.Sonraki = yeni;
+        //    }
+        //    yeni.Sonraki = ilk;
 
-            cikacak = yeni;
-        }
+        //    cikacak = yeni;
+        //}
 
         public void insertBegin(String re)
         {
@@ -134,7 +134,7 @@ namespace Project2._1
                         gecici = gecici.Sonraki;
                     gecici.Sonraki = gecici.Sonraki.Sonraki;
                 }
-
+                cikacak = cikacak.Sonraki;
             }
 
             return cikarilan.Renk;
