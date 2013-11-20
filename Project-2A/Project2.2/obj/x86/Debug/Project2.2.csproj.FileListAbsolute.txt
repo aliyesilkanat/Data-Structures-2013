@@ -3,3 +3,8 @@ C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\Project-2A\Project2.2\
 C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\Project2.2.exe
 C:\Users\Gediz Üniversitesi\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\Project2.2.pdb
+C:\Users\casper\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\Project2.2.exe
+C:\Users\casper\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\Project2.2.pdb
+C:\Users\casper\Desktop\Data-Structures-2013\Project-2A\Project2.2\bin\Debug\Project2.2.exe
+C:\Users\casper\Desktop\Data-Structures-2013\Project-2A\Project2.2\bin\Debug\Project2.2.pdb
+C:\Users\casper\Desktop\Data-Structures-2013\Project-2A\Project2.2\obj\x86\Debug\ResolveAssemblyReference.cache
