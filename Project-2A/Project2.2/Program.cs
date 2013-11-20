@@ -135,8 +135,8 @@ namespace Project2._2
 
 
         }
-        public static void beklemeSuresiHesapla(Kuyruk kuyruk)  //Bu metod sadece sıraladıktan sonra arabaların bekleme süresini değiştirirken kullanılır.
-        {                                                           //Arguman olarak sadece  sıralanmısListe yi verilir. Return edilen  dizinin elemanları, sıralanmıs listenin bekleme sürelerine atanır.  
+        public static void beklemeSuresiHesapla(Kuyruk kuyruk)  //Otoparkın 3 katında bulunan arabaların bekleme sürelerini hesaplar.
+        {                                                             
             for (int i = 0; i < kuyruk.Count; i++)
             {
                 int beklemeSuresi = 0;
@@ -163,7 +163,7 @@ namespace Project2._2
         }
 
 
-        public static void kuyrukYazdir(Kuyruk kuyruk)
+        public static void kuyrukYazdir(Kuyruk kuyruk) //Kuyrukta bulunan arabaları yazdırır.
         {
             foreach (Araba item in kuyruk.arabaKuyrugu)
             {

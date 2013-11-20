@@ -11,32 +11,34 @@ namespace Project2._1
 
         static void Main(string[] args)
         {
-            Random r = new Random(); 
+            Random r = new Random();
             Console.Write("N değerini giriniz:");
             int n = SayiAl(); //Balon problemi için kullanıcıdan n değeri alır.
-            ArrayList otopark = new ArrayList(); 
-
-            KatlariDoldur(otopark, r, n); //Otoparkın 3 katında bulunan veri yapılarına 9'ar adet araba yerleştirir.
-            Console.WriteLine("1) Josephus"); 
-            Console.WriteLine("2) İşlem Süresi");
-            Console.WriteLine("Seçiminiz:");
-            int secim = SayiAl();
-            switch (secim) //Kullanıcının seçimine göre işlem yapılır.
+            ArrayList otopark = new ArrayList();
+            int secim;
+            do
             {
-                case 1: 
-                    {
-                        KatlariYazdir(otopark);
-                        TumArabalariCikar(otopark);
-                        break;
-                    }
-                case 2:
-                    {
-                        Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
-                        break;
-                    }
+                Console.WriteLine("1) Josephus");
+                Console.WriteLine("2) İşlem Süresi");
+                Console.WriteLine("3) Cıkış");
+                Console.Write("Seçiminiz:");
+                secim = SayiAl(1,3);
+                switch (secim) //Kullanıcının seçimine göre işlem yapılır.
+                {
+                    case 1:
+                        {
+                            KatlariDoldur(otopark, r, n); //Otoparkın 3 katında bulunan veri yapılarına 9'ar adet araba yerleştirir.
+                            TumArabalariCikar(otopark);
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("3 saniyede yapılan işlem sayısı: " + IslemSay(r, otopark, n));
+                            break;
+                        }
+                }
             }
-
-            Console.Read();
+            while (secim != 3);
         }
 
         private static int IslemSay(Random r, ArrayList otopark, int n) //3 saniyede ortalama kaç adet otopark işlemi çözebildiğini hesaplar.
@@ -64,12 +66,13 @@ namespace Project2._1
         private static void TumArabalariCikar(ArrayList otopark)//Tüm arabalar bitene kadar bir arabanın çıkarılması işlemi tekrarlanır.
         {
             KatlariYazdir(otopark);
-            
+            Console.WriteLine();
             Console.WriteLine("Son çıkacak olan araba (Yığının en altındaki araba): " + ((Stack<string>)otopark[1]).ElementAt(8));
             for (int i = 0; i < 27; i++)
             {
-                KatlariYazdir(otopark);
+                Console.WriteLine(i + 1 + ". tur:");
                 Console.WriteLine("Otoparktan çıkan araba: " + BirArabayiCikar(otopark));
+                KatlariYazdir(otopark);
                 if (i < 26)
                 {
                     Console.WriteLine("\nSonraki tur için bir tuşa basınız...");
@@ -128,7 +131,7 @@ namespace Project2._1
             {
                 ((Queue<string>)otopark[0]).Enqueue(renkler[r.Next(0, renkler.Length)]);
                 ((Stack<string>)otopark[1]).Push(renkler[r.Next(0, renkler.Length)]);
-                ((CircularList)otopark[2]).insertBegin(renkler[r.Next(0, renkler.Length)]);
+                ((CircularList)otopark[2]).Ekle(renkler[r.Next(0, renkler.Length)]);
             }
         }
 
@@ -143,6 +146,27 @@ namespace Project2._1
                 {
                     secim = Int32.Parse(Console.ReadLine());
                     hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
+        private static int SayiAl(int a, int u)//Belirtilen aralıkta sayı alır, Try catch ile hata yakalayarak yapılmış sayısal methodu string girişine izin vermez.
+        {
+            bool hatali;
+            int secim = 0;
+            do
+            {
+                hatali = true;
+
+                try
+                {
+                    secim = Int32.Parse(Console.ReadLine());
+                    if (secim <= u && secim >= a)
+                        hatali = false;
                 }
                 catch (FormatException)
                 {

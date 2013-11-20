@@ -57,13 +57,11 @@ namespace Project2._1
             set { n = value; }
         }
 
-
         public CircularList(int n)
         {
             cikacak = null;
             ilk = null;
             this.n = n;
-
         }
 
         public Boolean isEmpty()
@@ -71,29 +69,7 @@ namespace Project2._1
             return ilk == null;
         }
 
-        public void insertEnd(String re)
-        {
-            Node yeni = new Node(re);
-
-            if (isEmpty())
-            {
-                ilk = yeni;
-            }
-            else
-            {
-                Node tp = ilk;
-                while (tp.Sonraki != ilk)
-                {
-                    tp = tp.Sonraki;
-                }
-                tp.Sonraki = yeni;
-            }
-            yeni.Sonraki = ilk;
-
-            cikacak = yeni;
-        }
-
-        public void insertBegin(String re)
+        public void Ekle(String re)
         {
             Node yeni2 = new Node(re);
 
@@ -134,7 +110,7 @@ namespace Project2._1
                         gecici = gecici.Sonraki;
                     gecici.Sonraki = gecici.Sonraki.Sonraki;
                 }
-
+                cikacak = cikacak.Sonraki;
             }
 
             return cikarilan.Renk;
