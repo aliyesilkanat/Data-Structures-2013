@@ -1,0 +1,180 @@
+KİŞİ:Emre Uvac	Eleman Adresi 0	Telefon 0	TC	E-Posta 0	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1996	2000	70
+OKUL:Okul1	Bölüm1	2000	2002	97
+KİŞİ:Oguz Uvac	Eleman Adresi 1	Telefon 1	TC	E-Posta 1	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1997	2001	77
+KİŞİ:Serif Cetin	Eleman Adresi 2	Telefon 2	TC	E-Posta 2	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1999	2003	80
+OKUL:Okul1	Bölüm1	2003	2005	83
+KİŞİ:Tolga Ates	Eleman Adresi 3	Telefon 3	TC	E-Posta 3	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	2003	2007	74
+OKUL:Okul1	Bölüm1	2007	2009	90
+KİŞİ:Cemal Ozturk	Eleman Adresi 4	Telefon 4	TC	E-Posta 4	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2000	2004	69
+OKUL:Okul1	Bölüm1	2004	2008	95
+KİŞİ:Engin Demir	Eleman Adresi 5	Telefon 5	TC	E-Posta 5	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1995	1999	98
+KİŞİ:Guler Gul	Eleman Adresi 6	Telefon 6	TC	E-Posta 6	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1995	1999	98
+KİŞİ:Tansu Demir	Eleman Adresi 7	Telefon 7	TC	E-Posta 7	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1999	2003	81
+OKUL:Okul1	Bölüm1	2003	2006	76
+KİŞİ:Bora Arslan	Eleman Adresi 8	Telefon 8	TC	E-Posta 8	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2001	2005	95
+OKUL:Okul1	Bölüm1	2005	2008	84
+KİŞİ:Gurol Ozturk	Eleman Adresi 9	Telefon 9	TC	E-Posta 9	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1996	2000	97
+KİŞİ:Guler Ozturk	Eleman Adresi 10	Telefon 10	TC	E-Posta 10	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2003	2007	86
+OKUL:Okul1	Bölüm1	2007	2008	86
+KİŞİ:Mustafa Dogan	Eleman Adresi 11	Telefon 11	TC	E-Posta 11	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2001	2005	73
+OKUL:Okul1	Bölüm1	2006	2008	86
+KİŞİ:Cemal Kaya	Eleman Adresi 12	Telefon 12	TC	E-Posta 12	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1996	2000	65
+KİŞİ:Engin Uz	Eleman Adresi 13	Telefon 13	TC	E-Posta 13	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	2001	2005	65
+KİŞİ:Funda Cetin	Eleman Adresi 14	Telefon 14	TC	E-Posta 14	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2001	2005	69
+KİŞİ:Bora Yildirim	Eleman Adresi 15	Telefon 15	TC	E-Posta 15	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1997	2001	89
+KİŞİ:Gurol Gezgin	Eleman Adresi 16	Telefon 16	TC	E-Posta 16	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1998	2002	77
+KİŞİ:Bora Ozturk	Eleman Adresi 17	Telefon 17	TC	E-Posta 17	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1998	2002	82
+KİŞİ:Guler Arslan	Eleman Adresi 18	Telefon 18	TC	E-Posta 18	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2002	2006	99
+OKUL:Okul1	Bölüm1	2006	2008	65
+KİŞİ:Tolga Dogan	Eleman Adresi 19	Telefon 19	TC	E-Posta 19	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2001	2005	82
+KİŞİ:Cemal Dogan	Eleman Adresi 20	Telefon 20	TC	E-Posta 20	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1998	2002	87
+KİŞİ:Funda Gezgin	Eleman Adresi 21	Telefon 21	TC	E-Posta 21	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1998	2002	69
+OKUL:Okul1	Bölüm1	2002	2006	95
+KİŞİ:Funda Ozturk	Eleman Adresi 22	Telefon 22	TC	E-Posta 22	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	2000	2004	81
+OKUL:Okul1	Bölüm1	2004	2007	85
+KİŞİ:Fatih Karakaya	Eleman Adresi 23	Telefon 23	TC	E-Posta 23	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1999	2003	63
+OKUL:Okul1	Bölüm1	2003	2005	76
+KİŞİ:Oguz Uz	Eleman Adresi 24	Telefon 24	TC	E-Posta 24	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2000	2004	70
+KİŞİ:Oguz Arslan	Eleman Adresi 25	Telefon 25	TC	E-Posta 25	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1999	2003	75
+OKUL:Okul1	Bölüm1	2003	2005	71
+KİŞİ:Fatma Ates	Eleman Adresi 26	Telefon 26	TC	E-Posta 26	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	2002	2006	95
+KİŞİ:Oguz Uz	Eleman Adresi 27	Telefon 27	TC	E-Posta 27	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1999	2003	78
+OKUL:Okul1	Bölüm1	2003	2006	60
+KİŞİ:Ismail Gul	Eleman Adresi 28	Telefon 28	TC	E-Posta 28	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2002	2006	80
+OKUL:Okul1	Bölüm1	2006	2008	92
+KİŞİ:Guler Demir	Eleman Adresi 29	Telefon 29	TC	E-Posta 29	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2000	2004	74
+OKUL:Okul1	Bölüm1	2004	2005	67
+KİŞİ:Gurol Ates	Eleman Adresi 30	Telefon 30	TC	E-Posta 30	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1998	2002	88
+OKUL:Okul1	Bölüm1	2002	2003	62
+KİŞİ:Fatih Celik	Eleman Adresi 31	Telefon 31	TC	E-Posta 31	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1996	2000	91
+KİŞİ:Funda Karakaya	Eleman Adresi 32	Telefon 32	TC	E-Posta 32	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1998	2002	88
+OKUL:Okul1	Bölüm1	2002	2005	74
+KİŞİ:Ferah Dogan	Eleman Adresi 33	Telefon 33	TC	E-Posta 33	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1999	2003	95
+KİŞİ:Engin Arslan	Eleman Adresi 34	Telefon 34	TC	E-Posta 34	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2000	2004	64
+OKUL:Okul1	Bölüm1	2004	2006	87
+KİŞİ:Oguz Kaya	Eleman Adresi 35	Telefon 35	TC	E-Posta 35	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1997	2001	79
+OKUL:Okul1	Bölüm1	2001	2003	88
+KİŞİ:Emre Dogan	Eleman Adresi 36	Telefon 36	TC	E-Posta 36	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2001	2005	80
+KİŞİ:Arda Kaya	Eleman Adresi 37	Telefon 37	TC	E-Posta 37	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2000	2004	68
+OKUL:Okul1	Bölüm1	2004	2008	67
+KİŞİ:Oguz Uz	Eleman Adresi 38	Telefon 38	TC	E-Posta 38	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1997	2001	98
+OKUL:Okul1	Bölüm1	2003	2007	70
+KİŞİ:Serhat Demir	Eleman Adresi 39	Telefon 39	TC	E-Posta 39	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm1	1998	2002	78
+OKUL:Okul1	Bölüm0	2002	2006	99
+KİŞİ:Ferah Yildirim	Eleman Adresi 40	Telefon 40	TC	E-Posta 40	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	1998	2002	79
+KİŞİ:Arda Gezgin	Eleman Adresi 41	Telefon 41	TC	E-Posta 41	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1999	2003	80
+OKUL:Okul1	Bölüm1	2003	2005	88
+KİŞİ:Oguz Celik	Eleman Adresi 42	Telefon 42	TC	E-Posta 42	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2001	2005	77
+KİŞİ:Fatih Aydin	Eleman Adresi 43	Telefon 43	TC	E-Posta 43	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+OKUL:Okul0	Bölüm0	2000	2004	88
+KİŞİ:Gulay Celik	Eleman Adresi 44	Telefon 44	TC	E-Posta 44	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	1995	1999	67
+KİŞİ:Emre Yilmaz	Eleman Adresi 45	Telefon 45	TC	E-Posta 45	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1998	2002	87
+KİŞİ:Engin Gul	Eleman Adresi 46	Telefon 46	TC	E-Posta 46	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2002	2006	92
+KİŞİ:Mustafa Yildirim	Eleman Adresi 47	Telefon 47	TC	E-Posta 47	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+OKUL:Okul0	Bölüm0	1997	2001	96
+OKUL:Okul1	Bölüm1	2001	2002	62
+KİŞİ:Serif Karakaya	Eleman Adresi 48	Telefon 48	TC	E-Posta 48	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2000	2004	91
+KİŞİ:Celal Karasu	Eleman Adresi 49	Telefon 49	TC	E-Posta 49	İzmir	1990	Bekar	İngilizce	Spor,Kitap,Özgür Yazılım	Mustafa Tokdede,Ali Veli
+DENEYİM:Şirket0	Adres0	Pozisyon0
+DENEYİM:Şirket1	Adres1	Pozisyon1
+OKUL:Okul0	Bölüm0	2002	2006	75
+OKUL:Okul1	Bölüm1	1996	2000	77

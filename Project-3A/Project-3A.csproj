@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{603ECE50-DF03-4CA0-A0EE-48ABB6EC0279}</ProjectGuid>
+    <ProjectGuid>{8964CF4A-E46A-4709-B917-ACA30D1BA891}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArrayListPlayground</RootNamespace>
-    <AssemblyName>ArrayListPlayground</AssemblyName>
+    <RootNamespace>Project_3A</RootNamespace>
+    <AssemblyName>Project-3A</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
