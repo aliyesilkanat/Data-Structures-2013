@@ -7,35 +7,35 @@ namespace Project_3A
 {
     class Sirket
     {
-        string sirketAdi;
+        private string sirketAdi;
 
         public string SirketAdi
         {
             get { return sirketAdi; }
             set { sirketAdi = value; }
         }
-        string tamAdresi;
+        private string tamAdresi;
 
         public string TamAdresi
         {
             get { return tamAdresi; }
             set { tamAdresi = value; }
         }
-        string telefonNo;
+        private string telefonNo;
 
         public string TelefonNo
         {
             get { return telefonNo; }
             set { telefonNo = value; }
         }
-        string faks;
+        private string faks;
 
         public string Faks
         {
             get { return faks; }
             set { faks = value; }
         }
-        string ePosta;
+        private string ePosta;
 
         public string EPosta
         {

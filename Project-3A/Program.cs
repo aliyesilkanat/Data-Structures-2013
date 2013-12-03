@@ -12,6 +12,27 @@ namespace Project_3A
         {
             Hashtable sirketler = new Hashtable();
             SirketleriOku(sirketler);
+            Tree elemanlar = new Tree();
+
+            System.IO.StreamReader file = new System.IO.StreamReader(Environment.CurrentDirectory + @"\eleman.txt");
+            string line;
+            Eleman e;
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.StartsWith("KİŞİ"))
+                {
+                    e = new Eleman();
+              
+                    int i = 5;
+                    e.KisiAdi = line[i].ToString();
+                    while (line[++i] != '\t')
+                        e.KisiAdi += line[i];
+                }
+                else if (line.StartsWith("OKUL"))
+                { }
+                else ;
+                Console.WriteLine(e.KisiAdi);
+            }
             Console.Read();
         }
 
@@ -50,7 +71,7 @@ namespace Project_3A
                     s.EPosta += line[i];
 
                 sirketler[s.SirketAdi] = s;
-                Console.WriteLine(s.ToString());
+                //Console.WriteLine(s.ToString());
 
             }
 
