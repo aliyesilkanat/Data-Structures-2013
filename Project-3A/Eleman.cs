@@ -36,6 +36,13 @@ namespace Project_3A
             get { return uyruk; }
             set { uyruk = value; }
         }
+        private string ePosta;
+
+        public string EPosta
+        {
+            get { return ePosta; }
+            set { ePosta = value; }
+        }
 
         private string dogumYeri;
 
