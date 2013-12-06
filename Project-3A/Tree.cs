@@ -11,6 +11,8 @@ namespace Project_3A
         public TreeNode leftChild;
         public TreeNode rightChild;
         public void displayNode() { Console.Write(" " + eleman.KisiAdi+ " "); }
+
+        public int Eleman { get; set; }
     }
 
     // Agaç Sınıfı
@@ -115,6 +117,79 @@ namespace Project_3A
                 düzeyListele2(etkin.rightChild);
                 düzey = düzey - 1;
             }
+        }
+
+        public bool delete(int key)
+        {
+            TreeNode current = root;
+            TreeNode parent = root;
+            bool isleftChild = true;
+
+            while (current.Eleman != key)
+            {
+                parent = current;
+                if (key < current.Eleman) //go left
+                {
+                    isleftChild = true;
+                    current = current.leftChild;
+
+                }
+                else
+                { // go right
+                    isleftChild = false;
+                    current = current.rightChild;
+                }
+                if (current == null)
+                    return false;
+            }
+
+
+            //if no children
+            if (current.leftChild == null && current.rightChild == null)
+            {
+                if (current == root)
+                    root = null; //tree is empty
+                else if (isleftChild)
+                    parent.leftChild = null;
+                else
+                    parent.rightChild = null;
+            }
+
+            //if no right child, replace with left subtree
+            else if (current.rightChild == null)
+                if (current == root)
+                    root = current.leftChild;
+                else if (isleftChild) //left child of parent
+                    parent.leftChild = current.leftChild;
+                else //right child of parent
+                    parent.rightChild = current.leftChild;
+
+            //if no left child,replace with right subtree
+            else if (current.leftChild == null)
+                if (current == null)
+                    root = current.rightChild;
+                else if (isleftChild)
+                    parent.leftChild = current.rightChild;
+                else
+                    parent.rightChild = current.rightChild;
+
+            else //two children, so replace with inorder successor
+            {
+                //getSuccessor of node to delete(current)
+                TreeNode successor = getSuccessor(current);
+
+                //connect parent of current to successor instead
+                if (current == root)
+                    root = successor;
+                else if (isleftChild)
+                    parent.leftChild = successor;
+                else
+                    parent.rightChild = successor;
+                //connect successor to current's left child
+                successor.leftChild = current.leftChild;
+            }
+            //(successor cannot have a left child)
+            return true;
         }
 
         //returns node with next highest value after delNode
