@@ -117,7 +117,28 @@ namespace Project_3A
             }
         }
 
+        //returns node with next highest value after delNode
+        //goes to right child, then right child's left descendants
+        private TreeNode getSuccessor(TreeNode delNode)
+        {
+            TreeNode successorParent = delNode;
+            TreeNode successor = delNode;
+            TreeNode current = delNode.rightChild; //go to right child
 
+            while (current != null) //until no more
+            {                       //left child
+                successorParent = successor;
+                successor = current;
+                current = current.leftChild;
+            }
+
+            if (successor != delNode.rightChild)
+            {
+                successorParent.leftChild = successor.rightChild;
+                successor.rightChild = delNode.rightChild;
+            }
+            return successor;
+        }
 
     } // class Tree
 }
