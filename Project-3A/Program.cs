@@ -52,6 +52,18 @@ namespace Project_3A
                                 case 1:
                                     YeniSirketEkle(sirketler);
                                     break;
+                                case 3:
+                                    Console.Write("İş ilanı verecek şirketi giriniz: ");
+                                    Sirket srkt = (Sirket)sirketler[Console.ReadLine()];
+                                    if (srkt != null)
+                                    {
+                                        Console.Write("İş ilanı açılan pozisyon: ");
+                                        Heap isIlani = new Heap(30, srkt, Console.ReadLine());
+                                        srkt.isIlanlari.Add(isIlani);
+
+                                    }
+                                    else Console.WriteLine("Şirket sistemde kayıtlı değil!");
+                                    break;
                             }
 
                             break;
