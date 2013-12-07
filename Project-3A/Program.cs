@@ -15,6 +15,8 @@ namespace Project_3A
 
             SirketleriOku(sirketler);
             ElemanOku(elemanlar);
+
+
             int secim;
             do
             {
@@ -29,18 +31,55 @@ namespace Project_3A
 
                                     YeniElemanEkle(elemanlar);
                                     break;
+                                case 2:
+                                    Console.Write("Bilgileri güncellenecek kişinin adını giriniz: ");
+                                    string kisiAdi = Console.ReadLine();
+                                    if (elemanlar.ara(elemanlar.getRoot(), kisiAdi) != null)
+                                    {
+
+                                    }
+                                    else
+                                        Console.WriteLine("Kişi sisteme kayıtlı değil!");
+
+                                    break;
                             }
                             break;
                         }
                     case 2:
                         {
+                            switch (altMenu(secim))
+                            {
+                                case 1:
+                                    YeniSirketEkle(sirketler);
+                                    break;
+                            }
 
                             break;
                         }
                 }
             } while (secim != 4);
-            elemanlar.inOrder(elemanlar.getRoot());
+
+
+
             Console.Read();
+        }
+
+        private static void YeniSirketEkle(Hashtable sirketler)
+        {
+            Sirket srkt = new Sirket();
+            Console.WriteLine("Eklenecek işyerinin...");
+            Console.Write("Adı: ");
+            srkt.SirketAdi = Console.ReadLine();
+            Console.Write("Tam Adresini: ");
+            srkt.TamAdresi = Console.ReadLine();
+            Console.Write("Telefonu: ");
+            srkt.TelefonNo = Console.ReadLine();
+            Console.Write("Faks: ");
+            srkt.Faks = Console.ReadLine();
+            Console.Write("E-Posta: ");
+            srkt.EPosta = Console.ReadLine();
+            sirketler.Add(srkt.SirketAdi, srkt);
+            Console.WriteLine(srkt.SirketAdi + " isimli şirket sisteme eklendi.");
         }
 
         private static void YeniElemanEkle(Tree elemanlar)

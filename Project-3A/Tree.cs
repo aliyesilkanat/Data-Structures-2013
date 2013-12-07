@@ -18,12 +18,29 @@ namespace Project_3A
     {
         private TreeNode root;
         public int düzey;
-
+        private TreeNode node;
         public Tree() { root = null; }
 
         public TreeNode getRoot()
         { return root; }
 
+
+        public TreeNode ara(TreeNode localRoot, string kisi)
+        {     // find node with given key
+            {                           // (assumes non-empty tree)
+                TreeNode current = root;               // start at root
+                while (current.eleman.KisiAdi != kisi)        // while no match,
+                {
+                    if (kisi.CompareTo(current.eleman.KisiAdi) < 0)         // go left?
+                        current = current.leftChild;
+                    else                            // or go right?
+                        current = current.rightChild;
+                    if (current == null)             // if no child,
+                        return null;                 // didn't find it
+                }
+                return current;                    // found it
+            }  // end find() 
+        }
         // Agacın preOrder Dolasılması
         public void preOrder(TreeNode localRoot)
         {
@@ -125,7 +142,7 @@ namespace Project_3A
             while (current.eleman.KisiAdi != key)
             {
                 parent = current;
-                if (key.CompareTo(current.eleman.KisiAdi)<0) //go left
+                if (key.CompareTo(current.eleman.KisiAdi) < 0) //go left
                 {
                     isleftChild = true;
                     current = current.leftChild;
