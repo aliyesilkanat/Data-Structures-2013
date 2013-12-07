@@ -10,23 +10,36 @@ namespace Project_3A
         public Eleman eleman;
         public TreeNode leftChild;
         public TreeNode rightChild;
-        public void displayNode() { Console.Write(" " + eleman.KisiAdi+ " "); }
-
-        public int Eleman { get; set; }
+        public void displayNode() { Console.Write(" " + eleman.KisiAdi + " "); }
     }
 
     // Agaç Sınıfı
     class Tree
     {
         private TreeNode root;
-        public int sayi;
         public int düzey;
-
         public Tree() { root = null; }
 
         public TreeNode getRoot()
         { return root; }
 
+
+        public TreeNode ara(TreeNode localRoot, string kisi)
+        {     // find node with given key
+            {                           // (assumes non-empty tree)
+                TreeNode current = root;               // start at root
+                while (current.eleman.KisiAdi != kisi)        // while no match,
+                {
+                    if (kisi.CompareTo(current.eleman.KisiAdi) < 0)         // go left?
+                        current = current.leftChild;
+                    else                            // or go right?
+                        current = current.rightChild;
+                    if (current == null)             // if no child,
+                        return null;                 // didn't find it
+                }
+                return current;                    // found it
+            }  // end find() 
+        }
         // Agacın preOrder Dolasılması
         public void preOrder(TreeNode localRoot)
         {
@@ -74,7 +87,7 @@ namespace Project_3A
                 while (true)
                 {
                     parent = current;
-                    if (newEleman.KisiAdi.CompareTo( current.eleman.KisiAdi)<0)
+                    if (newEleman.KisiAdi.CompareTo(current.eleman.KisiAdi) < 0)
                     {
                         current = current.leftChild;
                         if (current == null)
@@ -119,16 +132,16 @@ namespace Project_3A
             }
         }
 
-        public bool delete(int key)
+        public bool delete(string key)
         {
             TreeNode current = root;
             TreeNode parent = root;
             bool isleftChild = true;
 
-            while (current.Eleman != key)
+            while (current.eleman.KisiAdi != key)
             {
                 parent = current;
-                if (key < current.Eleman) //go left
+                if (key.CompareTo(current.eleman.KisiAdi) < 0) //go left
                 {
                     isleftChild = true;
                     current = current.leftChild;

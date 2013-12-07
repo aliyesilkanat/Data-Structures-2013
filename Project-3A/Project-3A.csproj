@@ -45,11 +45,15 @@
   <ItemGroup>
     <Compile Include="EgitimDurumu.cs" />
     <Compile Include="Eleman.cs" />
+    <Compile Include="Heap.cs" />
     <Compile Include="IsDeneyimi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sirket.cs" />
     <Compile Include="Tree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

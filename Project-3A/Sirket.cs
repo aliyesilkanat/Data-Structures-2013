@@ -7,6 +7,10 @@ namespace Project_3A
 {
     class Sirket
     {
+        public Sirket()
+        {
+            isIlanlari = new List<Heap>(50);
+        }
         private string sirketAdi;
 
         public string SirketAdi
@@ -46,5 +50,6 @@ namespace Project_3A
         {
             return sirketAdi + " " + tamAdresi + " " + telefonNo + " " + faks + " " + ePosta;
         }
+        public List<Heap> isIlanlari;
     }
 }
