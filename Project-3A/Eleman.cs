@@ -7,6 +7,11 @@ namespace Project_3A
 {
     class Eleman
     {
+        public Eleman()
+        {
+            isDeneyimleri = new List<IsDeneyimi>();
+            egitimler = new List<EgitimDurumu>();
+        }
         private string kisiAdi;
 
         public string KisiAdi
@@ -87,6 +92,8 @@ namespace Project_3A
             get { return referansOlanKisiler; }
             set { referansOlanKisiler = value; }
         }
+        public List<IsDeneyimi> isDeneyimleri;
+        public List<EgitimDurumu> egitimler;
 
     }
 }

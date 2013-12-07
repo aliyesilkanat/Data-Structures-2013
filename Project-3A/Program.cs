@@ -16,13 +16,14 @@ namespace Project_3A
 
             System.IO.StreamReader file = new System.IO.StreamReader(Environment.CurrentDirectory + @"\eleman.txt");
             string line;
-            Eleman e=null;
+            Eleman e = null;
             while ((line = file.ReadLine()) != null)
             {
                 if (line.StartsWith("KİŞİ"))
                 {
+                    //TODO e referansının ağaca atılmasi gerekiyor
                     e = new Eleman();
-              
+
                     int i = 5;
                     e.KisiAdi = line[i].ToString();
                     while (line[++i] != '\t')
@@ -51,7 +52,7 @@ namespace Project_3A
                     while (line[++i] != '\t')
                         e.DogumYeri += line[i];
 
-                    e.DogumTarihi= line[++i].ToString();
+                    e.DogumTarihi = line[++i].ToString();
                     while (line[++i] != '\t')
                         e.DogumTarihi += line[i];
 
@@ -67,15 +68,59 @@ namespace Project_3A
                     while (line[++i] != '\t')
                         e.IlgiAlanlari += line[i];
 
-                    e.ReferansOlanKisiler  = line[++i].ToString();
+                    e.ReferansOlanKisiler = line[++i].ToString();
                     while (++i != line.Length)
                         e.ReferansOlanKisiler += line[i];
 
                 }
                 else if (line.StartsWith("OKUL"))
-                { }
-                else ;
-                Console.WriteLine(e.KisiAdi);
+                {
+                    int i = 5;
+                    EgitimDurumu egt = new EgitimDurumu();
+
+                    egt.OkulAdi = line[i].ToString();
+                    while (line[++i] != '\t')
+                        egt.OkulAdi += line[i];
+
+                    egt.Bolumu = line[++i].ToString();
+                    while (line[++i] != '\t')
+                        egt.Bolumu += line[i];
+
+                    egt.BaslangicTarihi = line[++i].ToString();
+                    while (line[++i] != '\t')
+                        egt.BaslangicTarihi += line[i];
+
+                    egt.BitisTarihi = line[++i].ToString();
+                    while (line[++i] != '\t')
+                        egt.BitisTarihi += line[i];
+
+                    string notOrt = line[++i].ToString();
+                    while (line[++i] != '\t')
+                        notOrt += line[i];
+                    egt.NotOrtalamasi = Int32.Parse(notOrt);
+
+                    e.egitimler.Add(egt);
+                }
+                else
+                {
+                    int i = 8;
+                    IsDeneyimi deneyim = new IsDeneyimi();
+
+                    deneyim.Sirket = line[i].ToString();
+                    while (line[++i] != '\t')
+                        deneyim.Sirket += line[i];
+
+                    deneyim.Adres = line[i].ToString();
+                    while (line[++i] != '\t')
+                        deneyim.Adres += line[i];
+
+                    deneyim.Pozisyon = line[i].ToString();
+                    while (line[++i] != '\t')
+                        deneyim.Pozisyon += line[i];
+                    
+                    e.isDeneyimleri.Add(deneyim);
+                }
+                //Console.WriteLine(e.KisiAdi);
             }
             Console.Read();
         }
