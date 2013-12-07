@@ -10,16 +10,13 @@ namespace Project_3A
         public Eleman eleman;
         public TreeNode leftChild;
         public TreeNode rightChild;
-        public void displayNode() { Console.Write(" " + eleman.KisiAdi+ " "); }
-
-        public int Eleman { get; set; }
+        public void displayNode() { Console.Write(" " + eleman.KisiAdi + " "); }
     }
 
     // Agaç Sınıfı
     class Tree
     {
         private TreeNode root;
-        public int sayi;
         public int düzey;
 
         public Tree() { root = null; }
@@ -74,7 +71,7 @@ namespace Project_3A
                 while (true)
                 {
                     parent = current;
-                    if (newEleman.KisiAdi.CompareTo( current.eleman.KisiAdi)<0)
+                    if (newEleman.KisiAdi.CompareTo(current.eleman.KisiAdi) < 0)
                     {
                         current = current.leftChild;
                         if (current == null)
@@ -119,16 +116,16 @@ namespace Project_3A
             }
         }
 
-        public bool delete(int key)
+        public bool delete(string key)
         {
             TreeNode current = root;
             TreeNode parent = root;
             bool isleftChild = true;
 
-            while (current.Eleman != key)
+            while (current.eleman.KisiAdi != key)
             {
                 parent = current;
-                if (key < current.Eleman) //go left
+                if (key.CompareTo(current.eleman.KisiAdi)<0) //go left
                 {
                     isleftChild = true;
                     current = current.leftChild;

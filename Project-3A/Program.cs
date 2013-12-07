@@ -11,9 +11,20 @@ namespace Project_3A
         static void Main(string[] args)
         {
             Hashtable sirketler = new Hashtable();
-            SirketleriOku(sirketler);
             Tree elemanlar = new Tree();
+            
+            SirketleriOku(sirketler);
+            ElemanOku(elemanlar);
 
+            
+            elemanlar.delete("Arda Kaya");
+            //elemanlar.delete("Tolga Dogan");
+            elemanlar.inOrder(elemanlar.getRoot());
+            Console.Read();
+        }
+
+        private static void ElemanOku(Tree elemanlar)
+        {
             System.IO.StreamReader file = new System.IO.StreamReader(Environment.CurrentDirectory + @"\eleman.txt");
             string line;
             Eleman e = null;
@@ -22,8 +33,9 @@ namespace Project_3A
                 if (line.StartsWith("KİŞİ"))
                 {
                     //TODO e referansının ağaca atılmasi gerekiyor
+                    if (e != null)
+                        elemanlar.insert(e);
                     e = new Eleman();
-
                     int i = 5;
                     e.KisiAdi = line[i].ToString();
                     while (line[++i] != '\t')
@@ -95,7 +107,7 @@ namespace Project_3A
                         egt.BitisTarihi += line[i];
 
                     string notOrt = line[++i].ToString();
-                    while (line[++i] != '\t')
+                    while (++i != line.Length)
                         notOrt += line[i];
                     egt.NotOrtalamasi = Int32.Parse(notOrt);
 
@@ -114,15 +126,13 @@ namespace Project_3A
                     while (line[++i] != '\t')
                         deneyim.Adres += line[i];
 
-                    deneyim.Pozisyon = line[i].ToString();
-                    while (line[++i] != '\t')
+                    deneyim.Pozisyon = line[++i].ToString();
+                    while (++i != line.Length)
                         deneyim.Pozisyon += line[i];
-                    
+
                     e.isDeneyimleri.Add(deneyim);
                 }
-                //Console.WriteLine(e.KisiAdi);
             }
-            Console.Read();
         }
 
         private static void SirketleriOku(Hashtable sirketler)
