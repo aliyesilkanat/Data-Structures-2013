@@ -12,14 +12,31 @@ namespace Project_3A
         {
             Hashtable sirketler = new Hashtable();
             Tree elemanlar = new Tree();
-            
+
             SirketleriOku(sirketler);
             ElemanOku(elemanlar);
 
-            
-            elemanlar.delete("Arda Kaya");
-            //elemanlar.delete("Tolga Dogan");
-            elemanlar.inOrder(elemanlar.getRoot());
+
+            Heap h = new Heap(50);
+            h.Sirket = new Sirket();
+
+
+
+            h.Sirket.SirketAdi = "Sirket";
+            Eleman e = new Eleman();
+            e.KisiAdi = "Ali";
+
+            h.insert(9.0, e);
+            e = new Eleman();
+            e.KisiAdi = "İzel";
+
+            h.insert(9.1, e);
+            e = new Eleman();
+            e.KisiAdi = "Zzzz";
+            h.insert(8.0, e);
+
+            h.displayHeap();
+            Console.WriteLine(h.remove().Eleman.KisiAdi);
             Console.Read();
         }
 
@@ -32,7 +49,6 @@ namespace Project_3A
             {
                 if (line.StartsWith("KİŞİ"))
                 {
-                    //TODO e referansının ağaca atılmasi gerekiyor
                     if (e != null)
                         elemanlar.insert(e);
                     e = new Eleman();
@@ -122,7 +138,7 @@ namespace Project_3A
                     while (line[++i] != '\t')
                         deneyim.Sirket += line[i];
 
-                    deneyim.Adres = line[i].ToString();
+                    deneyim.Adres = line[++i].ToString();
                     while (line[++i] != '\t')
                         deneyim.Adres += line[i];
 
