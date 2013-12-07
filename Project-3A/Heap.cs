@@ -5,13 +5,9 @@ using System.Text;
 namespace Project_3A
 {
 
-    // heap.java
-    // demonstrates heaps
-    // to run this program: C>java HeapApp
-    ////////////////////////////////////////////////////////////////
     class HeapNode
     {
-        private double uygunluk; // data item (key)
+        private double uygunluk;
 
         public double Uygunluk
         {
@@ -25,20 +21,20 @@ namespace Project_3A
             get { return eleman; }
             set { eleman = value; }
         }
-        // -------------------------------------------------------------
-        public HeapNode(double key, Eleman e) // constructor
+
+
+        public HeapNode(double key, Eleman e)
         {
             uygunluk = key;
+
             eleman = e;
         }
-        // -------------------------------------------------------------
-        public double getKey()
-        { return uygunluk; }
-        // -------------------------------------------------------------
+
         public void setKey(HeapNode nd)
         {
             uygunluk = nd.uygunluk;
             eleman = nd.eleman;
+
 
         }
         // -------------------------------------------------------------
@@ -46,6 +42,13 @@ namespace Project_3A
     ////////////////////////////////////////////////////////////////
     class Heap
     {
+        private string isPozisyonu;
+
+        public string IsPozisyonu
+        {
+            get { return isPozisyonu; }
+            set { isPozisyonu = value; }
+        }
         private Sirket sirket;
 
         public Sirket Sirket
@@ -57,8 +60,10 @@ namespace Project_3A
         private int maxSize; // size of array
         private int currentSize; // number of HeapNodes in array
         // -------------------------------------------------------------
-        public Heap(int mx) // constructor
+        public Heap(int mx, Sirket s, string poz) // constructor
         {
+            isPozisyonu = poz;
+            sirket = s;
             maxSize = mx;
             currentSize = 0;
             heapArray = new HeapNode[maxSize]; // create array
@@ -143,7 +148,7 @@ namespace Project_3A
             Console.Write("heapArray: "); // array format
             for (int m = 0; m < currentSize; m++)
                 if (heapArray[m] != null)
-                    Console.Write(heapArray[m].Uygunluk+heapArray[m].Eleman.KisiAdi + " ");
+                    Console.Write(heapArray[m].Uygunluk + heapArray[m].Eleman.KisiAdi + " ");
                 else
                     Console.Write("-- ");
             Console.WriteLine();
@@ -160,7 +165,7 @@ namespace Project_3A
                     for (int k = 0; k < nBlanks; k++) // preceding blanks
                         Console.Write(" ");
                 // display item
-                Console.Write(heapArray[j].Uygunluk+heapArray[j].Eleman.KisiAdi);
+                Console.Write(heapArray[j].Uygunluk + heapArray[j].Eleman.KisiAdi);
                 if (++j == currentSize) // done?
                     break;
                 if (++column == itemsPerRow) // end of row?

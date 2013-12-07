@@ -11,6 +11,7 @@ namespace Project_3A
         {
             isDeneyimleri = new List<IsDeneyimi>();
             egitimler = new List<EgitimDurumu>();
+            basvurduguIsIlanlari = new List<HeapNode>();
         }
         private string kisiAdi;
 
@@ -94,6 +95,7 @@ namespace Project_3A
         }
         public List<IsDeneyimi> isDeneyimleri;
         public List<EgitimDurumu> egitimler;
+        public List<HeapNode> basvurduguIsIlanlari;
 
     }
 }

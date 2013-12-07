@@ -7,12 +7,12 @@ namespace Project_3A
 {
     class IsDeneyimi
     {
-        private string sirket;
+        private string sirketAdi;
 
-        public string Sirket
+        public string SirketAdi
         {
-            get { return sirket; }
-            set { sirket = value; }
+            get { return sirketAdi; }
+            set { sirketAdi = value; }
         }
         private string adres;
 
