@@ -8,6 +8,7 @@ namespace Project_3A
 {
     class Program
     {
+        static Random r = new Random();
         static void Main(string[] args)
         {
             Hashtable sirketler = new Hashtable();
@@ -40,6 +41,53 @@ namespace Project_3A
                                     }
                                     else
                                         Console.WriteLine("Kişi sisteme kayıtlı değil!");
+                                    break;
+                                case 4:
+                                    IDictionaryEnumerator enumerator = sirketler.GetEnumerator();
+                                    int indeks = 0;
+                                    List<Heap> sistemdekiAktifIlanlar = new List<Heap>();
+                                    Console.WriteLine(String.Format("{0,-7}{1,-11}{2,-20}{3,-21}{4,-17}", "İndeks", "Şirket Adı", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
+                                    while (enumerator.MoveNext())
+                                    {
+                                        if (((Sirket)enumerator.Value).isIlanlari != null)
+                                        {
+                                            foreach (Heap item in ((Sirket)enumerator.Value).isIlanlari)
+                                            {
+                                                sistemdekiAktifIlanlar.Add(item);
+                                                Console.WriteLine(String.Format("{0,-7}{1,-11}{2,-20}{3,-21}{4,-17}", indeks++, item.Sirket.SirketAdi, item.IsPozisyonu, item.CurrentSize, item.MaxSize));
+                                            }
+                                        }
+
+                                    }
+                                    Console.WriteLine();
+                                    Console.Write("Başvurmak istediğiniz ilanın tablodaki indeksini giriniz: ");
+                                    int basvurulanIndeks = SayiAl(0, --indeks);
+
+
+                                    double uygunluk;
+                                    Console.Write("Uygunluk değerini kendiniz girmek için 0'ı rastgele üretilmesi için herhangi bir değeri tuşlayınız: ");
+                                    if (SayiAl() == 0)
+                                    {
+                                        Console.WriteLine("0.0-10.0 aralığında bir sayı tuşlayınız");
+                                        uygunluk = SayiAl(0.0, 10.0);
+                                    }
+                                    else
+                                    {
+                                        uygunluk = r.NextDouble() * 10;
+                                        Console.WriteLine("Uygunluk değeri: " + uygunluk);
+                                    }
+                                    Console.Write("İşe başvuracak kişinin ismini giriniz: ");
+                                    Eleman e = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine()).eleman;
+                                    if (e != null)
+                                    {
+                                       
+                                        sistemdekiAktifIlanlar[basvurulanIndeks].insert(uygunluk, e);
+                                        e.basvurduguIsIlanlari.Add(sistemdekiAktifIlanlar[basvurulanIndeks]);
+
+                                    }
+                                    else Console.WriteLine("Kişi sistemde bulunamadı!");
+
+
 
                                     break;
                             }
@@ -57,7 +105,7 @@ namespace Project_3A
                                     Sirket srkt = (Sirket)sirketler[Console.ReadLine()];
                                     if (srkt != null)
                                     {
-                                        Console.Write("İş ilanı açılan pozisyon: ");
+                                        Console.Write("İş ilanı açılan pozisyonun adı: ");
                                         Heap isIlani = new Heap(30, srkt, Console.ReadLine());
                                         srkt.isIlanlari.Add(isIlani);
 
@@ -70,7 +118,6 @@ namespace Project_3A
                         }
                 }
             } while (secim != 4);
-
 
 
             Console.Read();
@@ -178,6 +225,7 @@ namespace Project_3A
                     Console.WriteLine("5.En uygun adayı işe alma (Bu kişi Heap’ten çekilecektir)");
                     Console.WriteLine("6.İş ilanını sistemden kimseyi işe almadan geri çekme");
                     Console.WriteLine("7.Üst menüye dön");
+                    Console.Write("Lutfen seciminizi giriniz:");
                     return SayiAl(1, 7);
                 case 3:
                     Console.WriteLine("1.Adından kişi arama, tüm bilgilerini listeleme (başvurduğu işlerle birlikte).");
@@ -185,6 +233,7 @@ namespace Project_3A
                     Console.WriteLine("3.İngilizce bilen kişilerin adlarının listelenmesi.");
                     Console.WriteLine("4.İkili arama ağacındaki tüm kişilerin adlarını düzeyleri ile birlikte Listeleme. Ağacın derinliğini ve eleman sayısını yazdırma. ");
                     Console.WriteLine("5.Üst menüye dön");
+                    Console.Write("Lutfen seciminizi giriniz:");
                     return SayiAl(1, 5);
 
             }
@@ -380,6 +429,27 @@ namespace Project_3A
                 try
                 {
                     secim = Int32.Parse(Console.ReadLine());
+                    if (secim <= u && secim >= a)
+                        hatali = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hatalı değer girdiniz!");
+                }
+            } while (hatali);
+            return secim;
+        }
+        private static double SayiAl(double a, double u)
+        {
+            bool hatali;
+            double secim = 0;
+            do
+            {
+                hatali = true;
+
+                try
+                {
+                    secim = Double.Parse(Console.ReadLine());
                     if (secim <= u && secim >= a)
                         hatali = false;
                 }

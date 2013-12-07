@@ -58,7 +58,17 @@ namespace Project_3A
         }
         private HeapNode[] heapArray;
         private int maxSize; // size of array
+
+        public int MaxSize
+        {
+            get { return maxSize; }
+        }
         private int currentSize; // number of HeapNodes in array
+
+        public int CurrentSize
+        {
+            get { return currentSize; }       
+        }
         // -------------------------------------------------------------
         public Heap(int mx, Sirket s, string poz) // constructor
         {

@@ -18,7 +18,6 @@ namespace Project_3A
     {
         private TreeNode root;
         public int düzey;
-        private TreeNode node;
         public Tree() { root = null; }
 
         public TreeNode getRoot()
