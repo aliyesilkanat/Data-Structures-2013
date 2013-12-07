@@ -22,8 +22,29 @@ namespace Project_3A
 
         public TreeNode getRoot()
         { return root; }
-
-
+        public void notOrt90Uzeri(TreeNode etkin)
+        {
+            if (etkin!=null)
+            {
+                notOrt90Uzeri(etkin.leftChild);
+                foreach (EgitimDurumu egt in etkin.eleman.egitimler)
+                {
+                    if(egt.NotOrtalamasi>90)
+                        Console.WriteLine(etkin.eleman.KisiAdi);
+                }
+                notOrt90Uzeri(etkin.rightChild);
+            }
+        }
+        public void ingilizceBilenler(TreeNode etkin)
+        {
+            if (etkin != null)
+            {
+                ingilizceBilenler(etkin.leftChild);
+                if (etkin.eleman.YabanciDil == "İngilizce")
+                    Console.WriteLine(etkin.eleman.KisiAdi);
+                ingilizceBilenler(etkin.rightChild);
+            }
+        }
         public TreeNode ara(TreeNode localRoot, string kisi)
         {     // find node with given key
             {                           // (assumes non-empty tree)
