@@ -27,14 +27,125 @@ namespace Project_3A
                             switch (altMenu(secim))
                             {
                                 case 1:
-
                                     YeniElemanEkle(elemanlar);
                                     break;
                                 case 2:
                                     Console.Write("Bilgileri güncellenecek kişinin adını giriniz: ");
-                                    string kisiAdi = Console.ReadLine();
-                                    if (elemanlar.ara(elemanlar.getRoot(), kisiAdi) != null)
+
+                                    TreeNode nod = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine());
+                                    if (nod != null)
                                     {
+                                        int sec;
+                                        do
+                                        {
+
+                                            Eleman ele = nod.eleman;
+                                            Console.WriteLine("1)Kişi Bilgileri ");
+                                            Console.WriteLine("2)İş Deneyimleri ");
+                                            Console.WriteLine("3)Eğitim Bilgileri ");
+                                            Console.WriteLine("4)Cikis");
+                                            Console.Write("Güncellemek istediğiniz bilgilerin indeksini giriniz: ");
+                                            sec = SayiAl(1, 4);
+                                            switch (sec)
+                                            {
+                                                case 1:
+                                                    string[] elemanOzellikleri = { "Adres", "Telefon", "E-Posta", "Uyruk", "Doğum Yeri", "Doğum Tarihi", "Medeni Durum", "Yabancı Dil", "İlgi Alanları", "Referans Olan Kişiler" };
+                                                    string[] elemanBilgileri = { ele.ElemanAdresi, ele.Telefon, ele.EPosta, ele.Uyruk, ele.DogumYeri, ele.DogumTarihi, ele.MedeniDurum, ele.YabanciDil, ele.IlgiAlanlari, ele.ReferansOlanKisiler };
+                                                    for (int i = 0; i < elemanOzellikleri.Length; i++)
+                                                    {
+                                                        Console.WriteLine("[" + i + "] " + elemanOzellikleri[i]);
+                                                    }
+                                                    Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
+                                                    int degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
+                                                    while (degistirilcekIndeks != elemanOzellikleri.Length)
+                                                    {
+                                                        Console.WriteLine("Eski " + elemanOzellikleri[degistirilcekIndeks] + ": " + elemanBilgileri[degistirilcekIndeks]);
+                                                        Console.Write("Yeni " + elemanOzellikleri[degistirilcekIndeks] + " giriniz: ");
+                                                        elemanBilgileri[degistirilcekIndeks] = Console.ReadLine();
+                                                        Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
+                                                        degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
+                                                    }
+                                                    ele.ElemanAdresi = elemanBilgileri[0];
+                                                    ele.Telefon = elemanBilgileri[1];
+                                                    ele.EPosta = elemanBilgileri[2];
+                                                    ele.Uyruk = elemanBilgileri[3];
+                                                    ele.DogumYeri = elemanBilgileri[4];
+                                                    ele.DogumTarihi = elemanBilgileri[5];
+                                                    ele.MedeniDurum = elemanBilgileri[6];
+                                                    ele.YabanciDil = elemanBilgileri[7];
+                                                    ele.IlgiAlanlari = elemanBilgileri[8];
+                                                    ele.ReferansOlanKisiler = elemanBilgileri[9];
+                                                    break;
+                                                case 2: break;
+                                                case 3:
+                                                    Console.WriteLine("1)Yeni eğitim ekle");
+                                                    Console.WriteLine("2)Sistemde kayıtlı bir eğitimi güncelle");
+                                                    Console.WriteLine("3)Sistemde kayıtlı bir eğitimi sil");
+                                                    Console.WriteLine("4)Cikis");
+                                                    Console.Write("Seçiminiz: ");
+                                                    int secenek = SayiAl(1, 4);
+
+                                                    switch (secenek)
+                                                    {
+                                                        case 1:
+                                                            EgitimDurumu egt = new EgitimDurumu();
+                                                            Console.WriteLine("Mezun olduğu okulun...");
+                                                            Console.Write("Adı: ");
+                                                            egt.OkulAdi = Console.ReadLine();
+                                                            Console.Write("Bölümü: ");
+                                                            egt.Bolumu = Console.ReadLine();
+                                                            Console.Write("Başlangıç Yılı: ");
+                                                            egt.BaslangicTarihi = Console.ReadLine();
+                                                            Console.Write("Bitiş Yılı: ");
+                                                            egt.BitisTarihi = Console.ReadLine();
+                                                            Console.Write("Okuldaki not ortalaması: ");
+                                                            egt.NotOrtalamasi = SayiAl(1, 100);
+                                                            ele.egitimler.Add(egt);
+                                                            break;
+                                                        case 2:
+                                                            Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
+                                                            ele.egitimleriListele();
+                                                            Console.Write("Güncellemek istediğiniz eğitimin indeks değerini giriniz: ");
+                                                            int guncellenecekEgitimIndeks = SayiAl(0, ele.egitimler.Count - 1);
+                                                            string[] egitimOzellikleri = { "Okul Adı", "Bölümü", "Başlangıç Yılı", "Bitiş Yılı", "Not Ortalaması" };
+                                                            string[] egitimBilgileri = { ele.egitimler[guncellenecekEgitimIndeks].OkulAdi, ele.egitimler[guncellenecekEgitimIndeks].Bolumu, ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi, ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi, ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi.ToString() };
+                                                            for (int i = 0; i < egitimOzellikleri.Length; i++)
+                                                            {
+                                                                Console.WriteLine("[" + i + "] " + egitimOzellikleri[i]);
+                                                            }
+                                                            Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
+                                                            int degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
+                                                            while (degistirilcekBilgiIndeks != egitimOzellikleri.Length)
+                                                            {
+                                                                Console.WriteLine("Eski " + egitimOzellikleri[degistirilcekBilgiIndeks] + ": " + egitimBilgileri[degistirilcekBilgiIndeks]);
+                                                                Console.Write("Yeni " + egitimOzellikleri[degistirilcekBilgiIndeks] + " giriniz: ");
+                                                                if (degistirilcekBilgiIndeks == 4)//not ortalaması integer olduğundan
+                                                                    egitimBilgileri[degistirilcekBilgiIndeks] = SayiAl(0, 100).ToString();
+                                                                else
+                                                                    egitimBilgileri[degistirilcekBilgiIndeks] = Console.ReadLine();
+                                                                Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
+                                                                degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
+                                                            }
+                                                            ele.egitimler[guncellenecekEgitimIndeks].OkulAdi = egitimBilgileri[0];
+                                                            ele.egitimler[guncellenecekEgitimIndeks].Bolumu = egitimBilgileri[1];
+                                                            ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi = egitimBilgileri[2];
+                                                            ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi = egitimBilgileri[3];
+                                                            ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi = Convert.ToInt32(egitimBilgileri[4]);
+                                                            break;
+                                                        case 3:
+                                                            Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
+                                                            ele.egitimleriListele();
+                                                            Console.Write("Silmek istediğiniz eğitimin indeks değerini giriniz: ");
+                                                            ele.egitimler.RemoveAt(SayiAl(0, ele.egitimler.Count - 1));
+                                                            Console.WriteLine("Eğitim silindi.");
+                                                            break;
+                                                    }
+
+                                                    break;
+
+                                            }
+                                        } while (sec != 4);
+
                                         //TODO Eleman guncelleme (Ağaç + Heap'deki referanslar) (Kişi adı değişimine göre ağaç güncellenmeli)
                                     }
                                     else
@@ -222,24 +333,14 @@ namespace Project_3A
                 Console.WriteLine("Yabancı Dil: " + e.YabanciDil);
                 Console.WriteLine("İlgi Alanları: " + e.IlgiAlanlari);
                 Console.WriteLine("Referans olan kişiler: " + e.ReferansOlanKisiler);
-
-
                 Console.WriteLine("Mezun olduğu okullar: ");
-                Console.WriteLine(String.Format("{0,-20}{1,-11}{2,-12}{3,-11}{4,-8}", "Adı", "Bölümü", "Bşlngç Yılı", "Bitiş Yılı", "Not Ort"));
-                foreach (EgitimDurumu item in e.egitimler)
-                {
-                    Console.WriteLine(String.Format("{0,-20}{1,-11}{2,-12}{3,-11}{4,-8}", item.OkulAdi, item.Bolumu, item.BaslangicTarihi, item.BitisTarihi, item.NotOrtalamasi));
-                }
+                e.egitimleriListele();
 
                 Console.Write("Çalıştığı işyerleri: ");
                 if (e.isDeneyimleri.Count > 0)
                 {
                     Console.WriteLine();
-                    Console.WriteLine(String.Format("{0,-20}{1,-11}{2,-20}", "Adı", "Adresi", "Pozisyon veya görevi"));
-                    foreach (IsDeneyimi item in e.isDeneyimleri)
-                    {
-                        Console.WriteLine(String.Format("{0,-20}{1,-11}{2,-20}", item.SirketAdi, item.Adres, item.Pozisyon));
-                    }
+                    e.isDeneyimleriniListele();
                 }
                 else Console.Write("Yok.\n");
                 Console.WriteLine("Başvurduğu iş ilanları: ");

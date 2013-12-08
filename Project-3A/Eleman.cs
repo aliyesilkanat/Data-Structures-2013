@@ -20,7 +20,7 @@ namespace Project_3A
             get { return kisiAdi; }
             set { kisiAdi = value; }
         }
-      
+
         private string elemanAdresi;
 
         public string ElemanAdresi
@@ -96,6 +96,24 @@ namespace Project_3A
         public List<IsDeneyimi> isDeneyimleri;
         public List<EgitimDurumu> egitimler;
         public List<Heap> basvurduguIsIlanlari;
+        public void egitimleriListele()
+        {
+            Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-11}{3,-12}{4,-11}{5,-8}", "İndeks", "Adı", "Bölümü", "Bşlngç Yılı", "Bitiş Yılı", "Not Ort"));
 
+            for (int i = 0; i < egitimler.Count; i++)
+            {
+                Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-11}{3,-12}{4,-11}{5,-8}", "[" + i + "]", egitimler[i].OkulAdi, egitimler[i].Bolumu, egitimler[i].BaslangicTarihi, egitimler[i].BitisTarihi, egitimler[i].NotOrtalamasi));
+            }
+            Console.WriteLine();
+        }
+        public void isDeneyimleriniListele()
+        {
+            Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-11}{3,-20}", "İndeks", "Adı", "Adresi", "Pozisyon veya görevi"));
+            for (int i = 0; i < isDeneyimleri.Count; i++)
+            {
+                Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-11}{3,-20}", "[" + i + "]", isDeneyimleri[i].SirketAdi, isDeneyimleri[i].Adres, isDeneyimleri[i].Pozisyon));
+            } 
+            Console.WriteLine();
+        }
     }
 }
