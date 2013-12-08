@@ -10,26 +10,46 @@ namespace Project_3A
         public Eleman eleman;
         public TreeNode leftChild;
         public TreeNode rightChild;
-        public void displayNode() { Console.Write(" " + eleman.KisiAdi + " "); }
+        public void displayNode() { Console.Write(eleman.KisiAdi); }
     }
 
     // Agaç Sınıfı
     class Tree
     {
         private TreeNode root;
-        public int düzey;
+        public int duzey;
+        public int toplamDugum;
+        public int maxDerin;
         public Tree() { root = null; }
 
         public TreeNode getRoot()
         { return root; }
+        public void derinlikVeDugumSayisi(TreeNode etkin)
+        {
+            if (etkin != null)
+            {
+                toplamDugum++;
+                duzey++;
+                if (duzey > maxDerin)
+                    maxDerin = duzey;
+                derinlikVeDugumSayisi(etkin.leftChild);
+                derinlikVeDugumSayisi(etkin.rightChild);
+                duzey--;
+            }
+            if (etkin == getRoot())
+            {
+                Console.WriteLine("Ağacın derinliği: " + maxDerin);
+                Console.WriteLine("Ağaçtaki eleman sayısı: " + toplamDugum);
+            }
+        }
         public void notOrt90Uzeri(TreeNode etkin)
         {
-            if (etkin!=null)
+            if (etkin != null)
             {
                 notOrt90Uzeri(etkin.leftChild);
                 foreach (EgitimDurumu egt in etkin.eleman.egitimler)
                 {
-                    if(egt.NotOrtalamasi>90)
+                    if (egt.NotOrtalamasi > 90)
                         Console.WriteLine(etkin.eleman.KisiAdi);
                 }
                 notOrt90Uzeri(etkin.rightChild);
@@ -48,7 +68,8 @@ namespace Project_3A
         public TreeNode ara(TreeNode localRoot, string kisi)
         {     // find node with given key
             {                           // (assumes non-empty tree)
-                TreeNode current = root;               // start at root
+                TreeNode current = root;
+                // start at root
                 while (current.eleman.KisiAdi != kisi)        // while no match,
                 {
                     if (kisi.CompareTo(current.eleman.KisiAdi) < 0)         // go left?
@@ -62,35 +83,41 @@ namespace Project_3A
             }  // end find() 
         }
         // Agacın preOrder Dolasılması
-        public void preOrder(TreeNode localRoot)
+        public void preOrder(TreeNode localRoot, int d)
         {
             if (localRoot != null)
             {
+                d = d + 1;
                 localRoot.displayNode();
-                preOrder(localRoot.leftChild);
-                preOrder(localRoot.rightChild);
+                Console.WriteLine(" Düzey: " + d);
+                preOrder(localRoot.leftChild, d);
+                preOrder(localRoot.rightChild, d);
             }
         }
 
         // Agacın inOrder Dolasılması
-        public void inOrder(TreeNode localRoot)
+        public void inOrder(TreeNode localRoot, int d)
         {
             if (localRoot != null)
             {
-                inOrder(localRoot.leftChild);
+                d = d + 1;
+                inOrder(localRoot.leftChild, d);
                 localRoot.displayNode();
-                inOrder(localRoot.rightChild);
+                Console.WriteLine(" Düzey: " + d);
+                inOrder(localRoot.rightChild, d);
             }
         }
 
         // Agacın postOrder Dolasılması
-        public void postOrder(TreeNode localRoot)
+        public void postOrder(TreeNode localRoot, int d)
         {
             if (localRoot != null)
             {
-                postOrder(localRoot.leftChild);
-                postOrder(localRoot.rightChild);
+                d++;
+                postOrder(localRoot.leftChild, d);
+                postOrder(localRoot.rightChild, d);
                 localRoot.displayNode();
+                Console.WriteLine(" Düzey: " + d);
             }
         }
 
@@ -145,11 +172,11 @@ namespace Project_3A
         {
             if (etkin != null)
             {
-                düzey = düzey + 1;
+                duzey = duzey + 1;
                 düzeyListele2(etkin.leftChild);
-                Console.WriteLine(" " + etkin.eleman + " " + düzey + ". düzeyde");
+                Console.WriteLine(" " + etkin.eleman + " " + duzey + ". düzeyde");
                 düzeyListele2(etkin.rightChild);
-                düzey = düzey - 1;
+                duzey = duzey - 1;
             }
         }
 

@@ -104,7 +104,31 @@ namespace Project_3A
                                 break;
                             case 3: elemanlar.ingilizceBilenler(elemanlar.getRoot());
                                 break;
-                            case 4: //TODO
+                            case 4:
+                                Console.WriteLine("1)Ağacın düğümlerini düzeyleriyle birlikte pre-order listeleme");
+                                Console.WriteLine("2)Ağacın düğümlerini düzeyleriyle birlikte in-order listeleme");
+                                Console.WriteLine("3)Ağacın düğümlerini düzeyleriyle birlikte post-order listeleme");
+                                Console.WriteLine("4)Ağacın derinliği ve eleman sayısını listeleme");
+                                Console.WriteLine("5)Üst menüye dön");
+                                Console.Write("Seçiminiz: ");
+                                switch (SayiAl(1, 5))
+                                {
+                                    case 1:
+                                        elemanlar.preOrder(elemanlar.getRoot(), -1);
+                                        break;
+                                    case 2:
+                                        elemanlar.inOrder(elemanlar.getRoot(), -1);
+                                        break;
+                                    case 3:
+                                        elemanlar.postOrder(elemanlar.getRoot(), -1);
+                                        break;
+                                    case 4: elemanlar.maxDerin= 0;
+                                        elemanlar.toplamDugum = 0;
+                                        elemanlar.derinlikVeDugumSayisi(elemanlar.getRoot());
+                                        break;
+                                }
+
+
                                 break;
                         }
                         break;
@@ -612,7 +636,7 @@ namespace Project_3A
                     Console.WriteLine("1.Adından kişi arama, tüm bilgilerini listeleme (başvurduğu işlerle birlikte).");
                     Console.WriteLine("2.Not ortalamalarından en az birisi, 90’ın üzerinde olan kişilerin adlarının listelenmesi.");
                     Console.WriteLine("3.İngilizce bilen kişilerin adlarının listelenmesi.");
-                    Console.WriteLine("4.İkili arama ağacındaki tüm kişilerin adlarını düzeyleri ile birlikte Listeleme. Ağacın derinliğini ve eleman sayısını yazdırma. ");
+                    Console.WriteLine("4.Tüm kişilerin adlarını Listeleme. Ağacın derinliğini ve eleman sayısını yazdırma. ");
                     Console.WriteLine("5.Üst menüye dön");
                     Console.Write("Lutfen seciminizi giriniz:");
                     return SayiAl(1, 5);
