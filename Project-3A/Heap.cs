@@ -42,6 +42,35 @@ namespace Project_3A
     ////////////////////////////////////////////////////////////////
     class Heap
     {
+        public void kisiyiIlandanCikar(Eleman e)
+        {
+            HeapNode[] oldHeapArray = (HeapNode[])heapArray.Clone();
+            heapArray = new HeapNode[maxSize];
+
+            currentSize = 0;
+            foreach (HeapNode item in oldHeapArray)
+            {
+                if (item != null && item.Eleman != e)
+                    this.insert(item.Uygunluk, item.Eleman);
+
+            }
+        }
+        public HeapNode ilaniSistemdenCikar()
+        {
+            if (!this.isEmpty())
+            {
+                HeapNode node;
+                HeapNode iseAlinan = remove();
+                iseAlinan.Eleman.basvurduguIsIlanlari.Remove(this);
+                while (!this.isEmpty())
+                {
+                    node = remove();
+                    node.Eleman.basvurduguIsIlanlari.Remove(this);
+                }
+
+                return iseAlinan;
+            } return null;
+        }
         private string isPozisyonu;
 
         public string IsPozisyonu
@@ -67,7 +96,7 @@ namespace Project_3A
 
         public int CurrentSize
         {
-            get { return currentSize; }       
+            get { return currentSize; }
         }
         // -------------------------------------------------------------
         public Heap(int mx, Sirket s, string poz) // constructor
@@ -92,6 +121,7 @@ namespace Project_3A
             return true;
         } // end insert()
         // -------------------------------------------------------------
+
         public void trickleUp(int index)
         {
             int parent = (index - 1) / 2;
@@ -155,40 +185,40 @@ namespace Project_3A
         // -------------------------------------------------------------
         public void displayHeap()
         {
-            Console.Write("heapArray: "); // array format
+            //Console.Write("heapArray: "); // array format
+            Console.WriteLine(String.Format("{0,-30}{1,-8}", "Kişi Adı", "Uygunluk")); ;
             for (int m = 0; m < currentSize; m++)
                 if (heapArray[m] != null)
-                    Console.Write(heapArray[m].Uygunluk + heapArray[m].Eleman.KisiAdi + " ");
-                else
-                    Console.Write("-- ");
+                    Console.WriteLine(String.Format("{0,-30}{1,-8}", heapArray[m].Eleman.KisiAdi, heapArray[m].Uygunluk));
+
             Console.WriteLine();
             // heap format
-            int nBlanks = 32;
-            int itemsPerRow = 1;
-            int column = 0;
-            int j = 0; // current item
-            String dots = "...............................";
-            Console.WriteLine(dots + dots); // dotted top line
-            while (currentSize > 0) // for each heap item
-            {
-                if (column == 0) // first item in row?
-                    for (int k = 0; k < nBlanks; k++) // preceding blanks
-                        Console.Write(" ");
-                // display item
-                Console.Write(heapArray[j].Uygunluk + heapArray[j].Eleman.KisiAdi);
-                if (++j == currentSize) // done?
-                    break;
-                if (++column == itemsPerRow) // end of row?
-                {
-                    nBlanks /= 2; // half the blanks
-                    itemsPerRow *= 2; // twice the items
-                    Console.WriteLine(); // new row
-                }
-                else // next item on row
-                    for (int k = 0; k < nBlanks * 2 - 2; k++)
-                        Console.Write(" "); // interim blanks
-            } // end for
-            Console.WriteLine("\n" + dots + dots); // dotted bottom line
+            //int nBlanks = 32;
+            //int itemsPerRow = 1;
+            //int column = 0;
+            //int j = 0; // current item
+            //String dots = "...............................";
+            //Console.WriteLine(dots + dots); // dotted top line
+            //while (currentSize > 0) // for each heap item
+            //{
+            //    if (column == 0) // first item in row?
+            //        for (int k = 0; k < nBlanks; k++) // preceding blanks
+            //            Console.Write(" ");
+            //    // display item
+            //    Console.Write(heapArray[j].Uygunluk + heapArray[j].Eleman.KisiAdi);
+            //    if (++j == currentSize) // done?
+            //        break;
+            //    if (++column == itemsPerRow) // end of row?
+            //    {
+            //        nBlanks /= 2; // half the blanks
+            //        itemsPerRow *= 2; // twice the items
+            //        Console.WriteLine(); // new row
+            //    }
+            //    else // next item on row
+            //        for (int k = 0; k < nBlanks * 2 - 2; k++)
+            //            Console.Write(" "); // interim blanks
+            //} // end for
+            //Console.WriteLine("\n" + dots + dots); // dotted bottom line
         } // end displayHeap()
         // -------------------------------------------------------------
     } // end class Heap
