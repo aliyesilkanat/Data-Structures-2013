@@ -50,15 +50,26 @@ namespace Project_3A
             currentSize = 0;
             foreach (HeapNode item in oldHeapArray)
             {
-                if (item!=null &&item.Eleman != e)
+                if (item != null && item.Eleman != e)
                     this.insert(item.Uygunluk, item.Eleman);
 
             }
         }
         public HeapNode ilaniSistemdenCikar()
         {
-            HeapNode node = remove();
-            node.Eleman.basvurduguIsIlanlari.Remove(this); return node;
+            if (!this.isEmpty())
+            {
+                HeapNode node;
+                HeapNode iseAlinan = remove();
+                iseAlinan.Eleman.basvurduguIsIlanlari.Remove(this);
+                while (!this.isEmpty())
+                {
+                    node = remove();
+                    node.Eleman.basvurduguIsIlanlari.Remove(this);
+                }
+
+                return iseAlinan;
+            } return null;
         }
         private string isPozisyonu;
 

@@ -53,7 +53,6 @@ namespace Project_3A
                                         elemanlar.delete(e.KisiAdi);
                                     }
                                     else Console.WriteLine("Kişi sisteme kayıtlı değil!");
-                                    //TODO Ağaçtaki ve Heaplerdeki(ilanlar)daki düğümler silinmeli
                                     break;
                                 case 4:
                                     IsIlaninaBasvurma(sirketler, elemanlar);
@@ -87,8 +86,35 @@ namespace Project_3A
                                     IseBasvuranAdaylariGoruntule(sirketler);
                                     break;
                                 case 5:
-                                    //TODO şirket->iş ilanı(heap) doğruluk kontrolleriyle birlikte erişilmeli ve o heaptan bi veri remove edlimeli
-                                    //sonrasında heap yok edilip o heapta olan kişilerin (Elaman sınıfı) içindeki başvurdukları ilanlardan silinmeli
+                                    Console.Write("İşe alınacak iş ilanının ait olduğu şirketin adını giriniz: ");
+                                    Sirket srk = (Sirket)sirketler[Console.ReadLine()];
+                                    if (srk != null)
+                                    {
+                                        if (srk.isIlanlari.Count > 0)
+                                        {
+                                            int indeks = 0;
+                                            Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", "İndeks", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
+                                            foreach (Heap item in srk.isIlanlari)
+                                            {
+                                                Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", indeks++, item.IsPozisyonu, item.CurrentSize, item.MaxSize));
+                                            }
+                                            Console.WriteLine();
+                                            Console.Write("İşe eleman almak istediğiniz ilanın tablodaki indeksini giriniz: ");
+                                            int basvurulanIndeks = SayiAl(0, --indeks);
+                                            HeapNode nde = srk.isIlanlari[basvurulanIndeks].ilaniSistemdenCikar();
+                                            Console.WriteLine("İşe alınan eleman: " + nde.Eleman.KisiAdi);
+                                            Console.WriteLine("Uygunluk: " + nde.Uygunluk);
+                                            srk.isIlanlari.RemoveAt(basvurulanIndeks);
+                                            foreach (Heap item in nde.Eleman.basvurduguIsIlanlari)
+                                            {
+                                                item.kisiyiIlandanCikar(nde.Eleman);
+                                            }
+                                        }
+                                        else Console.WriteLine("Şirketin sistemde kayıtlı iş ilanı mevcut değil!");
+
+                                    }
+                                    else Console.WriteLine("Şirket sistemde kayıtlı değil!");
+
                                     break;
                                 case 6:
                                     Console.Write("İş ilanını çekmek istediğiniz şirketin adını giriniz: ");
@@ -98,22 +124,15 @@ namespace Project_3A
                                         if (sirket.isIlanlari.Count > 0)
                                         {
                                             int indeks = 0;
-
+                                            Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", "İndeks", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
                                             foreach (Heap item in sirket.isIlanlari)
                                             {
-                                                Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", "İndeks", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
-                                                foreach (Heap ilan in sirket.isIlanlari)
-                                                {
-                                                    Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", indeks++, item.IsPozisyonu, item.CurrentSize, item.MaxSize));
-                                                }
-                                                Console.WriteLine();
+                                                Console.WriteLine(String.Format("{0,-7}{1,-20}{2,-21}{3,-17}", indeks++, item.IsPozisyonu, item.CurrentSize, item.MaxSize));
                                             }
+                                            Console.WriteLine();
                                             Console.Write("Kaldırmak istediğiniz ilanın indeksini giriniz: ");
                                             int silinecekIndeks = SayiAl(0, --indeks);
-
-                                            while (!sirket.isIlanlari[silinecekIndeks].isEmpty())
-                                                sirket.isIlanlari[silinecekIndeks].ilaniSistemdenCikar();
-
+                                            sirket.isIlanlari[silinecekIndeks].ilaniSistemdenCikar();
                                             sirket.isIlanlari.RemoveAt(silinecekIndeks);
                                             Console.WriteLine("İlan kaldırıldı.");
                                         }
@@ -207,17 +226,17 @@ namespace Project_3A
                 if (sirket.isIlanlari.Count != 0)
                 {
                     int indeks = 0;
-                    List<Heap> sirkettekiIsIlanlari = new List<Heap>();
+
                     Console.WriteLine(String.Format("{0,-7}{1,-11}{2,-20}{3,-21}{4,-17}", "İndeks", "Şirket Adı", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
                     foreach (Heap item in sirket.isIlanlari)
                     {
-                        sirkettekiIsIlanlari.Add(item);
+
                         Console.WriteLine(String.Format("{0,-7}{1,-11}{2,-20}{3,-21}{4,-17}", indeks++, item.Sirket.SirketAdi, item.IsPozisyonu, item.CurrentSize, item.MaxSize));
                     }
                     Console.WriteLine();
                     Console.Write("İşe başvuranları görmek istediğiniz ilanın tablodaki indeksini giriniz: ");
                     int basvurulanIndeks = SayiAl(0, --indeks);
-                    sirkettekiIsIlanlari[basvurulanIndeks].displayHeap();
+                    sirket.isIlanlari[basvurulanIndeks].displayHeap();
                 }
                 else Console.WriteLine("Şirketin sistemde kayıtlı iş ilanı mevcut değil!");
             }
