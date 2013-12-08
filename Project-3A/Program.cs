@@ -35,118 +35,7 @@ namespace Project_3A
                                     TreeNode nod = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine());
                                     if (nod != null)
                                     {
-                                        int sec;
-                                        do
-                                        {
-
-                                            Eleman ele = nod.eleman;
-                                            Console.WriteLine("1)Kişi Bilgileri ");
-                                            Console.WriteLine("2)İş Deneyimleri ");
-                                            Console.WriteLine("3)Eğitim Bilgileri ");
-                                            Console.WriteLine("4)Cikis");
-                                            Console.Write("Güncellemek istediğiniz bilgilerin indeksini giriniz: ");
-                                            sec = SayiAl(1, 4);
-                                            switch (sec)
-                                            {
-                                                case 1:
-                                                    string[] elemanOzellikleri = { "Adres", "Telefon", "E-Posta", "Uyruk", "Doğum Yeri", "Doğum Tarihi", "Medeni Durum", "Yabancı Dil", "İlgi Alanları", "Referans Olan Kişiler" };
-                                                    string[] elemanBilgileri = { ele.ElemanAdresi, ele.Telefon, ele.EPosta, ele.Uyruk, ele.DogumYeri, ele.DogumTarihi, ele.MedeniDurum, ele.YabanciDil, ele.IlgiAlanlari, ele.ReferansOlanKisiler };
-                                                    for (int i = 0; i < elemanOzellikleri.Length; i++)
-                                                    {
-                                                        Console.WriteLine("[" + i + "] " + elemanOzellikleri[i]);
-                                                    }
-                                                    Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
-                                                    int degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
-                                                    while (degistirilcekIndeks != elemanOzellikleri.Length)
-                                                    {
-                                                        Console.WriteLine("Eski " + elemanOzellikleri[degistirilcekIndeks] + ": " + elemanBilgileri[degistirilcekIndeks]);
-                                                        Console.Write("Yeni " + elemanOzellikleri[degistirilcekIndeks] + " giriniz: ");
-                                                        elemanBilgileri[degistirilcekIndeks] = Console.ReadLine();
-                                                        Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
-                                                        degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
-                                                    }
-                                                    ele.ElemanAdresi = elemanBilgileri[0];
-                                                    ele.Telefon = elemanBilgileri[1];
-                                                    ele.EPosta = elemanBilgileri[2];
-                                                    ele.Uyruk = elemanBilgileri[3];
-                                                    ele.DogumYeri = elemanBilgileri[4];
-                                                    ele.DogumTarihi = elemanBilgileri[5];
-                                                    ele.MedeniDurum = elemanBilgileri[6];
-                                                    ele.YabanciDil = elemanBilgileri[7];
-                                                    ele.IlgiAlanlari = elemanBilgileri[8];
-                                                    ele.ReferansOlanKisiler = elemanBilgileri[9];
-                                                    break;
-                                                case 2: break;
-                                                case 3:
-                                                    Console.WriteLine("1)Yeni eğitim ekle");
-                                                    Console.WriteLine("2)Sistemde kayıtlı bir eğitimi güncelle");
-                                                    Console.WriteLine("3)Sistemde kayıtlı bir eğitimi sil");
-                                                    Console.WriteLine("4)Cikis");
-                                                    Console.Write("Seçiminiz: ");
-                                                    int secenek = SayiAl(1, 4);
-
-                                                    switch (secenek)
-                                                    {
-                                                        case 1:
-                                                            EgitimDurumu egt = new EgitimDurumu();
-                                                            Console.WriteLine("Mezun olduğu okulun...");
-                                                            Console.Write("Adı: ");
-                                                            egt.OkulAdi = Console.ReadLine();
-                                                            Console.Write("Bölümü: ");
-                                                            egt.Bolumu = Console.ReadLine();
-                                                            Console.Write("Başlangıç Yılı: ");
-                                                            egt.BaslangicTarihi = Console.ReadLine();
-                                                            Console.Write("Bitiş Yılı: ");
-                                                            egt.BitisTarihi = Console.ReadLine();
-                                                            Console.Write("Okuldaki not ortalaması: ");
-                                                            egt.NotOrtalamasi = SayiAl(1, 100);
-                                                            ele.egitimler.Add(egt);
-                                                            break;
-                                                        case 2:
-                                                            Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
-                                                            ele.egitimleriListele();
-                                                            Console.Write("Güncellemek istediğiniz eğitimin indeks değerini giriniz: ");
-                                                            int guncellenecekEgitimIndeks = SayiAl(0, ele.egitimler.Count - 1);
-                                                            string[] egitimOzellikleri = { "Okul Adı", "Bölümü", "Başlangıç Yılı", "Bitiş Yılı", "Not Ortalaması" };
-                                                            string[] egitimBilgileri = { ele.egitimler[guncellenecekEgitimIndeks].OkulAdi, ele.egitimler[guncellenecekEgitimIndeks].Bolumu, ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi, ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi, ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi.ToString() };
-                                                            for (int i = 0; i < egitimOzellikleri.Length; i++)
-                                                            {
-                                                                Console.WriteLine("[" + i + "] " + egitimOzellikleri[i]);
-                                                            }
-                                                            Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
-                                                            int degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
-                                                            while (degistirilcekBilgiIndeks != egitimOzellikleri.Length)
-                                                            {
-                                                                Console.WriteLine("Eski " + egitimOzellikleri[degistirilcekBilgiIndeks] + ": " + egitimBilgileri[degistirilcekBilgiIndeks]);
-                                                                Console.Write("Yeni " + egitimOzellikleri[degistirilcekBilgiIndeks] + " giriniz: ");
-                                                                if (degistirilcekBilgiIndeks == 4)//not ortalaması integer olduğundan
-                                                                    egitimBilgileri[degistirilcekBilgiIndeks] = SayiAl(0, 100).ToString();
-                                                                else
-                                                                    egitimBilgileri[degistirilcekBilgiIndeks] = Console.ReadLine();
-                                                                Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
-                                                                degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
-                                                            }
-                                                            ele.egitimler[guncellenecekEgitimIndeks].OkulAdi = egitimBilgileri[0];
-                                                            ele.egitimler[guncellenecekEgitimIndeks].Bolumu = egitimBilgileri[1];
-                                                            ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi = egitimBilgileri[2];
-                                                            ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi = egitimBilgileri[3];
-                                                            ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi = Convert.ToInt32(egitimBilgileri[4]);
-                                                            break;
-                                                        case 3:
-                                                            Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
-                                                            ele.egitimleriListele();
-                                                            Console.Write("Silmek istediğiniz eğitimin indeks değerini giriniz: ");
-                                                            ele.egitimler.RemoveAt(SayiAl(0, ele.egitimler.Count - 1));
-                                                            Console.WriteLine("Eğitim silindi.");
-                                                            break;
-                                                    }
-
-                                                    break;
-
-                                            }
-                                        } while (sec != 4);
-
-                                        //TODO Eleman guncelleme (Ağaç + Heap'deki referanslar) (Kişi adı değişimine göre ağaç güncellenmeli)
+                                        KisininBilgileriniGuncelleme(nod);
                                     }
                                     else
                                         Console.WriteLine("Kişi sisteme kayıtlı değil!");
@@ -224,6 +113,186 @@ namespace Project_3A
 
 
             Console.Read();
+        }
+
+        private static void KisininBilgileriniGuncelleme(TreeNode nod)
+        {
+            int sec;
+            do
+            {
+
+                Eleman ele = nod.eleman;
+                Console.WriteLine("1)Kişi Bilgileri ");
+                Console.WriteLine("2)İş Deneyimleri ");
+                Console.WriteLine("3)Eğitim Bilgileri ");
+                Console.WriteLine("4)Cikis");
+                Console.Write("Güncellemek istediğiniz bilgilerin indeksini giriniz: ");
+                sec = SayiAl(1, 4);
+                switch (sec)
+                {
+                    case 1:
+                        string[] elemanOzellikleri = { "Adres", "Telefon", "E-Posta", "Uyruk", "Doğum Yeri", "Doğum Tarihi", "Medeni Durum", "Yabancı Dil", "İlgi Alanları", "Referans Olan Kişiler" };
+                        string[] elemanBilgileri = { ele.ElemanAdresi, ele.Telefon, ele.EPosta, ele.Uyruk, ele.DogumYeri, ele.DogumTarihi, ele.MedeniDurum, ele.YabanciDil, ele.IlgiAlanlari, ele.ReferansOlanKisiler };
+                        for (int i = 0; i < elemanOzellikleri.Length; i++)
+                        {
+                            Console.WriteLine("[" + i + "] " + elemanOzellikleri[i]);
+                        }
+                        Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
+                        int degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
+                        while (degistirilcekIndeks != elemanOzellikleri.Length)
+                        {
+                            Console.WriteLine("Eski " + elemanOzellikleri[degistirilcekIndeks] + ": " + elemanBilgileri[degistirilcekIndeks]);
+                            Console.Write("Yeni " + elemanOzellikleri[degistirilcekIndeks] + " giriniz: ");
+                            elemanBilgileri[degistirilcekIndeks] = Console.ReadLine();
+                            Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + elemanOzellikleri.Length + ") ");
+                            degistirilcekIndeks = SayiAl(0, elemanOzellikleri.Length);
+                        }
+                        ele.ElemanAdresi = elemanBilgileri[0];
+                        ele.Telefon = elemanBilgileri[1];
+                        ele.EPosta = elemanBilgileri[2];
+                        ele.Uyruk = elemanBilgileri[3];
+                        ele.DogumYeri = elemanBilgileri[4];
+                        ele.DogumTarihi = elemanBilgileri[5];
+                        ele.MedeniDurum = elemanBilgileri[6];
+                        ele.YabanciDil = elemanBilgileri[7];
+                        ele.IlgiAlanlari = elemanBilgileri[8];
+                        ele.ReferansOlanKisiler = elemanBilgileri[9];
+                        break;
+                    case 2:
+                        Console.WriteLine("1)Yeni iş deneyimi ekle");
+                        Console.WriteLine("2)Sistemde kayıtlı bir iş deneyimini güncelle");
+                        Console.WriteLine("3)Sistemde kayıtlı bir iş deneyimini sil");
+                        Console.WriteLine("4)Cikis");
+                        Console.Write("Seçiminiz: ");
+                        int secilen = SayiAl(1, 4);
+                        switch (secilen)
+                        {
+                            case 1:
+                                IsDeneyimi deneyim = new IsDeneyimi();
+                                Console.WriteLine("Daha önce çalıştığı şirketin...");
+                                Console.Write("Adı: ");
+                                deneyim.SirketAdi = Console.ReadLine();
+                                Console.Write("Adresi: ");
+                                deneyim.Adres = Console.ReadLine();
+                                Console.Write("Şirketti pozisyon veya görevi: ");
+                                deneyim.Pozisyon = Console.ReadLine();
+                                ele.isDeneyimleri.Add(deneyim);
+                                Console.WriteLine("İş deneyimi eklendi.");
+                                break;
+                            case 2:
+                                Console.WriteLine("Sistemdeki kayıtlı iş deneyimleri:");
+                                ele.isDeneyimleriniListele();
+                                if (ele.isDeneyimleri.Count > 0)
+                                {
+
+                                    Console.Write("Güncellemek istediğiniz iş deneyiminin indeks değerini giriniz: ");
+                                    int guncellenecekDeneyimIndeks = SayiAl(0, ele.isDeneyimleri.Count - 1);
+                                    string[] isDeneyimiOzellikleri = { "Şirket Adı", "Adresi", "Pozisyon veya görevi" };
+                                    string[] isDeneyimiBilgileri = { ele.isDeneyimleri[guncellenecekDeneyimIndeks].SirketAdi, ele.isDeneyimleri[guncellenecekDeneyimIndeks].Adres, ele.isDeneyimleri[guncellenecekDeneyimIndeks].Pozisyon };
+                                    for (int i = 0; i < isDeneyimiOzellikleri.Length; i++)
+                                    {
+                                        Console.WriteLine("[" + i + "] " + isDeneyimiOzellikleri[i]);
+                                    }
+                                    Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + isDeneyimiOzellikleri.Length + ") ");
+                                    int degistirilcekBilgiIndeks = SayiAl(0, isDeneyimiOzellikleri.Length);
+                                    while (degistirilcekBilgiIndeks != isDeneyimiOzellikleri.Length)
+                                    {
+                                        Console.WriteLine("Eski " + isDeneyimiOzellikleri[degistirilcekBilgiIndeks] + ": " + isDeneyimiBilgileri[degistirilcekBilgiIndeks]);
+                                        Console.Write("Yeni " + isDeneyimiOzellikleri[degistirilcekBilgiIndeks] + " giriniz: ");
+                                        isDeneyimiBilgileri[degistirilcekBilgiIndeks] = Console.ReadLine();
+                                        Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + isDeneyimiOzellikleri.Length + ") ");
+                                        degistirilcekBilgiIndeks = SayiAl(0, isDeneyimiOzellikleri.Length);
+                                    }
+                                    ele.isDeneyimleri[guncellenecekDeneyimIndeks].SirketAdi = isDeneyimiBilgileri[0];
+                                    ele.isDeneyimleri[guncellenecekDeneyimIndeks].Adres = isDeneyimiBilgileri[1];
+                                    ele.isDeneyimleri[guncellenecekDeneyimIndeks].Pozisyon = isDeneyimiBilgileri[2];
+
+                                }
+                                else Console.WriteLine("Sistemde güncellenecek bir iş deneyiminin kaydı yok!");
+                                break;
+                            case 3:
+                                Console.WriteLine("Sistemdeki kayıtlı iş deneyimleri:");
+                                ele.isDeneyimleriniListele();
+                                if (ele.isDeneyimleri.Count > 0)
+                                {
+
+                                    Console.Write("Silmek istediğiniz iş deneyiminin indeks değerini giriniz: ");
+                                    ele.isDeneyimleri.RemoveAt(SayiAl(0, ele.isDeneyimleri.Count - 1));
+                                    Console.WriteLine("İş deneyimi silindi.");
+                                }
+                                else Console.WriteLine("Sistemde güncellenecek bir eğitim kaydı yok!");
+                                break;
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("1)Yeni eğitim ekle");
+                        Console.WriteLine("2)Sistemde kayıtlı bir eğitimi güncelle");
+                        Console.WriteLine("3)Sistemde kayıtlı bir eğitimi sil");
+                        Console.WriteLine("4)Cikis");
+                        Console.Write("Seçiminiz: ");
+                        int secenek = SayiAl(1, 4);
+
+                        switch (secenek)
+                        {
+                            case 1:
+                                EgitimDurumu egt = new EgitimDurumu();
+                                Console.WriteLine("Mezun olduğu okulun...");
+                                Console.Write("Adı: ");
+                                egt.OkulAdi = Console.ReadLine();
+                                Console.Write("Bölümü: ");
+                                egt.Bolumu = Console.ReadLine();
+                                Console.Write("Başlangıç Yılı: ");
+                                egt.BaslangicTarihi = Console.ReadLine();
+                                Console.Write("Bitiş Yılı: ");
+                                egt.BitisTarihi = Console.ReadLine();
+                                Console.Write("Okuldaki not ortalaması: ");
+                                egt.NotOrtalamasi = SayiAl(1, 100);
+                                ele.egitimler.Add(egt);
+                                Console.WriteLine("Eğitim sisteme eklendi");
+                                break;
+                            case 2:
+                                Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
+                                ele.egitimleriListele();
+                                Console.Write("Güncellemek istediğiniz eğitimin indeks değerini giriniz: ");
+                                int guncellenecekEgitimIndeks = SayiAl(0, ele.egitimler.Count - 1);
+                                string[] egitimOzellikleri = { "Okul Adı", "Bölümü", "Başlangıç Yılı", "Bitiş Yılı", "Not Ortalaması" };
+                                string[] egitimBilgileri = { ele.egitimler[guncellenecekEgitimIndeks].OkulAdi, ele.egitimler[guncellenecekEgitimIndeks].Bolumu, ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi, ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi, ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi.ToString() };
+                                for (int i = 0; i < egitimOzellikleri.Length; i++)
+                                {
+                                    Console.WriteLine("[" + i + "] " + egitimOzellikleri[i]);
+                                }
+                                Console.Write("Değiştirmek istediğiniz bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
+                                int degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
+                                while (degistirilcekBilgiIndeks != egitimOzellikleri.Length)
+                                {
+                                    Console.WriteLine("Eski " + egitimOzellikleri[degistirilcekBilgiIndeks] + ": " + egitimBilgileri[degistirilcekBilgiIndeks]);
+                                    Console.Write("Yeni " + egitimOzellikleri[degistirilcekBilgiIndeks] + " giriniz: ");
+                                    if (degistirilcekBilgiIndeks == 4)//not ortalaması integer olduğundan
+                                        egitimBilgileri[degistirilcekBilgiIndeks] = SayiAl(0, 100).ToString();
+                                    else
+                                        egitimBilgileri[degistirilcekBilgiIndeks] = Console.ReadLine();
+                                    Console.Write("Değiştirmek istediğini bilginin indeksini giriniz: (Cikis icin " + egitimOzellikleri.Length + ") ");
+                                    degistirilcekBilgiIndeks = SayiAl(0, egitimOzellikleri.Length);
+                                }
+                                ele.egitimler[guncellenecekEgitimIndeks].OkulAdi = egitimBilgileri[0];
+                                ele.egitimler[guncellenecekEgitimIndeks].Bolumu = egitimBilgileri[1];
+                                ele.egitimler[guncellenecekEgitimIndeks].BaslangicTarihi = egitimBilgileri[2];
+                                ele.egitimler[guncellenecekEgitimIndeks].BitisTarihi = egitimBilgileri[3];
+                                ele.egitimler[guncellenecekEgitimIndeks].NotOrtalamasi = Convert.ToInt32(egitimBilgileri[4]);
+                                break;
+                            case 3:
+                                Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
+                                ele.egitimleriListele();
+                                Console.Write("Silmek istediğiniz eğitimin indeks değerini giriniz: ");
+                                ele.egitimler.RemoveAt(SayiAl(0, ele.egitimler.Count - 1));
+                                Console.WriteLine("Eğitim silindi.");
+                                break;
+                        }
+
+                        break;
+
+                }
+            } while (sec != 4);
         }
 
         private static void SirketGuncelleme(Hashtable sirketler)
@@ -759,7 +828,6 @@ namespace Project_3A
             do
             {
                 hatali = true;
-
                 try
                 {
                     secim = Double.Parse(Console.ReadLine());
