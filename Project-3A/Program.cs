@@ -139,7 +139,7 @@ namespace Project_3A
             Console.Read();
         }
 
-        private static void KisininBilgileriniGuncelleme(TreeNode nod)
+        private static void KisininBilgileriniGuncelleme(TreeNode nod) //İş başvurusu yapan kişilerin bilgilerini günceller. Kişi hangi bilgilerini değiştirmek istiyorsa onu seçerek istediği bilgileri günceller.
         {
             int sec;
             do
@@ -319,7 +319,7 @@ namespace Project_3A
             } while (sec != 4);
         }
 
-        private static void SirketGuncelleme(Hashtable sirketler)
+        private static void SirketGuncelleme(Hashtable sirketler) //Eleman arayan şirketlerin bilgilerini günceller. Değiştirmek istenilen bilginin indeksi girilerek istenilen bilgilerde gerekli değişiklikler yapılarak güncelleme işlemi yapılır. 
         {
             Console.Write("Bilgilerini güncellemek istediğiniz şirketin adını giriniz: ");
             Sirket s = (Sirket)sirketler[Console.ReadLine()];
@@ -350,7 +350,7 @@ namespace Project_3A
             else Console.WriteLine("Şirket sistemde kayıtlı değil");
         }
 
-        private static void IlaniSistemdenKaldir(Hashtable sirketler)
+        private static void IlaniSistemdenKaldir(Hashtable sirketler) //İş ilanını kimseyi işe almadan çekmek için kullanılır.
         {
             Console.Write("İş ilanını çekmek istediğiniz şirketin adını giriniz: ");
             Sirket sirket = (Sirket)sirketler[Console.ReadLine()];
@@ -376,7 +376,7 @@ namespace Project_3A
             else Console.WriteLine("Şirket sistemde kayıtlı değil!");
         }
 
-        private static void UygunAdayiIseAl(Hashtable sirketler)
+        private static void UygunAdayiIseAl(Hashtable sirketler) //iş ilanı için en uygun aday elemanların işe uygun adayın işe alınmasını sağlar.
         {
             Console.Write("İşe alınacak iş ilanının ait olduğu şirketin adını giriniz: ");
             Sirket srk = (Sirket)sirketler[Console.ReadLine()];
@@ -408,7 +408,7 @@ namespace Project_3A
             else Console.WriteLine("Şirket sistemde kayıtlı değil!");
         }
 
-        private static void KisiListele(Tree elemanlar)
+        private static void KisiListele(Tree elemanlar) //Ağaç işlemlerinde adından kişi arama yapar ve kişinin tüm bilgilerini listeler.
         {
             Console.Write("Aramak istediğiniz kişinin adını giriniz: ");
             TreeNode nd = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine());
@@ -450,7 +450,7 @@ namespace Project_3A
             else Console.WriteLine("Aranılan kişinin sistemde kaydı yok!");
         }
 
-        private static void IseBasvuranAdaylariGoruntule(Hashtable sirketler)
+        private static void IseBasvuranAdaylariGoruntule(Hashtable sirketler) //İşe başvuran tüm adayların bilgilerini listeler.
         {
             Console.Write("Başvuran adaylarını görüntülemek istedğiniz şirketin adını giriniz: ");
             Sirket sirket = (Sirket)sirketler[Console.ReadLine()];
@@ -476,7 +476,7 @@ namespace Project_3A
             else Console.WriteLine("Şirket sistemde kayıtlı değil!");
         }
 
-        private static void IsIlaninaBasvurma(Hashtable sirketler, Tree elemanlar)
+        private static void IsIlaninaBasvurma(Hashtable sirketler, Tree elemanlar) //Sistemdeki bir işe başvurmak için kullanılır.
         {
             IDictionaryEnumerator enumerator = sirketler.GetEnumerator();
             int indeks = 0; //ekrana yazdırılan tablonun indeksi -> listede tutulan iş ilanlarına erişimi sağlar
@@ -526,7 +526,7 @@ namespace Project_3A
             else Console.WriteLine("Kişi sistemde bulunamadı!");
         }
 
-        private static void YeniSirketEkle(Hashtable sirketler)
+        private static void YeniSirketEkle(Hashtable sirketler) //Eleman arayan şirketlerin sisteme kaydı yapılır, işyeri bilgileri eklenir.
         {
             Sirket srkt = new Sirket();
             Console.WriteLine("Eklenecek işyerinin...");
@@ -544,7 +544,7 @@ namespace Project_3A
             Console.WriteLine(srkt.SirketAdi + " isimli şirket sisteme eklendi.");
         }
 
-        private static void YeniElemanEkle(Tree elemanlar)
+        private static void YeniElemanEkle(Tree elemanlar) //İş başvurusu yapan kişilerin sisteme kaydı yapılır, kendi kişisel bilgileri girilir.
         {
             Eleman yeniEleman = new Eleman();
             Console.WriteLine("Eklenecek kişinin...");
@@ -609,7 +609,7 @@ namespace Project_3A
             elemanlar.insert(yeniEleman);
             Console.WriteLine(yeniEleman.KisiAdi + " isimli kişi sisteme eklendi.");
         }
-        public static int altMenu(int ustMenuSecim)
+        public static int altMenu(int ustMenuSecim) //Ana menüden seçim yapıldığında seçime göre ekrana gelecek alt menüleri ekrana yazdırır.
         {
             Console.WriteLine();
             switch (ustMenuSecim)
@@ -645,7 +645,7 @@ namespace Project_3A
             return 0;
         }
 
-        public static int menu()
+        public static int menu() //Programın ana menüsünü ekrana yazdırır.
         {
             Console.WriteLine("1.İş başvurusu yapan kişilerin kullanacağı bölüm");
             Console.WriteLine("2.Eleman arayan şirketlerin kullanacağı bölüm");
@@ -655,7 +655,7 @@ namespace Project_3A
 
             return SayiAl(1, 4);
         }
-        private static void ElemanOku(Tree elemanlar)
+        private static void ElemanOku(Tree elemanlar) //eleman.txt dosyasından veriler alındı.
         {
             System.IO.StreamReader file = new System.IO.StreamReader(Environment.CurrentDirectory + @"\eleman.txt");
             string line;
@@ -766,7 +766,7 @@ namespace Project_3A
             }
         }
 
-        private static void SirketleriOku(Hashtable sirketler)
+        private static void SirketleriOku(Hashtable sirketler) //sirket.txt dosyasından veriler alındı.
         {
             System.IO.StreamReader file = new System.IO.StreamReader(Environment.CurrentDirectory + @"\sirket.txt");
             string line;
@@ -805,7 +805,7 @@ namespace Project_3A
 
             file.Close();
         }
-        private static int SayiAl()
+        private static int SayiAl() 
         {
             bool hatali;
             int secim = 0;
@@ -824,7 +824,7 @@ namespace Project_3A
             } while (hatali);
             return secim;
         }
-        private static int SayiAl(int a, int u)
+        private static int SayiAl(int a, int u) //Belirli değer aralığında kullanıcıdan sayı alır.
         {
             bool hatali;
             int secim = 0;
