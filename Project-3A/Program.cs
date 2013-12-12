@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -307,9 +307,13 @@ namespace Project_3A
                             case 3:
                                 Console.WriteLine("Sistemdeki kayıtlı eğitimler:");
                                 ele.egitimleriListele();
-                                Console.Write("Silmek istediğiniz eğitimin indeks değerini giriniz: ");
-                                ele.egitimler.RemoveAt(SayiAl(0, ele.egitimler.Count - 1));
-                                Console.WriteLine("Eğitim silindi.");
+                                if (ele.egitimler.Count>0)
+                                {
+                                    Console.Write("Silmek istediğiniz eğitimin indeks değerini giriniz: ");
+                                    ele.egitimler.RemoveAt(SayiAl(0, ele.egitimler.Count - 1));
+                                    Console.WriteLine("Eğitim silindi.");
+                                }
+                                else Console.WriteLine("Sistem kişinin mezun olduğu okul yok.");
                                 break;
                         }
 
@@ -394,13 +398,17 @@ namespace Project_3A
                     Console.Write("İşe eleman almak istediğiniz ilanın tablodaki indeksini giriniz: ");
                     int basvurulanIndeks = SayiAl(0, --indeks);
                     HeapNode nde = srk.isIlanlari[basvurulanIndeks].ilaniSistemdenCikar(); // ilandaki en yüksek uygunluğa sahip kişi döndürülür - ilandaki herkesin başvurduğu işlerden ilan çıkarılır
-                    Console.WriteLine("İşe alınan eleman: " + nde.Eleman.KisiAdi);
-                    Console.WriteLine("Uygunluk: " + nde.Uygunluk);
-                    srk.isIlanlari.RemoveAt(basvurulanIndeks); //ilan şirketin ilan listesinden kaldırılır
-                    foreach (Heap item in nde.Eleman.basvurduguIsIlanlari)
+                    if (nde != null)
                     {
-                        item.kisiyiIlandanCikar(nde.Eleman); //işe alınan kişi başvurduğu diğer ilanlardan çıkarılır
+                        Console.WriteLine("İşe alınan eleman: " + nde.Eleman.KisiAdi);
+                        Console.WriteLine("Uygunluk: " + nde.Uygunluk);
+                        srk.isIlanlari.RemoveAt(basvurulanIndeks); //ilan şirketin ilan listesinden kaldırılır
+                        foreach (Heap item in nde.Eleman.basvurduguIsIlanlari)
+                        {
+                            item.kisiyiIlandanCikar(nde.Eleman); //işe alınan kişi başvurduğu diğer ilanlardan çıkarılır
+                        }
                     }
+                    else Console.WriteLine("İlana bavşuran kimse yok!.");
                 }
                 else Console.WriteLine("Şirketin sistemde kayıtlı iş ilanı mevcut değil!");
 
