@@ -51,6 +51,7 @@ namespace Project_3A
                                             item.kisiyiIlandanCikar(e);
                                         }
                                         elemanlar.delete(e.KisiAdi);
+                                        Console.WriteLine(e.KisiAdi+ "adlı kullanıcının bilgileri sistemden kaldırıldı.");
                                     }
                                     else Console.WriteLine("Kişi sisteme kayıtlı değil!");
                                     break;
@@ -489,11 +490,13 @@ namespace Project_3A
             IDictionaryEnumerator enumerator = sirketler.GetEnumerator();
             int indeks = 0; //ekrana yazdırılan tablonun indeksi -> listede tutulan iş ilanlarına erişimi sağlar
             List<Heap> sistemdekiAktifIlanlar = new List<Heap>();
+            bool ilanVarMi = false;
             Console.WriteLine(String.Format("{0,-7}{1,-11}{2,-20}{3,-21}{4,-17}", "İndeks", "Şirket Adı", "Pozisyon", "Başvuran Kişi Sayısı", "Max Kişi Sayısı")); ;
             while (enumerator.MoveNext())
             {
-                if (((Sirket)enumerator.Value).isIlanlari != null)
+                if (((Sirket)enumerator.Value).isIlanlari.Count>0)
                 {
+                    ilanVarMi = true;
                     foreach (Heap item in ((Sirket)enumerator.Value).isIlanlari)
                     {
                         sistemdekiAktifIlanlar.Add(item); //hashtable dolaşılarak aktif iş ilanları listeye atılıyor
@@ -502,36 +505,40 @@ namespace Project_3A
                 }
             }
             Console.WriteLine();
-            Console.Write("Başvurmak istediğiniz ilanın tablodaki indeksini giriniz: ");
-            int basvurulanIndeks = SayiAl(0, --indeks);
-
-            Console.Write("İşe başvuracak kişinin ismini giriniz: ");
-            TreeNode nd = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine());
-
-            if (nd != null)
+            if (ilanVarMi == true)
             {
-                Eleman e = nd.eleman;
-                if (!e.basvurduguIsIlanlari.Contains(sistemdekiAktifIlanlar[basvurulanIndeks])) //kişinin bu işe daha önce başvurmadığı kontrol ediliyor
+                Console.Write("Başvurmak istediğiniz ilanın tablodaki indeksini giriniz: ");
+                int basvurulanIndeks = SayiAl(0, --indeks);
+
+                Console.Write("İşe başvuracak kişinin ismini giriniz: ");
+                TreeNode nd = elemanlar.ara(elemanlar.getRoot(), Console.ReadLine());
+
+                if (nd != null)
                 {
-                    double uygunluk;
-                    Console.Write("Uygunluk değerini kendiniz girmek için 0'ı\nRastgele üretilmesi için herhangi bir değeri tuşlayınız: ");
-                    if (SayiAl() == 0)
+                    Eleman e = nd.eleman;
+                    if (!e.basvurduguIsIlanlari.Contains(sistemdekiAktifIlanlar[basvurulanIndeks])) //kişinin bu işe daha önce başvurmadığı kontrol ediliyor
                     {
-                        Console.Write("0.0-10.0 aralığında bir sayı tuşlayınız: ");
-                        uygunluk = SayiAl(0.0, 10.0);
+                        double uygunluk;
+                        Console.Write("Uygunluk değerini kendiniz girmek için 0'ı\nRastgele üretilmesi için herhangi bir değeri tuşlayınız: ");
+                        if (SayiAl() == 0)
+                        {
+                            Console.Write("0,0-10,0 aralığında bir sayı tuşlayınız: ");
+                            uygunluk = SayiAl(0.0, 10.0);
+                        }
+                        else
+                        {
+                            uygunluk = r.NextDouble() * 10; //0,0-10,0
+                            Console.WriteLine("Uygunluk değeri: " + uygunluk);
+                        }
+                        sistemdekiAktifIlanlar[basvurulanIndeks].insert(uygunluk, e);
+                        e.basvurduguIsIlanlari.Add(sistemdekiAktifIlanlar[basvurulanIndeks]);
+                        Console.WriteLine(e.KisiAdi + " isimli kullanıcı ilana başvurdu.");
                     }
-                    else
-                    {
-                        uygunluk = r.NextDouble() * 10; //0,0-10,0
-                        Console.WriteLine("Uygunluk değeri: " + uygunluk);
-                    }
-                    sistemdekiAktifIlanlar[basvurulanIndeks].insert(uygunluk, e);
-                    e.basvurduguIsIlanlari.Add(sistemdekiAktifIlanlar[basvurulanIndeks]);
-                    Console.WriteLine(e.KisiAdi + " isimli kullanıcı ilana başvurdu.");
+                    else Console.WriteLine("Kişi daha önce bu ilana başvurmuş!");
                 }
-                else Console.WriteLine("Kişi daha önce bu ilana başvurmuş!");
+                else Console.WriteLine("Kişi sistemde bulunamadı!");
             }
-            else Console.WriteLine("Kişi sistemde bulunamadı!");
+            else Console.WriteLine("Sistemde kayıtlı bir iş ilanı bulunamadı.");
         }
 
         private static void YeniSirketEkle(Hashtable sirketler) //Eleman arayan şirketlerin sisteme kaydı yapılır, işyeri bilgileri eklenir.
