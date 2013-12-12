@@ -5,3 +5,13 @@ C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Projec
 C:\Users\casper\Desktop\Data-Structures-2013\Project-3A\obj\x86\Debug\Project-3A.exe
 C:\Users\casper\Desktop\Data-Structures-2013\Project-3A\obj\x86\Debug\Project-3A.pdb
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-3A\obj\x86\Debug\Project-3A.csprojResolveAssemblyReference.cache
+C:\Users\Egebilmuh\Desktop\Data-Structures-2013-master\Data-Structures-2013-master\Project-3A\bin\Debug\Project-3A.exe
+C:\Users\Egebilmuh\Desktop\Data-Structures-2013-master\Data-Structures-2013-master\Project-3A\bin\Debug\Project-3A.pdb
+C:\Users\Egebilmuh\Desktop\Data-Structures-2013-master\Data-Structures-2013-master\Project-3A\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Egebilmuh\Desktop\Data-Structures-2013-master\Data-Structures-2013-master\Project-3A\obj\x86\Debug\Project-3A.exe
+C:\Users\Egebilmuh\Desktop\Data-Structures-2013-master\Data-Structures-2013-master\Project-3A\obj\x86\Debug\Project-3A.pdb
+C:\Users\smsng\Desktop\Project-3A\obj\x86\Debug\Project-3A.exe
+C:\Users\smsng\Desktop\Project-3A\obj\x86\Debug\Project-3A.pdb
+C:\Users\smsng\Desktop\Project-3A\bin\Debug\Project-3A.exe
+C:\Users\smsng\Desktop\Project-3A\bin\Debug\Project-3A.pdb
+C:\Users\smsng\Desktop\Project-3A\obj\x86\Debug\Project-3A.csprojResolveAssemblyReference.cache

@@ -50,7 +50,10 @@ namespace Project_3A
                 foreach (EgitimDurumu egt in etkin.eleman.egitimler)
                 {
                     if (egt.NotOrtalamasi > 90)
+                    {
                         Console.WriteLine(etkin.eleman.KisiAdi);
+                        break;
+                    }
                 }
                 notOrt90Uzeri(etkin.rightChild);
             }
