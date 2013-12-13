@@ -46,16 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs">
+    <Compile Include="frmBFS.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmBFS.Designer.cs">
+      <DependentUpon>frmBFS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCaseStudy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCaseStudy.Designer.cs">
+      <DependentUpon>frmCaseStudy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSP.Designer.cs">
+      <DependentUpon>frmDSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMST.Designer.cs">
+      <DependentUpon>frmMST.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBFS.resx">
+      <DependentUpon>frmBFS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCaseStudy.resx">
+      <DependentUpon>frmCaseStudy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSP.resx">
+      <DependentUpon>frmDSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMST.resx">
+      <DependentUpon>frmMST.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
