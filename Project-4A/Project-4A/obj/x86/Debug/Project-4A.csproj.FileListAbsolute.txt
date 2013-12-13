@@ -1,0 +1,8 @@
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\bin\Debug\Project-4A.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\bin\Debug\Project-4A.pdb
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project-4A.csprojResolveAssemblyReference.cache
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project_4A.Main.resources
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project_4A.Properties.Resources.resources
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project-4A.csproj.GenerateResource.Cache
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project-4A.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Project-4A\obj\x86\Debug\Project-4A.pdb
