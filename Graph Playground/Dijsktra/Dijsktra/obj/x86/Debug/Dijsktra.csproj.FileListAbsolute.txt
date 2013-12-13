@@ -1,0 +1,4 @@
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Dijsktra\Dijsktra\bin\Debug\Dijsktra.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Dijsktra\Dijsktra\bin\Debug\Dijsktra.pdb
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Dijsktra\Dijsktra\obj\x86\Debug\Dijsktra.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Dijsktra\Dijsktra\obj\x86\Debug\Dijsktra.pdb

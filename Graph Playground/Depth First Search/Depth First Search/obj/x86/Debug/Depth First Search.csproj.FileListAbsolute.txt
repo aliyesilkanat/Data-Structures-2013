@@ -1,4 +1,0 @@
-C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Depth First Search\Depth First Search\bin\Debug\Depth First Search.exe
-C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Depth First Search\Depth First Search\bin\Debug\Depth First Search.pdb
-C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Depth First Search\Depth First Search\obj\x86\Debug\Depth First Search.exe
-C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Depth First Search\Depth First Search\obj\x86\Debug\Depth First Search.pdb

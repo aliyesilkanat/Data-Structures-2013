@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Depth_First_Search
+namespace Breadth_First_Search
 {
     class Vertex
     {
         public char label; // label (e.g. ‘A’)
         public bool wasVisited;
-        // ------------------------------------------------------------
+        // -------------------------------------------------------------
         public Vertex(char lab) // constructor
         {
             label = lab;
             wasVisited = false;
         }
-        // ------------------------------------------------------------
+        // -------------------------------------------------------------
     } // end class Vertex
     ////////////////////////////////////////////////////////////////
     class Graph
@@ -24,8 +24,9 @@ namespace Depth_First_Search
         private Vertex[] vertexList; // list of vertices
         private int[,] adjMat; // adjacency matrix
         private int nVerts; // current number of vertices
+        private Queue<int> theQueue;
         private Stack<int> theStack;
-        // -----------------------------------------------------------
+        // ------------------
         public Graph() // constructor
         {
             vertexList = new Vertex[MAX_VERTS];
@@ -35,25 +36,46 @@ namespace Depth_First_Search
             for (int j = 0; j < MAX_VERTS; j++) // set adjacency
                 for (int k = 0; k < MAX_VERTS; k++) // matrix to 0
                     adjMat[j, k] = 0;
+            theQueue = new Queue<int>();
             theStack = new Stack<int>();
-        } // end constructor
-        // -----------------------------------------------------------
+        } // end constructor// -------------------------------------------------------------
         public void addVertex(char lab)
         {
             vertexList[nVerts++] = new Vertex(lab);
         }
-        // -----------------------------------------------------------
+        // -------------------------------------------------------------
         public void addEdge(int start, int end)
         {
             adjMat[start, end] = 1;
             adjMat[end, start] = 1;
         }
-        // ------------------------------------------------------------
+        // -------------------------------------------------------------
         public void displayVertex(int v)
         {
             Console.WriteLine(vertexList[v].label);
         }
-        // ------------------------------------------------------------
+        // -------------------------------------------------------------
+        public void bfs() // breadth-first search
+        { // begin at vertex 0
+            vertexList[0].wasVisited = true; // mark it
+            displayVertex(0); // display it
+            theQueue.Enqueue(0); // insert at tail
+            int v2;
+            while (theQueue.Count > 0) // until queue empty,
+            {
+                int v1 = theQueue.Dequeue(); // remove vertex at head
+                // until it has no unvisited neighbors
+                while ((v2 = getAdjUnvisitedVertex(v1)) != -1)
+                { // get one,
+                    vertexList[v2].wasVisited = true; // mark it
+                    displayVertex(v2); // display it
+                    theQueue.Enqueue(v2); // insert it
+                } // end while
+            } // end while(queue not empty)
+            // queue is empty, so we’re done
+            for (int j = 0; j < nVerts; j++) // reset flags
+                vertexList[j].wasVisited = false;
+        } // end bfs()
         public void dfs() // depth-first search
         { // begin at vertex 0
             vertexList[0].wasVisited = true; // mark it
@@ -78,6 +100,7 @@ namespace Depth_First_Search
         } // end dfs
         // ------------------------------------------------------------
         // returns an unvisited vertex adj to v
+        // -------------------------------------------------------------// returns an unvisited vertex adj to v
         public int getAdjUnvisitedVertex(int v)
         {
             for (int j = 0; j < nVerts; j++)
@@ -85,11 +108,8 @@ namespace Depth_First_Search
                     return j;
             return -1;
         } // end getAdjUnvisitedVertex()
-        // ------------------------------------------------------------
+        // -------------------------------------------------------------
     } // end class Graph
     ////////////////////////////////////////////////////////////////
-
-
-
-
 }
+
