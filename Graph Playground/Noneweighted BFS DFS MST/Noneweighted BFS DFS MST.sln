@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadth-Depth First Search", "Breadth First Search\Breadth-Depth First Search.csproj", "{8E7A9B93-82FA-45E3-9C63-0F569B0D08BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noneweighted BFS DFS MST", "Breadth First Search\Noneweighted BFS DFS MST.csproj", "{8E7A9B93-82FA-45E3-9C63-0F569B0D08BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

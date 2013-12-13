@@ -52,7 +52,7 @@ namespace Breadth_First_Search
         // -------------------------------------------------------------
         public void displayVertex(int v)
         {
-            Console.WriteLine(vertexList[v].label);
+            Console.Write(vertexList[v].label);
         }
         // -------------------------------------------------------------
         public void bfs() // breadth-first search
@@ -101,6 +101,33 @@ namespace Breadth_First_Search
         // ------------------------------------------------------------
         // returns an unvisited vertex adj to v
         // -------------------------------------------------------------// returns an unvisited vertex adj to v
+
+        public void mst() // minimum spanning tree (depth first)
+        { // start at 0
+            vertexList[0].wasVisited = true; // mark it
+            theStack.Push(0); // push it
+            while (theStack.Count > 0) // until stack empty
+            { // get stack top
+                int currentVertex = theStack.Peek();
+                // get next unvisited neighbor
+                int v = getAdjUnvisitedVertex(currentVertex);
+                if (v == -1) // if no more neighbors
+                    theStack.Pop(); // pop it away
+                else // got a neighbor
+                {
+                    vertexList[v].wasVisited = true; // mark it
+                    theStack.Push(v); // push it
+                    // display edge
+                    displayVertex(currentVertex); // from currentV
+                    displayVertex(v); // to v
+                    Console.Write(" ");
+                }
+            } // end while(stack not empty)
+            // stack is empty, so we’re done
+            for (int j = 0; j < nVerts; j++) // reset flags
+                vertexList[j].wasVisited = false;
+        } // end tree
+        // -------------------------------------------------------------
         public int getAdjUnvisitedVertex(int v)
         {
             for (int j = 0; j < nVerts; j++)
