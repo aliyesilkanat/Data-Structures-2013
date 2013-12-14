@@ -83,10 +83,10 @@ namespace Project_4A
     public class Vertex
     {
         public bool wasVisited;
-        public char label; // label (e.g. ‘A’)
+        public string label; // label (e.g. ‘A’)
         public bool isInTree;
         // -------------------------------------------------------------
-        public Vertex(char lab) // constructor
+        public Vertex(string lab) // constructor
         {
             wasVisited = false;
             label = lab;
@@ -97,7 +97,7 @@ namespace Project_4A
     ////////////////////////////////////////////////////////////////
     public class Graph
     {
-        private static int MAX_VERTS = 6;
+        private int MAX_VERTS = 6;
         private static int INFINITY = 1000000;
         public Vertex[] vertexList; // list of vertices
         public int[,] adjMat; // adjacency matrix
@@ -109,6 +109,20 @@ namespace Project_4A
         private int nTree; // number of verts in tree
         private int startToCurrent; // distance to currentVert
         // -------------------------------------------------------------
+        public Graph(int max) // constructor
+        {
+            MAX_VERTS = max;
+            vertexList = new Vertex[MAX_VERTS];
+            // adjacency matrix
+            adjMat = new int[MAX_VERTS, MAX_VERTS];
+            nVerts = 0;
+            for (int j = 0; j < MAX_VERTS; j++) // set adjacency
+                for (int k = 0; k < MAX_VERTS; k++) // matrix to 0
+                    adjMat[j, k] = INFINITY;
+            thePQ = new PriorityQ();
+            theQueue = new Queue<int>();
+            sPath = new DistPar[MAX_VERTS]; // shortest paths
+        } // end constructor
         public Graph() // constructor
         {
             vertexList = new Vertex[MAX_VERTS];
@@ -123,7 +137,7 @@ namespace Project_4A
             sPath = new DistPar[MAX_VERTS]; // shortest paths
         } // end constructor
         // -------------------------------------------------------------
-        public void addVertex(char lab)
+        public void addVertex(string lab)
         {
             vertexList[nVerts++] = new Vertex(lab);
         }
@@ -331,7 +345,7 @@ namespace Project_4A
                     Console.Write("inf"); // inf
                 else
                     Console.Write(sPath[j].distance); // 50
-                char parent = vertexList[sPath[j].parentVert].label;
+                string parent = vertexList[sPath[j].parentVert].label;
                 Console.Write(" (" + parent + ") "); // (A)
             }
             Console.WriteLine();

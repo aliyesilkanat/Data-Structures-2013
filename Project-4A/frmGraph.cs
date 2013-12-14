@@ -52,7 +52,7 @@ namespace Project_4A
 
 
                 Label l = new Label();
-                l.Text = vertex[i].label.ToString();
+                l.Text = vertex[i].label;
                 l.Location = new System.Drawing.Point(o.Location.X + 15, o.Location.Y + 4);
                 l.Size = new System.Drawing.Size(35, 13);
                 l.AutoSize = true;

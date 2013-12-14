@@ -17,12 +17,12 @@ namespace Project_4A
         {
             theGraph = new Graph();
 
-            theGraph.addVertex('A'); // 0 (start for mst)
-            theGraph.addVertex('B'); // 1
-            theGraph.addVertex('C'); // 2
-            theGraph.addVertex('D'); // 3
-            theGraph.addVertex('E'); // 4
-            theGraph.addVertex('F'); // 5
+            theGraph.addVertex("A"); // 0 (start for mst)
+            theGraph.addVertex("B"); // 1
+            theGraph.addVertex("C"); // 2
+            theGraph.addVertex("D"); // 3
+            theGraph.addVertex("E"); // 4
+            theGraph.addVertex("F"); // 5
             theGraph.addEdge(0, 1, 6); // AB 6
             theGraph.addEdge(0, 3, 4); // AD 4
             theGraph.addEdge(1, 2, 10); // BC 10
