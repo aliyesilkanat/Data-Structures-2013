@@ -1,6 +1,6 @@
 ﻿namespace Project_4A
 {
-    partial class frmMST
+    partial class frmGraph
     {
         /// <summary>
         /// Required designer variable.
@@ -43,5 +43,7 @@
         }
 
         #endregion
+
+
     }
 }

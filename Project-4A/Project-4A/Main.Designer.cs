@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Dijsktra\'s Shortest Path");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Breadth First Traverse");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Minimum Spanning Tree");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Case Study");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Graph");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Dijsktra\'s Shortest Path");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Breadth First Traverse");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Minimum Spanning Tree");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Case Study");
             this.grpMenu = new System.Windows.Forms.GroupBox();
             this.treeMenu = new System.Windows.Forms.TreeView();
             this.pnlForms = new System.Windows.Forms.Panel();
@@ -54,19 +55,22 @@
             this.treeMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeMenu.Location = new System.Drawing.Point(3, 16);
             this.treeMenu.Name = "treeMenu";
-            treeNode9.Name = "Node0";
-            treeNode9.Text = "Dijsktra\'s Shortest Path";
-            treeNode10.Name = "Node1";
-            treeNode10.Text = "Breadth First Traverse";
-            treeNode11.Name = "Node2";
-            treeNode11.Text = "Minimum Spanning Tree";
-            treeNode12.Name = "Node3";
-            treeNode12.Text = "Case Study";
+            treeNode1.Name = "nodeGraph";
+            treeNode1.Text = "Graph";
+            treeNode2.Name = "nodeDSP";
+            treeNode2.Text = "Dijsktra\'s Shortest Path";
+            treeNode3.Name = "nodeBFT";
+            treeNode3.Text = "Breadth First Traverse";
+            treeNode4.Name = "nodeMSP";
+            treeNode4.Text = "Minimum Spanning Tree";
+            treeNode5.Name = "nodeCS";
+            treeNode5.Text = "Case Study";
             this.treeMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5});
             this.treeMenu.Size = new System.Drawing.Size(164, 314);
             this.treeMenu.TabIndex = 0;
             this.treeMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeMenu_AfterSelect);

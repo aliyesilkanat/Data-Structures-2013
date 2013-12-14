@@ -25,7 +25,15 @@ namespace Project_4A
                 f.Close();
             switch (e.Node.Name)
             {
-                case "Node0":
+                case "nodeGraph": f = new frmGraph();
+                    f.TopLevel = false;
+                    f.Visible = true;
+                    f.Dock = DockStyle.Fill;
+                    pnlForms.Controls.Add(f);
+                    this.Controls.Add(pnlForms);
+                    f.Show();
+                    break;
+                case "nodeDSP":
                     f = new frmDSP();
                     f.TopLevel = false;
                     f.Visible = true;
@@ -34,7 +42,7 @@ namespace Project_4A
                     this.Controls.Add(pnlForms);
                     f.Show();
                     break;
-                case "Node1":
+                case "nodeBFS":
                     f = new frmBFS();
                     f.TopLevel = false;
                     f.Visible = true;
@@ -43,7 +51,7 @@ namespace Project_4A
                     this.Controls.Add(pnlForms);
                     f.Show();
                     break;
-                case "Node2":
+                case "nodeMST":
                       f = new frmMST();
                     f.TopLevel = false;
                     f.Visible = true;
@@ -52,7 +60,7 @@ namespace Project_4A
                     this.Controls.Add(pnlForms);
                     f.Show();
                     break;
-                case "Node3":
+                case "nodeCS":
                         f = new frmCaseStudy();
                     f.TopLevel = false;
                     f.Visible = true;
