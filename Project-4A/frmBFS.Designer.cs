@@ -28,7 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnBFS = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnBFS
+            // 
+            this.btnBFS.Location = new System.Drawing.Point(12, 12);
+            this.btnBFS.Name = "btnBFS";
+            this.btnBFS.Size = new System.Drawing.Size(75, 23);
+            this.btnBFS.TabIndex = 0;
+            this.btnBFS.Text = "BFS Başlat";
+            this.btnBFS.UseVisualStyleBackColor = true;
+            this.btnBFS.Click += new System.EventHandler(this.btnBFS_Click);
             // 
             // frmBFS
             // 
@@ -36,6 +54,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(332, 262);
+            this.Controls.Add(this.btnBFS);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBFS";
             this.Text = "frmBFS";
@@ -44,6 +63,9 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnBFS;
 
 
     }

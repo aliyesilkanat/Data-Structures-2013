@@ -133,7 +133,7 @@ namespace Project_4A
             Console.Write(vertexList[v].label);
         }
         // -------------------------------------------------------------
-        public void mstw() // minimum spanning tree
+        public void mstw(int[,] mstAdjMat) // minimum spanning tree
         {
             currentVert = 0; // start at 0
             while (nTree < nVerts - 1) // while not all verts in tree
@@ -164,6 +164,8 @@ namespace Project_4A
                 // display edge from source to current
                 Console.Write(vertexList[sourceVert].label);
                 Console.Write(vertexList[currentVert].label);
+                mstAdjMat[sourceVert, currentVert] = this.adjMat[sourceVert, currentVert];
+                mstAdjMat[currentVert, sourceVert] = this.adjMat[currentVert, sourceVert];
                 Console.Write(" ");
             } // end while(not all verts in tree)
             // mst is complete
@@ -297,7 +299,7 @@ namespace Project_4A
             Console.WriteLine();
         }
         // -------------------------------------------------------------
-        
+
     } // end class Graph
     public class DistPar // distance and parent
     { // items stored in sPath array

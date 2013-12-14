@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblAgirlik = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // lblAgirlik
+            // 
+            this.lblAgirlik.AutoSize = true;
+            this.lblAgirlik.Location = new System.Drawing.Point(12, 9);
+            this.lblAgirlik.Name = "lblAgirlik";
+            this.lblAgirlik.Size = new System.Drawing.Size(41, 13);
+            this.lblAgirlik.TabIndex = 0;
+            this.lblAgirlik.Text = "Ağırlık: ";
             // 
             // frmMST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.lblAgirlik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMST";
             this.Text = "frmMST";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblAgirlik;
     }
 }

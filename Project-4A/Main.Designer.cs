@@ -59,9 +59,9 @@
             treeNode1.Text = "Graph";
             treeNode2.Name = "nodeDSP";
             treeNode2.Text = "Dijsktra\'s Shortest Path";
-            treeNode3.Name = "nodeBFT";
+            treeNode3.Name = "nodeBFS";
             treeNode3.Text = "Breadth First Traverse";
-            treeNode4.Name = "nodeMSP";
+            treeNode4.Name = "nodeMST";
             treeNode4.Text = "Minimum Spanning Tree";
             treeNode5.Name = "nodeCS";
             treeNode5.Text = "Case Study";
