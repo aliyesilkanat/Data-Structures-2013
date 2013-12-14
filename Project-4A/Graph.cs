@@ -205,14 +205,14 @@ namespace Project_4A
                 thePQ.insert(theEdge);
             }
         } // end putInPQ()
-        public void bfs( List<int> visitedVertices) // breadth-first search
+        public void bfs( List<int> visitedVertices,int first) // breadth-first search
         { // begin at vertex 0
            
 
-            vertexList[0].wasVisited = true; // mark it
+            vertexList[first].wasVisited = true; // mark it
             //displayVertex(0); // display it
-            visitedVertices.Add(0);
-            theQueue.Enqueue(0); // insert at tail
+            visitedVertices.Add(first);
+            theQueue.Enqueue(first); // insert at tail
             int v2;
             while (theQueue.Count > 0) // until queue empty,
             {

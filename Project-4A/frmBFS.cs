@@ -22,6 +22,7 @@ namespace Project_4A
         List<OvalShape> listOvalVertex;
         public frmBFS(Graph g)
         {
+            InitializeComponent();
             theGraph = g;
             listOvalVertex = new List<OvalShape>();
            
@@ -29,7 +30,8 @@ namespace Project_4A
 
             TepeleriYerlestir(listOvalVertex, g.vertexList, canvas);
             AyritlariYerlestir(listOvalVertex, g.adjMat, canvas);
-            InitializeComponent();
+
+            btnBFS.Enabled = false;
            
         }
 
@@ -42,7 +44,7 @@ namespace Project_4A
                 o.Parent = canvas;
                 listVertex.Add(o);
                 if (i == 0)
-                    o.Location = new System.Drawing.Point(180, 90);
+                    o.Location = new System.Drawing.Point(300, 90);
 
                 else if (Convert.ToDouble(i) / Convert.ToDouble(vertex.Length) < 0.25)
                 {
@@ -63,7 +65,9 @@ namespace Project_4A
                 l.Size = new System.Drawing.Size(35, 13);
                 l.AutoSize = true;
                 this.Controls.Add(l);
-
+                
+                cmbVertices.Items.Add(vertex[i].label);
+            
             }
         }
 
@@ -88,11 +92,9 @@ namespace Project_4A
                         l.Size = new System.Drawing.Size(35, 13);
                         l.AutoSize = true;
                         this.Controls.Add(l);
-               
                     }
                 }
             }
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -103,11 +105,9 @@ namespace Project_4A
                 btnBFS.Enabled = true;
                 animatedShape.Dispose();
                 sayac = 0;
-
+                cmbVertices.SelectedIndex = -1;
             }
             else animatedShape.Location = listOvalVertex[visitedVertices[sayac++]].Location;
-          
-            
         }
 
         private void btnBFS_Click(object sender, EventArgs e)
@@ -115,23 +115,20 @@ namespace Project_4A
             sayac = 0;
             btnBFS.Enabled = false;
             animatedShape.Parent = canvas;
-
             animatedShape.FillStyle = FillStyle.Solid;
             animatedShape.FillColor = Color.Red;
             animatedShape.Size = new System.Drawing.Size(50, 20);
             visitedVertices = new List<int>();
-            theGraph.bfs( visitedVertices);
+            theGraph.bfs( visitedVertices,cmbVertices.SelectedIndex);
             animatedShape.Location = listOvalVertex[visitedVertices[sayac++]].Location;
             timer1.Enabled = true;
-
-
-          
-          
-
         }
 
-
-
-
+        private void cmbVertices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVertices.SelectedIndex != -1)
+                btnBFS.Enabled = true;
+            else btnBFS.Enabled = false;
+        }
     }
 }
