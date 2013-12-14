@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualBasic.PowerPacks;
+using System.Drawing;
 
 namespace Project_4A
 {
@@ -80,11 +82,13 @@ namespace Project_4A
     ////////////////////////////////////////////////////////////////
     public class Vertex
     {
+        public bool wasVisited;
         public char label; // label (e.g. ‘A’)
         public bool isInTree;
         // -------------------------------------------------------------
         public Vertex(char lab) // constructor
         {
+            wasVisited = false;
             label = lab;
             isInTree = false;
         }
@@ -101,6 +105,7 @@ namespace Project_4A
         private int currentVert;
         public DistPar[] sPath; // array for shortest-path data
         private PriorityQ thePQ;
+        private Queue<int> theQueue;
         private int nTree; // number of verts in tree
         private int startToCurrent; // distance to currentVert
         // -------------------------------------------------------------
@@ -114,6 +119,7 @@ namespace Project_4A
                 for (int k = 0; k < MAX_VERTS; k++) // matrix to 0
                     adjMat[j, k] = INFINITY;
             thePQ = new PriorityQ();
+            theQueue = new Queue<int>();
             sPath = new DistPar[MAX_VERTS]; // shortest paths
         } // end constructor
         // -------------------------------------------------------------
@@ -199,6 +205,38 @@ namespace Project_4A
                 thePQ.insert(theEdge);
             }
         } // end putInPQ()
+        public void bfs( List<int> visitedVertices) // breadth-first search
+        { // begin at vertex 0
+           
+
+            vertexList[0].wasVisited = true; // mark it
+            //displayVertex(0); // display it
+            visitedVertices.Add(0);
+            theQueue.Enqueue(0); // insert at tail
+            int v2;
+            while (theQueue.Count > 0) // until queue empty,
+            {
+                int v1 = theQueue.Dequeue(); // remove vertex at head
+                // until it has no unvisited neighbors
+                while ((v2 = getAdjUnvisitedVertex(v1)) != -1)
+                { // get one,
+                    vertexList[v2].wasVisited = true; // mark it
+                    //displayVertex(v2); // display it
+                    visitedVertices.Add(v2);
+                    theQueue.Enqueue(v2); // insert it
+                } // end while
+            } // end while(queue not empty)
+            // queue is empty, so we’re done
+            for (int j = 0; j < nVerts; j++) // reset flags
+                vertexList[j].wasVisited = false;
+        } // end bfs()
+        public int getAdjUnvisitedVertex(int v)
+        {
+            for (int j = 0; j < nVerts; j++)
+                if (adjMat[v, j] != INFINITY && vertexList[j].wasVisited == false)
+                    return j;
+            return -1;
+        } // end getAdjUnvisitedVertex()
         // -------------------------------------------------------------
         public void path() // find all shortest paths
         {

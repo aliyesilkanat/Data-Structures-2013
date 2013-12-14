@@ -12,7 +12,7 @@ namespace Project_4A
 {
     public partial class frmBFS : Form
     {
-     
+        List<int> visitedVertices;
         Graph theGraph;
         int sayac = 0;
         static int INFINITY = 1000000;
@@ -97,7 +97,7 @@ namespace Project_4A
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (sayac == listOvalVertex.Count)
+            if (sayac == visitedVertices.Count)
             {
                 timer1.Enabled = false;
                 btnBFS.Enabled = true;
@@ -105,20 +105,29 @@ namespace Project_4A
                 sayac = 0;
 
             }
-            else  animatedShape.Location = listOvalVertex[sayac++].Location;
+            else animatedShape.Location = listOvalVertex[visitedVertices[sayac++]].Location;
           
             
         }
 
         private void btnBFS_Click(object sender, EventArgs e)
         {
+            sayac = 0;
+            btnBFS.Enabled = false;
             animatedShape.Parent = canvas;
-            animatedShape.Location = listOvalVertex[sayac++].Location;
+
             animatedShape.FillStyle = FillStyle.Solid;
             animatedShape.FillColor = Color.Red;
             animatedShape.Size = new System.Drawing.Size(50, 20);
+            visitedVertices = new List<int>();
+            theGraph.bfs( visitedVertices);
+            animatedShape.Location = listOvalVertex[visitedVertices[sayac++]].Location;
             timer1.Enabled = true;
-            btnBFS.Enabled = false;
+
+
+          
+          
+
         }
 
 
