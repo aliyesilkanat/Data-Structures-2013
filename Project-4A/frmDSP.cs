@@ -9,10 +9,12 @@ using System.Windows.Forms;
 
 namespace Project_4A
 {
-    public partial class frmMST : Form
+    public partial class frmDSP : Form
     {
-        public frmMST()
+        Graph theGraph;
+        public frmDSP(Graph g)
         {
+            theGraph = g;
             InitializeComponent();
         }
     }

@@ -93,6 +93,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Main";
+
             this.grpMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

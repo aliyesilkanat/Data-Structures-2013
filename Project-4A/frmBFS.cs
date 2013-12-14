@@ -11,8 +11,10 @@ namespace Project_4A
 {
     public partial class frmBFS : Form
     {
-        public frmBFS()
+        Graph theGraph;
+        public frmBFS(Graph g)
         {
+            theGraph = g;
             InitializeComponent();
         }
 

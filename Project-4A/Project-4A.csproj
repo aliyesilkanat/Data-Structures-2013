@@ -81,6 +81,7 @@
     <Compile Include="frmMST.Designer.cs">
       <DependentUpon>frmMST.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graph.cs" />
     <Compile Include="Main.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
