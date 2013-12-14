@@ -79,21 +79,20 @@
             // 
             this.pnlForms.Location = new System.Drawing.Point(176, 12);
             this.pnlForms.Name = "pnlForms";
-            this.pnlForms.Size = new System.Drawing.Size(310, 309);
+            this.pnlForms.Size = new System.Drawing.Size(452, 309);
             this.pnlForms.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 333);
+            this.ClientSize = new System.Drawing.Size(640, 333);
             this.Controls.Add(this.pnlForms);
             this.Controls.Add(this.grpMenu);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Main";
-
             this.grpMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

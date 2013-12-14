@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 262);
+            this.ClientSize = new System.Drawing.Size(328, 262);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDSP";
             this.Text = "frmDSP";
@@ -43,6 +43,7 @@
         }
 
         #endregion
+
 
     }
 }

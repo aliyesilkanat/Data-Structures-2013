@@ -13,7 +13,7 @@ namespace Project_4A
     public partial class frmGraph : Form
     {
         Graph theGraph;
-        static Random r = new Random();
+
         static int INFINITY = 1000000;
         public frmGraph(Graph g)
         {
@@ -87,15 +87,6 @@ namespace Project_4A
                 }
             }
 
-
-            //for (int i = 0; i < listVertex.Count; i++)
-            //{
-            //    LineShape line = new LineShape();
-            //    line.StartPoint = new Point(listVertex[i].Location.X + 20, listVertex[i].Location.Y + 5);
-            //    line.EndPoint = new Point(listVertex[(i + 1) % listVertex.Count].Location.X + 15, listVertex[(i + 1) % listVertex.Count].Location.Y + 4);
-            //    line.Parent = canvas;
-
-            //}
         }
 
 
