@@ -252,9 +252,9 @@ namespace Project_4A
             return -1;
         } // end getAdjUnvisitedVertex()
         // -------------------------------------------------------------
-        public void path() // find all shortest paths
+        public void path(int first) // find all shortest paths
         {
-            int startTree = 0; // start at vertex 0
+            int startTree = first; // start at vertex 0
             vertexList[startTree].isInTree = true;
             nTree = 1; // put it in tree
             // transfer row of distances from adjMat to sPath

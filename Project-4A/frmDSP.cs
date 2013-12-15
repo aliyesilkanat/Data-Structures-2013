@@ -14,17 +14,19 @@ namespace Project_4A
     {
         static int INFINITY = 1000000;
         Graph theGraph;
+        List<OvalShape> listOvalVertex = new List<OvalShape>();
+        ShapeContainer canvas = new ShapeContainer();
         public frmDSP(Graph g)
         {
+            InitializeComponent();
             theGraph = g;
-            g.path();
-             List<OvalShape> listOvalVertex = new List<OvalShape>();
-            ShapeContainer canvas = new ShapeContainer();
+          
+
             canvas.Parent = this;
 
-            TepeleriYerlestir(listOvalVertex, g.sPath, canvas,g.vertexList);
-            AyritlariYerlestir(listOvalVertex, g.sPath, canvas);
-            InitializeComponent();
+
+            TepeleriYerlestir(listOvalVertex, theGraph.sPath, canvas, theGraph.vertexList);
+            btnDSP.Enabled = false;
         }
 
         private void TepeleriYerlestir(List<OvalShape> listVertex, DistPar[] vertex, ShapeContainer canvas, Vertex[] vertexList)
@@ -36,7 +38,7 @@ namespace Project_4A
                 o.Parent = canvas;
                 listVertex.Add(o);
                 if (i == 0)
-                    o.Location = new System.Drawing.Point(180, 90);
+                    o.Location = new System.Drawing.Point(300, 140);
 
                 else if (Convert.ToDouble(i) / Convert.ToDouble(vertex.Length) < 0.25)
                 {
@@ -57,34 +59,49 @@ namespace Project_4A
                 l.Size = new System.Drawing.Size(35, 13);
                 l.AutoSize = true;
                 this.Controls.Add(l);
-
+                cmbIlkTepe.Items.Add(vertexList[i].label);
+                cmbIkinciTepe.Items.Add(vertexList[i].label);
             }
         }
         private void AyritlariYerlestir(List<OvalShape> listVertex, DistPar[] shortestPath, ShapeContainer canvas)
         {
-           
-                for (int i = 1; i < shortestPath.Count(); i++)
-                {
-       
-                        LineShape line = new LineShape();
-                        line.StartPoint = new Point(listVertex[shortestPath[i].parentVert].Location.X + 20, listVertex[shortestPath[i].parentVert].Location.Y + 5);
-                        line.EndPoint = new Point(listVertex[i].Location.X + 15, listVertex[i].Location.Y + 4);
-                        line.Parent = canvas;
-                     
 
-                        Label l = new Label();
-                        l.Text = shortestPath[i].distance.ToString();
-                        l.Location = new System.Drawing.Point((3 * line.StartPoint.X + line.EndPoint.X) / 4, (3 * line.StartPoint.Y + line.EndPoint.Y) / 4);
-                        l.Size = new System.Drawing.Size(35, 13);
-                        l.AutoSize = true;
-                        this.Controls.Add(l);
+            for (int i = 1; i < shortestPath.Count(); i++)
+            {
 
-                    
-                }
-            
+                LineShape line = new LineShape();
+                line.StartPoint = new Point(listVertex[shortestPath[i].parentVert].Location.X + 20, listVertex[shortestPath[i].parentVert].Location.Y + 5);
+                line.EndPoint = new Point(listVertex[i].Location.X + 15, listVertex[i].Location.Y + 4);
+                line.Parent = canvas;
 
+
+                Label l = new Label();
+                l.Text = shortestPath[i].distance.ToString();
+                l.Location = new System.Drawing.Point((3 * line.StartPoint.X + line.EndPoint.X) / 4, (3 * line.StartPoint.Y + line.EndPoint.Y) / 4);
+                l.Size = new System.Drawing.Size(35, 13);
+                l.AutoSize = true;
+                this.Controls.Add(l);
+            }
         }
 
-     
+        private void cmbIlkTepe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex)
+                btnDSP.Enabled = false;
+            else btnDSP.Enabled = true;
+        }
+
+        private void cmbIkinciTepe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex)
+                btnDSP.Enabled = false;
+            else btnDSP.Enabled = true;
+        }
+
+        private void btnDSP_Click(object sender, EventArgs e)
+        {
+            theGraph.path(cmbIlkTepe.SelectedIndex);
+            AyritlariYerlestir(listOvalVertex, theGraph.sPath, canvas);
+        }
     }
 }

@@ -45,7 +45,7 @@
             this.grpMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.grpMenu.Location = new System.Drawing.Point(0, 0);
             this.grpMenu.Name = "grpMenu";
-            this.grpMenu.Size = new System.Drawing.Size(170, 333);
+            this.grpMenu.Size = new System.Drawing.Size(170, 362);
             this.grpMenu.TabIndex = 0;
             this.grpMenu.TabStop = false;
             this.grpMenu.Text = "Menü";
@@ -71,7 +71,7 @@
             treeNode3,
             treeNode4,
             treeNode5});
-            this.treeMenu.Size = new System.Drawing.Size(164, 314);
+            this.treeMenu.Size = new System.Drawing.Size(164, 343);
             this.treeMenu.TabIndex = 0;
             this.treeMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeMenu_AfterSelect);
             // 
@@ -79,14 +79,14 @@
             // 
             this.pnlForms.Location = new System.Drawing.Point(176, 12);
             this.pnlForms.Name = "pnlForms";
-            this.pnlForms.Size = new System.Drawing.Size(452, 309);
+            this.pnlForms.Size = new System.Drawing.Size(452, 347);
             this.pnlForms.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 333);
+            this.ClientSize = new System.Drawing.Size(640, 362);
             this.Controls.Add(this.pnlForms);
             this.Controls.Add(this.grpMenu);
             this.MaximizeBox = false;

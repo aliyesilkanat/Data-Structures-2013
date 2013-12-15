@@ -199,9 +199,9 @@ namespace Weighted_Graph
             }
         } // end putInPQ()
         // -------------------------------------------------------------
-        public void path() // find all shortest paths
+        public void path(int first) // find all shortest paths
         {
-            int startTree = 0; // start at vertex 0
+            int startTree = first; // start at vertex 0
             vertexList[startTree].isInTree = true;
             nTree = 1; // put it in tree
             // transfer row of distances from adjMat to sPath
@@ -213,7 +213,7 @@ namespace Weighted_Graph
             // until all vertices are in the tree
             while (nTree < nVerts)
             {
-                int indexMin = getMin(); // get minimum from sPath
+                int indexMin = getMin(first); // get minimum from sPath
                 int minDist = sPath[indexMin].distance;
                 if (minDist == INFINITY) // if all infinite
                 { // or in tree,
@@ -238,12 +238,13 @@ namespace Weighted_Graph
                 vertexList[j].isInTree = false;
         } // end path()
         // -------------------------------------------------------------
-        public int getMin() // get entry from sPath
+        public int getMin(int first) // get entry from sPath
         { // with minimum distance
             int minDist = INFINITY; // assume minimum
-            int indexMin = 0;
-            for (int j = 1; j < nVerts; j++) // for each vertex,
+            int indexMin = first;
+            for (int j = 0; j < nVerts; j++) // for each vertex,
             { // if it’s in tree and
+                if (j != first)
                 if (!vertexList[j].isInTree && // smaller than old one
             sPath[j].distance < minDist)
                 {
@@ -257,7 +258,8 @@ namespace Weighted_Graph
         public void adjust_sPath()
         {
             // adjust values in shortest-path array sPath
-            int column = 1; // skip starting vertex
+            int column = 0; // skip starting vertex
+            
             while (column < nVerts) // go across columns
             {
                 // if this column’s vertex already in tree, skip it

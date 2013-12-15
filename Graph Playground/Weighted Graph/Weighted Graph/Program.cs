@@ -31,7 +31,7 @@ namespace Weighted_Graph
             Console.WriteLine();
             Console.WriteLine("Shortest Path");
 
-            theGraph.path();
+            theGraph.path(5);
             Console.Read();
         }
     }

@@ -2,3 +2,4 @@ C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph 
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Weighted Graph\Weighted Graph\bin\Debug\Weighted Graph.pdb
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Weighted Graph\Weighted Graph\obj\x86\Debug\Weighted Graph.exe
 C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Weighted Graph\Weighted Graph\obj\x86\Debug\Weighted Graph.pdb
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Graph Playground\Weighted Graph\Weighted Graph\obj\x86\Debug\Weighted Graph.csprojResolveAssemblyReference.cache
