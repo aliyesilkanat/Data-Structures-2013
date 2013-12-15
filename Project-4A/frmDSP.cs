@@ -12,21 +12,24 @@ namespace Project_4A
 {
     public partial class frmDSP : Form
     {
-        static int INFINITY = 1000000;
         Graph theGraph;
         List<OvalShape> listOvalVertex = new List<OvalShape>();
+        List<LineShape> listLines = new List<LineShape>();
+        List<Label> listAgirliklar = new List<Label>();
         ShapeContainer canvas = new ShapeContainer();
+        
         public frmDSP(Graph g)
         {
             InitializeComponent();
             theGraph = g;
-          
-
             canvas.Parent = this;
-
-
             TepeleriYerlestir(listOvalVertex, theGraph.sPath, canvas, theGraph.vertexList);
             btnDSP.Enabled = false;
+            for (int i = 0; i < theGraph.vertexList.Length; i++)
+            {
+                cmbIlkTepe.Items.Add(theGraph.vertexList[i].label);
+                cmbIkinciTepe.Items.Add(theGraph.vertexList[i].label);
+            }
         }
 
         private void TepeleriYerlestir(List<OvalShape> listVertex, DistPar[] vertex, ShapeContainer canvas, Vertex[] vertexList)
@@ -59,41 +62,55 @@ namespace Project_4A
                 l.Size = new System.Drawing.Size(35, 13);
                 l.AutoSize = true;
                 this.Controls.Add(l);
-                cmbIlkTepe.Items.Add(vertexList[i].label);
-                cmbIkinciTepe.Items.Add(vertexList[i].label);
+               
             }
         }
         private void AyritlariYerlestir(List<OvalShape> listVertex, DistPar[] shortestPath, ShapeContainer canvas)
         {
+            for (int i = 0; i < listLines.Count; i++)
+            {
+                listLines[i].Dispose();
+                listAgirliklar[i].Dispose();
+            }
+            listAgirliklar.Clear();
+            listLines.Clear();
 
-            for (int i = 1; i < shortestPath.Count(); i++)
+            List<Vertex> ugranilanTepeler = new List<Vertex>();
+            ugranilanTepeler.Add(theGraph.vertexList[cmbIkinciTepe.SelectedIndex]);
+            while (cmbIlkTepe.SelectedIndex != Array.IndexOf(theGraph.vertexList, ugranilanTepeler.Last()) ) 
+                ugranilanTepeler.Add(theGraph.vertexList[shortestPath[Array.IndexOf(theGraph.vertexList, ugranilanTepeler.Last())].parentVert]);
+           
+
+            for (int i = 0; i < ugranilanTepeler.Count-1; i++)
             {
 
                 LineShape line = new LineShape();
-                line.StartPoint = new Point(listVertex[shortestPath[i].parentVert].Location.X + 20, listVertex[shortestPath[i].parentVert].Location.Y + 5);
-                line.EndPoint = new Point(listVertex[i].Location.X + 15, listVertex[i].Location.Y + 4);
+                line.BorderColor = Color.Red;
+                line.StartPoint = new Point(listVertex[Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i])].Location.X + 20, listVertex[Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i])].Location.Y + 5);
+                line.EndPoint = new Point(listVertex[Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i+1])].Location.X + 15, listVertex[Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i+1])].Location.Y + 4);
                 line.Parent = canvas;
-
+                listLines.Add(line);
 
                 Label l = new Label();
-                l.Text = shortestPath[i].distance.ToString();
+                l.Text = theGraph.adjMat[Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i]), Array.IndexOf(theGraph.vertexList, ugranilanTepeler[i + 1])].ToString();
                 l.Location = new System.Drawing.Point((3 * line.StartPoint.X + line.EndPoint.X) / 4, (3 * line.StartPoint.Y + line.EndPoint.Y) / 4);
                 l.Size = new System.Drawing.Size(35, 13);
                 l.AutoSize = true;
                 this.Controls.Add(l);
+                listAgirliklar.Add(l);
             }
         }
 
         private void cmbIlkTepe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex)
+            if ((cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex) || cmbIkinciTepe.SelectedIndex == -1)
                 btnDSP.Enabled = false;
             else btnDSP.Enabled = true;
         }
 
         private void cmbIkinciTepe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex)
+            if ((cmbIlkTepe.SelectedIndex == cmbIkinciTepe.SelectedIndex) || cmbIlkTepe.SelectedIndex == -1)
                 btnDSP.Enabled = false;
             else btnDSP.Enabled = true;
         }
