@@ -1,0 +1,4 @@
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Huffman Encoding\Huffman Encoding\bin\Debug\Huffman Encoding.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Huffman Encoding\Huffman Encoding\bin\Debug\Huffman Encoding.pdb
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Huffman Encoding\Huffman Encoding\obj\x86\Debug\Huffman Encoding.exe
+C:\Users\smsng\Documents\Visual Studio 2010\Projects\Data-Structures-2013\Project-4A\Huffman Encoding\Huffman Encoding\obj\x86\Debug\Huffman Encoding.pdb
