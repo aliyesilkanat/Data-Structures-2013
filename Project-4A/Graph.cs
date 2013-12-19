@@ -191,6 +191,7 @@ namespace Project_4A
             // mst is complete
             for (int j = 0; j < nVerts; j++) // unmark vertices
                 vertexList[j].isInTree = false;
+                nTree=0;
         } // end mstw
 
 
